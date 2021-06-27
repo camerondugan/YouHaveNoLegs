@@ -17,13 +17,13 @@ surfaces/0 = {
 }
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.09367
+radius = 0.0534395
 
 [node name="L_touch_controller" type="KinematicBody"]
 script = ExtResource( 2 )
 
 [node name="TouchL" type="MeshInstance" parent="."]
-transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0.009, -0.012, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
