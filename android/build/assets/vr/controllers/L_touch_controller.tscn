@@ -23,6 +23,7 @@ radius = 0.09367
 script = ExtResource( 2 )
 
 [node name="TouchL" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 

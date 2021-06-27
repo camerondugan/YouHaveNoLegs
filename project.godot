@@ -34,6 +34,8 @@ _global_script_class_icons={
 
 config/name="Vr"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/bg_color=Color( 0.0196078, 0.184314, 0.568627, 1 )
 config/icon="res://icon.png"
 
 [gdnative]
@@ -43,6 +45,7 @@ singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib", "res://addons/godo
 [global]
 
 filesystem=false
+icon=false
 
 [physics]
 

@@ -10,4 +10,6 @@ func _ready():
 func _physics_process(delta):
 	if (!headset or !physics_body): return
 	self.global_transform=physics_body.global_transform
-	self.global_transform=self.global_transform.translated(-headset.translation)
+	#lower player in body with this vector adding
+	var offset = -headset.translation + Vector3(0,-.35,0)
+	self.global_transform=self.global_transform.translated(offset)
