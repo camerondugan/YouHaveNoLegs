@@ -19,6 +19,9 @@ func _ready():
 		ovr_init_config = preload("res://addons/godot_ovrmobile/OvrInitConfig.gdns").new()
 		ovr_performance = preload("res://addons/godot_ovrmobile/OvrPerformance.gdns").new()
 		ovr_init_config.set_render_target_size_multiplier(1)
+		
+		OS.vsync_enabled = false
+		Engine.target_fps = 90
 		if mobile.initialize():
 			get_viewport().arvr = true
 

@@ -12,7 +12,7 @@ func _ready():
 		target_controller = get_tree().get_nodes_in_group("right controller")[0]
 
 var slide
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (target_controller):
 		var dir = target_controller.global_transform.origin - self.global_transform.origin
 		slide = move_and_slide(dir*speed,Vector3.UP)

@@ -42,7 +42,6 @@ func _physics_process(delta):
 			var turn = h*PI/4*delta
 			velocity=velocity.rotated(Vector3(0,1,0),turn)
 			transform.basis = transform.basis.rotated(Vector3(0, 1, 0), turn)
-			print(vr_origin.rotation)
 	iforce=Vector3.ZERO
 	velocity = move_and_slide(velocity,Vector3.UP)
 	
