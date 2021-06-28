@@ -29,7 +29,7 @@ func _physics_process(delta):
 	
 	#movement physics
 	if (iforce!=Vector3.ZERO):
-		velocity=iforce
+		velocity=velocity.linear_interpolate(iforce,1)
 	else:
 		velocity.y -= gravity*delta
 		var flying = floating and !grounded
@@ -44,4 +44,3 @@ func _physics_process(delta):
 			transform.basis = transform.basis.rotated(Vector3(0, 1, 0), turn)
 	iforce=Vector3.ZERO
 	velocity = move_and_slide(velocity,Vector3.UP)
-	
