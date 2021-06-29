@@ -8,4 +8,4 @@ shader_param/color = Color( 0.211765, 0.498039, 0.2, 1 )
 shader_param/shade_tweak = 0.5
 shader_param/light_tweak = 1.0
 shader_param/sharpness = 1.0
-shader_param/scale = 2.0
+shader_param/scale = 3.0

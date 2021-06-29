@@ -19,17 +19,16 @@ func _physics_process(delta):
 	var d=rc.distance_to(lc)
 	var h=R_controller.translation.y-L_controller.translation.y
 	var player_height=headset.translation.y
-	var tmp = player_height*1/2
+	var tmp = player_height*0.7
 	var floating=d>tmp
 	
 	var count = get_slide_count()
 	var grounded=count>0
-	if (count>0):
+	if (grounded):
 		velocity*=friction
-	
 	#movement physics
 	if (iforce!=Vector3.ZERO):
-		velocity=velocity.linear_interpolate(iforce,1)
+		velocity=velocity.linear_interpolate(iforce,0.5)
 	else:
 		velocity.y -= gravity*delta
 		var flying = floating and !grounded
