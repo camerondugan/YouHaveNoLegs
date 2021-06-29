@@ -1,6 +1,7 @@
 extends KinematicBody
 
 var iforce = Vector3.ZERO
+var ciforce = 0
 
 export var gravity = 3
 export var friction = .95
@@ -10,7 +11,6 @@ onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
 onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
 onready var headset = get_tree().get_nodes_in_group("head")[0]
 onready var vr_origin = get_tree().get_nodes_in_group("origin")[0]
-
 
 func _physics_process(delta):
 	#update variables
@@ -27,10 +27,10 @@ func _physics_process(delta):
 	if (grounded):
 		velocity*=friction
 	#movement physics
-	if (iforce!=Vector3.ZERO):
-		velocity=velocity.linear_interpolate(iforce,0.5)
+	if (ciforce>0):
+		iforce/=ciforce
+		velocity=iforce
 	else:
-		velocity.y -= gravity*delta
 		var flying = floating and !grounded
 		if (flying):
 			var push = -headset.get_global_transform().basis[2]
@@ -39,7 +39,11 @@ func _physics_process(delta):
 			velocity+=push*delta
 			velocity.y=max(-0.3,velocity.y)
 			var turn = h*PI/4*delta
-			velocity=velocity.rotated(Vector3(0,1,0),turn)
-			transform.basis = transform.basis.rotated(Vector3(0, 1, 0), turn)
+			velocity=velocity.rotated(Vector3.UP,turn)
+			#pick one not both
+			#transform = transform.rotated(Vector3.UP,turn)
+			transform.basis = transform.basis.rotated(Vector3.UP, turn*1.1)
+	velocity.y -= gravity*delta
+	ciforce=0
 	iforce=Vector3.ZERO
 	velocity = move_and_slide(velocity,Vector3.UP)
