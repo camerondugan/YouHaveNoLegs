@@ -21,13 +21,9 @@ func _physics_process(_delta):
 		
 		#collision
 		if (col):
-			var move = self.global_transform.origin - target_controller.global_transform.origin
+			var move = -dir
 			var tmp = get_slide_collision(0).normal
-			move*= Vector3(abs(tmp.x),abs(tmp.y),abs(tmp.z))
-			move*=18
-			while count>0:
-				count-=1
-				#move += get_slide_collision(count).remainder
+			move*= Vector3(abs(tmp.x),abs(tmp.y),abs(tmp.z)) * 18
 			#hand friction
 			move-=slide*0.96
 			pbody.iforce = move

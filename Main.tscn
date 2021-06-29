@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerBody.gd" type="Script" id=2]
@@ -18,6 +18,10 @@
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 100, 0.25, 100 )
+
+[sub_resource type="PhysicsMaterial" id=12]
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 100, 0.123, 100 )
@@ -93,6 +97,7 @@ material/0 = ExtResource( 12 )
 
 [node name="StaticBody" type="StaticBody" parent="Floor"]
 collision_layer = 7
+physics_material_override = SubResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
 shape = SubResource( 2 )
