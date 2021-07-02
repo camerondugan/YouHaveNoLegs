@@ -3,7 +3,7 @@ extends KinematicBody
 var iforce = Vector3.ZERO
 var ciforce = 0
 
-export var gravity = 3
+export var gravity = 5
 export var friction = .95
 var velocity = Vector3.ZERO
 

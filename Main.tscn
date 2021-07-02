@@ -263,6 +263,8 @@ __meta__ = {
 }
 
 [node name="StaticBody2" type="StaticBody" parent="tree-branched"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="tree-branched/StaticBody2"]
 visible = false

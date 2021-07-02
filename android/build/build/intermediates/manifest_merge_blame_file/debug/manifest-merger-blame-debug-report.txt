@@ -25,113 +25,118 @@
 18-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:19-51
 19        android:required="true" />
 19-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:52-75
-20    <uses-feature
-20-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:5-134
-21        android:name="android.hardware.vr.headtracking"
-21-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:40-87
-22        android:required="true"
-22-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:88-111
-23        android:version="1" />
-23-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:112-131
-24
-25    <instrumentation
-25-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:5-17:60
-26        android:name=".GodotInstrumentation"
-26-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:14:9-45
-27        android:icon="@mipmap/icon"
-27-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:15:9-36
-28        android:label="@string/godot_project_name_string"
-28-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:16:9-58
-29        android:targetPackage="org.godotengine.$genname" />
-29-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:17:9-57
-30
-31    <application
-31-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:5-69:19
-32        android:allowBackup="false"
-32-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:68-95
-33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-33-->[androidx.core:core:1.0.0] /home/cam/.gradle/caches/transforms-2/files-2.1/61f903db516e52d8783db3337e87ee1a/core-1.0.0/AndroidManifest.xml:22:18-86
-34        android:debuggable="true"
-35        android:icon="@mipmap/icon"
-35-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:181-208
-36        android:label="@string/godot_project_name_string"
-36-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:18-67
-37        android:requestLegacyExternalStorage="false" >
-37-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:136-180
-38        <meta-data
-38-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:9-122
-39            android:name="com.samsung.android.vr.application.mode"
-39-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:41-95
-40            android:value="vr_only" />
-40-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:96-119
-41
-42        <activity
-42-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:46:9-63:20
-43            android:name="com.godot.game.GodotApp"
-43-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:47:13-37
-44            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
-44-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:52:13-141
-45            android:label="@string/godot_project_name_string"
-45-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:48:13-62
-46            android:launchMode="singleTask"
-46-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:50:13-44
-47            android:resizeableActivity="false"
-47-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:53:13-47
-48            android:screenOrientation="landscape"
-48-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:51:13-50
-49            android:theme="@style/GodotAppSplashTheme" >
-49-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:49:13-55
-50            <meta-data
-50-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:13-88
-51                android:name="com.oculus.vr.focusaware"
-51-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:24-63
-52                android:value="false" />
-52-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:64-85
-53
-54            <intent-filter>
-54-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:59:13-62:29
-55                <action android:name="android.intent.action.MAIN" />
-55-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:60:17-69
-55-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:60:25-66
+20
+21    <uses-permission android:name="android.permission.INTERNET" />
+21-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:5-67
+21-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:22-64
+22
+23    <uses-feature
+23-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:5-134
+24        android:name="android.hardware.vr.headtracking"
+24-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:40-87
+25        android:required="true"
+25-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:88-111
+26        android:version="1" />
+26-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:112-131
+27
+28    <instrumentation
+28-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:13:5-18:60
+29        android:name=".GodotInstrumentation"
+29-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:15:9-45
+30        android:icon="@mipmap/icon"
+30-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:16:9-36
+31        android:label="@string/godot_project_name_string"
+31-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:17:9-58
+32        android:targetPackage="org.godotengine.$genname" />
+32-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:18:9-57
+33
+34    <application
+34-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:5-69:19
+35        android:allowBackup="false"
+35-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:68-95
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.0.0] /home/cam/.gradle/caches/transforms-2/files-2.1/61f903db516e52d8783db3337e87ee1a/core-1.0.0/AndroidManifest.xml:22:18-86
+37        android:debuggable="true"
+38        android:icon="@mipmap/icon"
+38-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:181-208
+39        android:label="@string/godot_project_name_string"
+39-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:18-67
+40        android:requestLegacyExternalStorage="false" >
+40-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:31:136-180
+41        <meta-data
+41-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:25:9-122
+42            android:name="com.samsung.android.vr.application.mode"
+42-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:25:41-95
+43            android:value="vr_only" />
+43-->/home/cam/Games/Godot/vr/android/build/src/debug/AndroidManifest.xml:25:96-119
+44
+45        <activity
+45-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:46:9-63:20
+46            android:name="com.godot.game.GodotApp"
+46-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:47:13-37
+47            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+47-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:52:13-141
+48            android:label="@string/godot_project_name_string"
+48-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:48:13-62
+49            android:launchMode="singleTask"
+49-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:50:13-44
+50            android:resizeableActivity="false"
+50-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:53:13-47
+51            android:screenOrientation="landscape"
+51-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:51:13-50
+52            android:theme="@style/GodotAppSplashTheme" >
+52-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:49:13-55
+53            <meta-data
+53-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:13-88
+54                android:name="com.oculus.vr.focusaware"
+54-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:24-63
+55                android:value="false" />
+55-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:57:64-85
 56
-57                <category android:name="android.intent.category.LAUNCHER" />
-57-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:61:17-77
-57-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:61:27-74
-58            </intent-filter>
-59        </activity>
-60        <!-- Records the version of the Godot editor used for building -->
-61        <meta-data
-62            android:name="org.godotengine.editor.version"
-63            android:value="3.3.2.stable" /> <!-- Records the version of the Godot library -->
+57            <intent-filter>
+57-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:59:13-62:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:60:17-69
+58-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:60:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:61:17-77
+60-->/home/cam/Games/Godot/vr/android/build/AndroidManifest.xml:61:27-74
+61            </intent-filter>
+62        </activity>
+63        <!-- Records the version of the Godot editor used for building -->
 64        <meta-data
-64-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:20:9-22:44
-65            android:name="org.godotengine.library.version"
-65-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:21:13-59
-66            android:value="3.3.2.stable" />
-66-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:22:13-41
-67
-68        <service android:name="org.godotengine.godot.GodotDownloaderService" />
-68-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:24:9-80
-68-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:24:18-77
-69
-70        <meta-data
-70-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:23:9-25:87
-71            android:name="org.godotengine.plugin.v1.OVRMobile"
-71-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:24:13-63
-72            android:value="org.godotengine.plugin.vr.oculus.mobile.OvrMobilePlugin" /> <!-- List of Supported Devices. "delmar" is the codename for Quest 2. -->
-72-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:25:13-84
+65            android:name="org.godotengine.editor.version"
+66            android:value="3.3.2.stable" /> <!-- Records the version of the Godot library -->
+67        <meta-data
+67-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:20:9-22:44
+68            android:name="org.godotengine.library.version"
+68-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:21:13-59
+69            android:value="3.3.2.stable" />
+69-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:22:13-41
+70
+71        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+71-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:24:9-80
+71-->[godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:24:18-77
+72
 73        <meta-data
-73-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:28:9-31:36
-74            android:name="com.oculus.supportedDevices"
-74-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:29:13-55
-75            android:value="quest|delmar" /> <!-- Enable Android views rendering. -->
-75-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:30:13-41
+73-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:23:9-25:87
+74            android:name="org.godotengine.plugin.v1.OVRMobile"
+74-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:24:13-63
+75            android:value="org.godotengine.plugin.vr.oculus.mobile.OvrMobilePlugin" /> <!-- List of Supported Devices. "delmar" is the codename for Quest 2. -->
+75-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:25:13-84
 76        <meta-data
-76-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:34:9-37:36
-77            android:name="com.oculus.always_draw_view_root"
-77-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:35:13-60
-78            android:value="true" />
-78-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:36:13-33
-79    </application>
-80
-81</manifest>
+76-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:28:9-31:36
+77            android:name="com.oculus.supportedDevices"
+77-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:29:13-55
+78            android:value="quest|delmar" /> <!-- Enable Android views rendering. -->
+78-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:30:13-41
+79        <meta-data
+79-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:34:9-37:36
+80            android:name="com.oculus.always_draw_view_root"
+80-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:35:13-60
+81            android:value="true" />
+81-->[gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:36:13-33
+82    </application>
+83
+84</manifest>
