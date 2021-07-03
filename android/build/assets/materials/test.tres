@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://textures/kenney-prototype-textures-db6622fbe90621eed70a0b417ae8d97281f45e6c/addons/kenney_prototype_textures/dark/texture_04.png" type="Texture" id=1]
+
+[resource]
+albedo_texture = ExtResource( 1 )
