@@ -8,17 +8,18 @@ var target_controller = null
 export var cID = 0
 export var speed = 20
 
+onready var collisionShape = $CollisionShape
+onready var previous = translation
+
 func _ready():
-	var mesh
 	if (cID==1):
-		target_controller = get_tree().get_nodes_in_group("left controller")[0]
-		mesh = lc.get_mesh()
+		target_controller = lc
 	elif(cID==2):
-		target_controller = get_tree().get_nodes_in_group("right controller")[0]
-		mesh = rc.get_mesh()
-	if (not mesh): return
-	if(mesh.get_surface_count()>10):
-		get_node("Mesh").set_mesh(rc.get_mesh())
+		target_controller = rc
+	if (target_controller):
+		var mesh = target_controller.get_mesh()
+		if (not mesh): return
+		if(mesh.get_surface_count()>3): get_node("Mesh").set_mesh(rc.get_mesh())
 
 var slide
 func _physics_process(_delta):
@@ -27,16 +28,17 @@ func _physics_process(_delta):
 		self.global_transform.basis = target_controller.global_transform.basis
 		
 		#physics
-		var dir = target_controller.global_transform.origin - self.global_transform.origin
+		var dir = target_controller.global_transform.origin - global_transform.origin
+		
 		#snap if stuck
-		print(dir.length())
 		if (dir.length()>0.35):
-			self.global_transform.origin = target_controller.global_transform.origin
+			global_transform.origin = target_controller.global_transform.origin
 		dir*=speed
+		
+		#collision
 		slide = move_and_slide(dir)
 		var count = get_slide_count()
 		var col = count>0
-		#collision
 		if (col):
 			var collis = get_slide_collision(0)
 			var move = collis.normal * dir.length() * 3/5
