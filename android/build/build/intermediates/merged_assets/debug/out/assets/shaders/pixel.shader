@@ -6,6 +6,7 @@ uniform float shade_tweak: float = 0.5;
 uniform float light_tweak: float = 1.0;
 uniform float sharpness: float = 1.0;
 uniform float scale: float = 2.0;
+uniform sampler2D albedo_texture : hint_albedo;
 
 const mat4 dither = mat4(
 	vec4(0.0, 0.5333333333, 0.1333333333,  0.6666666667),
@@ -15,7 +16,7 @@ const mat4 dither = mat4(
 );
 
 void fragment() {
-	ALBEDO = COLOR.rgb * color.rgb;
+	ALBEDO = COLOR.rgb * color.rgb * texture(albedo_texture,UV).rgb;
 }
 
 float sample(vec2 coord, float alpha, float shade, float lit) {

@@ -1,18 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/PlayerBody.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/Player/PlayerBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://vr/controllers/R_touch_controller.tscn" type="PackedScene" id=3]
-[ext_resource path="res://vr/controllers/L_touch_controller.tscn" type="PackedScene" id=4]
-[ext_resource path="res://materials/controller.tres" type="Material" id=5]
 [ext_resource path="res://materials/test.tres" type="Material" id=6]
 [ext_resource path="res://scripts/game.gd" type="Script" id=8]
-
-[sub_resource type="SphereMesh" id=1]
-
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.212803
-height = 0.002
 
 [node name="World" type="Spatial"]
 script = ExtResource( 8 )
@@ -22,37 +13,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19749, 0 )
 shadow_enabled = true
 omni_range = 3.7
 omni_attenuation = 4.59478
-
-[node name="PlayerBody" type="KinematicBody" parent="." groups=[
-"body",
-]]
-transform = Transform( -0.801494, 0, 0.598003, 0, 1, 0, -0.598003, 0, -0.801494, 0, 2.19187, 0 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="MeshInstance" type="MeshInstance" parent="PlayerBody"]
-transform = Transform( 0.243, 0, 0, 0, 0.248, 0, 0, 0, 0.24, 0, 0, 0 )
-cast_shadow = 3
-mesh = SubResource( 1 )
-material/0 = ExtResource( 5 )
-
-[node name="CollisionShape" type="CollisionShape" parent="PlayerBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0661469, 0 )
-shape = SubResource( 2 )
-
-[node name="L_touch_controller" parent="PlayerBody" instance=ExtResource( 4 )]
-transform = Transform( -0.801494, 0, -0.598003, 0, 1, 0, 0.598003, 0, -0.801494, 0, 0.34077, 0 )
-collision_layer = 4
-collision_mask = 4
-cID = 1
-
-[node name="R_touch_controller" parent="PlayerBody" instance=ExtResource( 3 )]
-transform = Transform( -0.801494, 0, -0.598003, 0, 1, 0, 0.598003, 0, -0.801494, 0, 0.0169015, 0 )
-collision_layer = 2
-collision_mask = 2
-cID = 2
 
 [node name="Player" type="ARVROrigin" parent="." groups=[
 "origin",
@@ -87,7 +47,6 @@ fov = 90.0
 near = 0.01
 
 [node name="SpotLight" type="SpotLight" parent="Player/Headset Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 spot_range = 7.6
 spot_angle = 75.0
 spot_angle_attenuation = 1.7411
@@ -117,7 +76,6 @@ inner_radius = 1.17463
 outer_radius = 3.08874
 sides = 20
 ring_sides = 20
-smooth_faces = false
 material = ExtResource( 6 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner"]
@@ -125,3 +83,6 @@ transform = Transform( 1, -2.98023e-08, 2.32831e-10, 0, -0.00382224, -0.999993, 
 invert_faces = true
 polygon = PoolVector2Array( -0.583167, 0.516862, -0.624478, 2.34038, 0.167009, 2.20818, 0.349734, 0.610915, 1.71473, 0.436243, 1.75856, -0.276842, 0.224813, -0.270668, -0.0442567, -1.42218, -0.606186, -1.18104, -0.538317, -0.186262, -1.95595, -0.252919, -1.91937, 0.518115 )
 material = ExtResource( 6 )
+
+[node name="PlayerBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.211791, 0, 0.452929, 0, 0.5, 0, -0.452929, 0, -0.211791, 0, 1.99877, 0 )

@@ -10,6 +10,7 @@ uniform vec4 color : hint_color = vec4(0.0); // which color does the outline hav
 void vertex() {
 	if (enable) {
 	VERTEX += NORMAL*outline_thickness; // apply the outlines thickness
+	//VERTEX *= 1f + outline_thickness;
 	}
 }
 

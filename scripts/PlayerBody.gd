@@ -19,11 +19,13 @@ func _physics_process(delta):
 	var grounded=count>0
 	if (grounded):
 		velocity*=friction
-	var impact = not igrounded and grounded
+	impact = not igrounded and grounded
 	#movement physics
 	if (ciforce>0):
 		iforce/=ciforce
 		velocity=iforce
+		iforce=Vector3.ZERO
+		ciforce=0
 	else:
 		var rc=Vector2(R_controller.translation.x,R_controller.translation.z)
 		var lc=Vector2(L_controller.translation.x,L_controller.translation.z)
@@ -33,8 +35,6 @@ func _physics_process(delta):
 		var floating=d>tmp
 		fly(floating and !grounded,delta)
 	velocity.y -= gravity*delta
-	ciforce=0
-	iforce=Vector3.ZERO
 	velocity = move_and_slide(velocity)
 	igrounded=grounded
 
