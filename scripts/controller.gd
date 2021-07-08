@@ -34,7 +34,6 @@ func _physics_process(_delta):
 		if (dir.length()>0.35):
 			global_transform.origin = target_controller.global_transform.origin
 		dir*=speed
-		
 		#collision
 		slide = move_and_slide(dir)
 		var count = get_slide_count()
