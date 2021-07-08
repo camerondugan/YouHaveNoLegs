@@ -16,10 +16,10 @@ func _ready():
 		target_controller = lc
 	elif(cID==2):
 		target_controller = rc
-	if (target_controller):
-		var mesh = target_controller.get_mesh()
-		if (not mesh): return
-		if(mesh.get_surface_count()>3): get_node("Mesh").set_mesh(rc.get_mesh())
+	#if (target_controller):
+	#	var mesh = target_controller.get_mesh()
+	#	if (not mesh): return
+	#	if(mesh.get_surface_count()>3): get_node("Mesh").set_mesh(rc.get_mesh())
 
 var slide
 func _physics_process(_delta):
@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		var col = count>0
 		if (col):
 			var collis = get_slide_collision(0)
-			var move = collis.normal * dir.length() * 3/5
+			var move = collis.normal * dir.length() * 1/2
 			#hand friction
 			move-=slide
 			pbody.iforce += move
