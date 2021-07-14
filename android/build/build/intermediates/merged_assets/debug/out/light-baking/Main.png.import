@@ -1,0 +1,24 @@
+[remap]
+
+importer="texture_array"
+type="TextureArray"
+path="res://.import/Main.png-038d7049e5cc7db03d24724ca374246c.texarr"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://light-baking/Main.png"
+dest_files=[ "res://.import/Main.png-038d7049e5cc7db03d24724ca374246c.texarr" ]
+
+[params]
+
+compress/mode=0
+compress/no_bptc_if_rgb=false
+flags/repeat=false
+flags/filter=true
+flags/mipmaps=false
+flags/srgb=true
+slices/horizontal=1
+slices/vertical=2

@@ -4,8 +4,10 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/color = Color( 0.243137, 0.52549, 0.360784, 1 )
+shader_param/color = Color( 0.317647, 0.701961, 0.47451, 1 )
 shader_param/shade_tweak = 0.05
 shader_param/light_tweak = 1.5
 shader_param/sharpness = 1.0
 shader_param/scale = 2.0
+shader_param/scale_texture = 1.0
+shader_param/offset_texture = Vector2( 0, 0 )

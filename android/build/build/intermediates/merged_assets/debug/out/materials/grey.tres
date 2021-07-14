@@ -9,3 +9,5 @@ shader_param/shade_tweak = 0.278
 shader_param/light_tweak = 1.399
 shader_param/sharpness = 1.0
 shader_param/scale = 2.0
+shader_param/scale_texture = 1.0
+shader_param/offset_texture = Vector2( 0, 0 )

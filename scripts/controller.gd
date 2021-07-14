@@ -1,15 +1,15 @@
 extends KinematicBody
 
 onready var pbody = get_tree().get_nodes_in_group("body")[0]
-onready var lc = get_tree().get_nodes_in_group("left controller")[0]
-onready var rc = get_tree().get_nodes_in_group("right controller")[0]
+onready var lc:ARVRController = get_tree().get_nodes_in_group("left controller")[0]
+onready var rc:ARVRController = get_tree().get_nodes_in_group("right controller")[0]
 
-var target_controller = null
-export var cID = 0
-export var speed = 20
+var target_controller:ARVRController = null
+export var cID := 0
+export var speed := 20
 
-onready var collisionShape = $CollisionShape
-onready var previous = translation
+onready var collisionShape:CollisionShape = $c
+onready var previous := translation
 
 func _ready():
 	if (cID==1):
@@ -28,7 +28,7 @@ func _physics_process(_delta):
 		self.global_transform.basis = target_controller.global_transform.basis
 		
 		#physics
-		var dir = target_controller.global_transform.origin - global_transform.origin
+		var dir := target_controller.global_transform.origin - global_transform.origin
 		
 		#snap if stuck
 		if (dir.length()>0.35):
@@ -36,11 +36,11 @@ func _physics_process(_delta):
 		dir*=speed
 		#collision
 		slide = move_and_slide(dir)
-		var count = get_slide_count()
-		var col = count>0
+		var count := get_slide_count()
+		var col := count>0
 		if (col):
-			var collis = get_slide_collision(0)
-			var move = collis.normal * dir.length() * 1/2
+			var collis:KinematicCollision = get_slide_collision(0)
+			var move:Vector3 = collis.normal * dir.length() * 1/2
 			#hand friction
 			move-=slide
 			pbody.iforce += move

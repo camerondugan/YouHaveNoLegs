@@ -17,6 +17,7 @@ height = 0.52515
 "body",
 ]]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.331152, 0 )
+collision_layer = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -34,5 +35,7 @@ shape = SubResource( 2 )
 
 [node name="R_touch_controller" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0 )
+collision_mask = 1
 
 [node name="L_touch_controller" parent="." instance=ExtResource( 3 )]
+collision_mask = 1

@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://scripts/Sprite3D.gd" type="Script" id=1]
 [ext_resource path="res://scripts/controller.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/hands/Sprite-0004.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/hands/Sprite-0001.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/hands/Sprite-0002.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/hands/Sprite-0003.png" type="Texture" id=6]
-[ext_resource path="res://vr/controllers/Sprite3D.gd" type="Script" id=7]
 
-[sub_resource type="AnimatedTexture" id=4]
+[sub_resource type="AnimatedTexture" id=1]
 flags = 25
 frames = 6
 frame_0/texture = ExtResource( 4 )
@@ -22,11 +22,11 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 5 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=2]
 radius = 0.082
 height = 0.001
 
-[sub_resource type="SphereShape" id=5]
+[sub_resource type="SphereShape" id=3]
 radius = 0.0963903
 
 [node name="RC" type="KinematicBody"]
@@ -43,14 +43,14 @@ collision_mask = 2
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, -8.74228e-08, 0, -8.74228e-08, -1, -8.74228e-08, -7.64275e-15, -8.74228e-08, 1, 0.009, 0.00991454, -0.0196929 )
 pixel_size = 0.0066
-texture = SubResource( 4 )
-script = ExtResource( 7 )
+texture = SubResource( 1 )
+script = ExtResource( 1 )
 
 [node name="Mesh" type="MeshInstance" parent="Sprite3D"]
 transform = Transform( -1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 0, 0 )
 cast_shadow = 3
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = null
 
-[node name="lc" type="CollisionShape" parent="."]
-shape = SubResource( 5 )
+[node name="c" type="CollisionShape" parent="."]
+shape = SubResource( 3 )

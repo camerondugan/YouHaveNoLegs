@@ -5,3 +5,4 @@
 *.tres eol=lf
 *.import eol=lf
 /addons/godot_ovrmobile/libs/armeabi-v7a/libgodot_ovrmobile.so filter=lfs diff=lfs merge=lfs -text
+/android/build/build/outputs/apk/debug/android_debug.apk filter=lfs diff=lfs merge=lfs -text
