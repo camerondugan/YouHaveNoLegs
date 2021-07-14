@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.s3tc.stex"
+path.etc2="res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.etc2.stex"
+path.etc="res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://addons/qodot/textures/kenney-prototype-textures-db6622fbe90621eed70a0b417ae8d97281f45e6c/addons/kenney_prototype_textures/dark/texture_10.png"
+dest_files=[ "res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.s3tc.stex", "res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.etc2.stex", "res://.import/texture_10.png-f10a4c049aa2f9ff0f2b9dec98f88605.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

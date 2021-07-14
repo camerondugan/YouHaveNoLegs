@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "applicationId": "org.godotengine.vr",
+  "applicationId": "org.godotengine.codecanary",
   "variantType": "BASE_APK",
   "elements": [
     {

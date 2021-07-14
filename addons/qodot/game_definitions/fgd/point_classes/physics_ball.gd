@@ -1,4 +1,4 @@
-class_name PhysicsBall
+class_name physics_ball
 extends PhysicsEntity
 tool
 

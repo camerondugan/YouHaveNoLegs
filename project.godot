@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/qodot/example_scenes/2-miscallaneous/1-runtime-map-building/orbit_arm.gd"
 }, {
-"base": "PhysicsEntity",
-"class": "PhysicsBall",
-"language": "GDScript",
-"path": "res://addons/qodot/game_definitions/fgd/point_classes/physics_ball.gd"
-}, {
 "base": "RigidBody",
 "class": "PhysicsEntity",
 "language": "GDScript",
@@ -193,6 +188,11 @@ _global_script_classes=[ {
 "class": "WaterLayer",
 "language": "GDScript",
 "path": "res://addons/qodot/game_definitions/worldspawn_layers/liquid/water.gd"
+}, {
+"base": "PhysicsEntity",
+"class": "physics_ball",
+"language": "GDScript",
+"path": "res://addons/qodot/game_definitions/fgd/point_classes/physics_ball.gd"
 } ]
 _global_script_class_icons={
 "HTerrainDataLoader": "",
@@ -203,7 +203,6 @@ _global_script_class_icons={
 "OculusTouchController": "",
 "OculusTracker": "",
 "OrbitArm": "",
-"PhysicsBall": "",
 "PhysicsEntity": "",
 "QodotDependencies": "",
 "QodotEntity": "",
@@ -231,12 +230,13 @@ _global_script_class_icons={
 "TrenchBroomGameConfigFile": "",
 "TrenchBroomGameConfigFolder": "",
 "TrenchBroomTag": "",
-"WaterLayer": ""
+"WaterLayer": "",
+"physics_ball": ""
 }
 
 [application]
 
-config/name="Vr"
+config/name="Code Canary"
 config/description="A birb game"
 run/main_scene="res://qodot_test.tscn"
 boot_splash/image="res://icon.png"
@@ -257,13 +257,13 @@ texture={
 "compress/bptc_ldr": 0,
 "compress/hdr_mode": 0,
 "compress/lossy_quality": 0.7,
-"compress/mode": 0,
+"compress/mode": 2,
 "compress/normal_map": 0,
 "detect_3d": false,
 "flags/anisotropic": false,
-"flags/filter": false,
-"flags/mipmaps": false,
-"flags/repeat": 0,
+"flags/filter": true,
+"flags/mipmaps": true,
+"flags/repeat": 1,
 "flags/srgb": 2,
 "process/HDR_as_SRGB": false,
 "process/fix_alpha_border": true,
@@ -277,12 +277,12 @@ texture={
 [physics]
 
 common/enable_pause_aware_picking=true
-3d/physics_engine="Bullet"
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
+threads/thread_model=2
 vram_compression/import_etc=true
-quality/shading/force_vertex_shading.mobile=false
+quality/filters/anisotropic_filter_level=2
+environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 environment/default_environment="res://default_env.tres"
-quality/subsurface_scattering/quality=0

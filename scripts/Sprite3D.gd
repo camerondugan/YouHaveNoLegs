@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	var target = player.global_transform.origin
+	var target : Vector3 = player.global_transform.origin
 	target.y = target.y + global_transform.origin.y
 	target.y /= 2
 	look_at(target,Vector3.UP)

@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "org.godotengine.vr",
+  "applicationId": "org.godotengine.codecanary",
   "variantName": "debug",
   "elements": [
     {
