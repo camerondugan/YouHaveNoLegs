@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Player/PlayerBody.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/sprites/hands/Sprite-0001.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/hands/Sprite-0002.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/hands/Sprite-0003.png" type="Texture" id=7]
+[ext_resource path="res://prefabs/Player/prison-arms.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/arms.gd" type="Script" id=9]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 25
@@ -80,7 +82,16 @@ script = ExtResource( 3 )
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
 doppler_tracking = 1
-projection = 1
 current = true
 fov = 90.0
 near = 0.01
+
+[node name="prison-arms-left" parent="Player/Headset Camera" instance=ExtResource( 8 )]
+transform = Transform( -0.099786, 0, -0.00653858, 0, 0.1, 0, 0.00653858, 0, -0.099786, 0.099, -0.226844, -0.0285255 )
+script = ExtResource( 9 )
+target_group = "left controller"
+
+[node name="prison-arms-right" parent="Player/Headset Camera" instance=ExtResource( 8 )]
+transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991584, -0.238993, -0.047079 )
+script = ExtResource( 9 )
+target_group = "right controller"

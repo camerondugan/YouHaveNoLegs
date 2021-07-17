@@ -163,7 +163,7 @@ points = PoolVector3Array( -9, 0, -10, -9, -2.5, -10, -8.5, -2.5, -10, -8.5, 0, 
 [sub_resource type="ConvexPolygonShape" id=28]
 points = PoolVector3Array( -8.5, 0, 4, -8.5, -2.5, 4, -5, -2.5, 4, -5, 0, 4, -8.5, 0, 4.5, -8.5, -2.5, 4.5, -5, -2.5, 4.5, -5, 0, 4.5 )
 
-[node name="Spatial" type="Spatial"]
+[node name="World" type="Spatial"]
 script = ExtResource( 11 )
 
 [node name="QodotMap" type="Spatial" parent="."]

@@ -163,7 +163,7 @@ points = PoolVector3Array( -9, 0, -10, -9, -2.5, -10, -8.5, -2.5, -10, -8.5, 0, 
 [sub_resource type="ConvexPolygonShape" id=28]
 points = PoolVector3Array( -8.5, 0, 4, -8.5, -2.5, 4, -5, -2.5, 4, -5, 0, 4, -8.5, 0, 4.5, -8.5, -2.5, 4.5, -5, -2.5, 4.5, -5, 0, 4.5 )
 
-[node name="Spatial" type="Spatial"]
+[node name="World" type="Spatial"]
 script = ExtResource( 11 )
 
 [node name="QodotMap" type="Spatial" parent="."]
@@ -274,14 +274,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -0.125, 3.625 )
 script = ExtResource( 12 )
 properties = {
 "classname": "light",
-"light": 100,
+"light": 150,
 "origin": "232 -72 -8"
 }
 
 [node name="OmniLight" type="OmniLight" parent="QodotMap/entity_2_light"]
+light_energy = 1.5
+light_indirect_energy = 1.5
 light_bake_mode = 2
 shadow_enabled = true
-omni_range = 1.77778
+omni_range = 4.0
 
 [node name="entity_3_light" type="Spatial" parent="QodotMap"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 0.375, -4.125 )
@@ -383,11 +385,43 @@ light_bake_mode = 2
 shadow_enabled = true
 omni_range = 16.0
 
+[node name="entity_10_light" type="Spatial" parent="QodotMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, 1.625, 1.125 )
+script = ExtResource( 12 )
+properties = {
+"classname": "light",
+"light": 150,
+"origin": "72 88 104"
+}
+
+[node name="OmniLight" type="OmniLight" parent="QodotMap/entity_10_light"]
+light_energy = 1.5
+light_indirect_energy = 1.5
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="entity_11_light" type="Spatial" parent="QodotMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 1.625, 1.125 )
+script = ExtResource( 12 )
+properties = {
+"classname": "light",
+"light": 150,
+"origin": "72 -216 104"
+}
+
+[node name="OmniLight" type="OmniLight" parent="QodotMap/entity_11_light"]
+light_energy = 1.5
+light_indirect_energy = 1.5
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 4.0
+
 [node name="BakedLightmap" type="BakedLightmap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44157, 1.236, -2.69281 )
 extents = Vector3( 7.27768, 4.39329, 8.69353 )
 quality = 0
-environment_mode = 1
+capture_quality = 0
 light_data = ExtResource( 13 )
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
