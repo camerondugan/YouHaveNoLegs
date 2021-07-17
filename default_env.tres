@@ -8,4 +8,3 @@ background_sky = SubResource( 1 )
 background_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 background_energy = 0.0
 ambient_light_sky_contribution = 0.0
-adjustment_enabled = true
