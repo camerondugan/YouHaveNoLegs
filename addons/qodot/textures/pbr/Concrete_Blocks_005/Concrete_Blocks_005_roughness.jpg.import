@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.s3tc.stex"
+path.etc2="res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.etc2.stex"
+path.etc="res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://addons/qodot/textures/pbr/Concrete_Blocks_005/Concrete_Blocks_005_roughness.jpg"
+dest_files=[ "res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.s3tc.stex", "res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.etc2.stex", "res://.import/Concrete_Blocks_005_roughness.jpg-04c0008b7934742425a6b296ef7bd891.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=1
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

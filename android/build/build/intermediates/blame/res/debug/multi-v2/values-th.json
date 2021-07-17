@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/cam/Games/Godot/vr/android/build/build/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
+            "outputFile": "/home/cam/Godot/vr/android/build/build/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
             "map": [
                 {
-                    "source": "/home/cam/Games/Godot/vr/android/build/res/values-th/godot_project_name_string.xml",
+                    "source": "/home/cam/Godot/vr/android/build/res/values-th/godot_project_name_string.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "1",

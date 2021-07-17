@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - Demonization.mp3-fdf2548d8dcf62eb5b73289b5a6b3b0b.mp3str"
+
+[deps]
+
+source_file="res://music/XTaKeRuX - Demonization.mp3"
+dest_files=[ "res://.import/XTaKeRuX - Demonization.mp3-fdf2548d8dcf62eb5b73289b5a6b3b0b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

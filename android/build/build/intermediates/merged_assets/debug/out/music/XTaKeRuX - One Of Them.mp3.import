@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - One Of Them.mp3-5feec7ec204cf5a6b93336f820ccaa37.mp3str"
+
+[deps]
+
+source_file="res://music/XTaKeRuX - One Of Them.mp3"
+dest_files=[ "res://.import/XTaKeRuX - One Of Them.mp3-5feec7ec204cf5a6b93336f820ccaa37.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

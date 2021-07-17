@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - Don't Fear Me.mp3-d4c7a82a30aaf8613dbc8c3140c2b6f2.mp3str"
+
+[deps]
+
+source_file="res://music/XTaKeRuX - Don't Fear Me.mp3"
+dest_files=[ "res://.import/XTaKeRuX - Don't Fear Me.mp3-d4c7a82a30aaf8613dbc8c3140c2b6f2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

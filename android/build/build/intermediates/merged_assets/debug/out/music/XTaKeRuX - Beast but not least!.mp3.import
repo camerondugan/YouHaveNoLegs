@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - Beast but not least!.mp3-37a0f49d8aa89b6e4d978761a8ddf797.mp3str"
+
+[deps]
+
+source_file="res://music/XTaKeRuX - Beast but not least!.mp3"
+dest_files=[ "res://.import/XTaKeRuX - Beast but not least!.mp3-37a0f49d8aa89b6e4d978761a8ddf797.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
