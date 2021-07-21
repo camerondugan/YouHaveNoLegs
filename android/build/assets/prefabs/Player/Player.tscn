@@ -59,6 +59,7 @@ __meta__ = {
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Left Controller"]
 transform = Transform( 1, -8.74228e-08, 0, -8.74228e-08, -1, -8.74228e-08, -7.64275e-15, -8.74228e-08, 1, 0, 0, 0 )
+visible = false
 pixel_size = 0.0066
 texture = SubResource( 1 )
 script = ExtResource( 3 )
@@ -72,6 +73,7 @@ __meta__ = {
 }
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Right Controller"]
+visible = false
 pixel_size = 0.0066
 texture = SubResource( 2 )
 script = ExtResource( 3 )

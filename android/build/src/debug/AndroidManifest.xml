@@ -7,6 +7,7 @@
         android:normalScreens="true"
         android:largeScreens="true"
         android:xlargeScreens="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature tools:node="replace" android:name="android.hardware.vr.headtracking" android:required="true" android:version="1" />
     <instrumentation
         tools:node="replace"

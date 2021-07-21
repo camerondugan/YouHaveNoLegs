@@ -36,9 +36,9 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/cam/.gradle/cache
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/cam/.gradle/caches/transforms-2/files-2.1/f26cb074b3681077f4d38c5c96d0069e/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/cam/.gradle/caches/transforms-2/files-2.1/ac361face763b38075ac877c18b42d1f/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/cam/.gradle/caches/transforms-2/files-2.1/79ede6663a81cd857f05187f391cb70e/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:4:5-29
 		INJECTED from /home/cam/Godot/vr/android/build/AndroidManifest.xml
@@ -106,12 +106,12 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/cam/.
 	android:allowBackup
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:31:68-95
 	tools:replace
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:19:9-61
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:20:9-61
 meta-data#xr_mode_metadata_name
 ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:42:9-44:54
 REJECTED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:42:9-44:54
 	tools:node
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:22:20-39
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:23:20-39
 	android:value
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:44:13-51
 	android:name
@@ -142,14 +142,14 @@ MERGED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:46:9-63:20
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:49:13-55
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:49:13-55
 	tools:replace
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:58-99
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:25:58-99
 	android:name
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:47:13-37
 meta-data#com.oculus.vr.focusaware
 ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:57:13-88
 REJECTED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:57:13-88
 	tools:node
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:25:24-44
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:26:24-44
 	android:value
 		ADDED from /home/cam/Godot/vr/android/build/AndroidManifest.xml:57:64-85
 	android:name
@@ -230,39 +230,43 @@ INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /home/cam/Godot/vr/android/build/AndroidManifest.xml
 		INJECTED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:5-67
+	android:name
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:22-64
 uses-feature#android.hardware.vr.headtracking
-ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:5-134
+ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:5-134
 REJECTED from [gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:12:5-16:32
 	android:version
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:112-131
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:112-131
 	tools:node
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:19-39
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:19-39
 	android:required
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:88-111
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:88-111
 	android:name
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:10:40-87
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:40-87
 instrumentation
-ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:11:5-16:60
+ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:5-17:60
 REJECTED from [godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:11:5-15:57
 	tools:node
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:12:9-29
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:13:9-29
 	android:label
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:15:9-58
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:16:9-58
 	android:icon
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:14:9-36
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:15:9-36
 	android:targetPackage
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:16:9-57
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:17:9-57
 	android:name
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:13:9-45
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:14:9-45
 meta-data#com.samsung.android.vr.application.mode
-ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:23:9-122
+ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:9-122
 REJECTED from [gdovrmobile.3.1.0-release.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/aee94c3b4e3e7c6a5d2f0147e1338bef/jetified-gdovrmobile.3.1.0-release/AndroidManifest.xml:19:9-22:36
 	tools:node
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:23:20-40
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:20-40
 	android:value
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:23:96-119
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:96-119
 	android:name
-		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:23:41-95
+		ADDED from /home/cam/Godot/vr/android/build/src/debug/AndroidManifest.xml:24:41-95
 meta-data#org.godotengine.library.version
 ADDED from [godot-lib.debug.aar] /home/cam/.gradle/caches/transforms-2/files-2.1/bc1e848ec22747470543ab6597f4376b/jetified-godot-lib.debug/AndroidManifest.xml:20:9-22:44
 	android:value
