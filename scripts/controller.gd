@@ -5,6 +5,7 @@ onready var lc:ARVRController = get_tree().get_nodes_in_group("left controller")
 onready var rc:ARVRController = get_tree().get_nodes_in_group("right controller")[0]
 
 var target_controller:ARVRController = null
+onready var audio:= $AudioStreamPlayer3D
 export var cID := 0
 export var speed := 20
 
@@ -23,7 +24,7 @@ func _ready():
 
 var slide
 func _physics_process(delta):
-	target_controller.rumble = manage_rumble(target_controller,delta,rumbleDur)
+	rumbleDur = manage_rumble(target_controller,delta,rumbleDur)
 	if (target_controller):
 		#rotation
 		self.global_transform.basis = target_controller.global_transform.basis
@@ -49,12 +50,20 @@ func _physics_process(delta):
 
 onready var rumbleDur = 0
 func _on_contact(body):
-	if (self.get_groups().has("hitable")):
-		target_controller.rumble = 0.5
-		rumbleDur += 0.1
-		$AudioStreamPlayer3D.play()
+	var c := 0
+	var og:Node = body
+	#checks self and 1 parent up
+	while (body != null and c <= 1):
+		if (body.get_groups().has("hitable")):
+			target_controller.rumble = 0.5
+			rumbleDur += 0.1
+			audio.play()
+			print("hit ",og.name)
+		body = body.get_parent()
+		c+=1
 
 func manage_rumble(target_controller,delta,rumbleDur):
+	print(target_controller.rumble, delta, rumbleDur)
 	if (rumbleDur>0):
 		rumbleDur -= delta
 	else:

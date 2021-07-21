@@ -166,7 +166,9 @@ points = PoolVector3Array( -8.5, 0, 4, -8.5, -2.5, 4, -5, -2.5, 4, -5, 0, 4, -8.
 [node name="World" type="Spatial"]
 script = ExtResource( 11 )
 
-[node name="QodotMap" type="Spatial" parent="."]
+[node name="QodotMap" type="Spatial" parent="." groups=[
+"hitable",
+]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
