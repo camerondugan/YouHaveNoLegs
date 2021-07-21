@@ -17,14 +17,10 @@ func _ready():
 		target_controller = lc
 	elif(cID==2):
 		target_controller = rc
-	#if (target_controller):
-	#	var mesh = target_controller.get_mesh()
-	#	if (not mesh): return
-	#	if(mesh.get_surface_count()>3): get_node("Mesh").set_mesh(rc.get_mesh())
 
 var slide
 func _physics_process(delta):
-	rumbleDur = manage_rumble(target_controller,delta,rumbleDur)
+	manage_rumble(target_controller,delta)
 	if (target_controller):
 		#rotation
 		self.global_transform.basis = target_controller.global_transform.basis
@@ -45,8 +41,7 @@ func _physics_process(delta):
 			var move:Vector3 = collis.normal * dir.length() * 1/2
 			#hand friction
 			move-=slide
-			pbody.iforce += move
-			pbody.ciforce +=1
+			pbody.push(move)
 
 onready var rumbleDur = 0
 func _on_contact(body):
@@ -58,14 +53,11 @@ func _on_contact(body):
 			target_controller.rumble = 0.5
 			rumbleDur += 0.1
 			audio.play()
-			print("hit ",og.name)
 		body = body.get_parent()
 		c+=1
 
-func manage_rumble(target_controller,delta,rumbleDur):
-	print(target_controller.rumble, delta, rumbleDur)
+func manage_rumble(target_controller,delta):
 	if (rumbleDur>0):
 		rumbleDur -= delta
 	else:
 		target_controller.rumble = 0
-	return rumbleDur

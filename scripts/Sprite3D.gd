@@ -14,4 +14,5 @@ func _process(_delta):
 	var target : Vector3 = player.global_transform.origin
 	target.y = target.y + global_transform.origin.y
 	target.y /= 2
-	look_at(target,Vector3.UP)
+	if (target.angle_to(Vector3.UP)>PI/2):
+		look_at(target,Vector3.UP)

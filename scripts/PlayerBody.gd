@@ -1,11 +1,12 @@
 extends KinematicBody
 
-var iforce := Vector3.ZERO
-var ciforce := 0
-
 export var gravity := 5
 export var friction := .95
-var velocity := Vector3.ZERO
+
+onready var iforce := Vector3.ZERO
+onready var ciforce := 0
+onready var velocity := Vector3.ZERO
+onready var mapStartPosition := global_transform.origin
 
 onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
 onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
@@ -53,3 +54,12 @@ func fly(is_flying:bool,delta:float):
 		#pick one not both
 		#transform = transform.rotated(Vector3.UP,turn)
 		transform.basis = transform.basis.rotated(Vector3.UP, turn*1.1)
+
+func push(force:Vector3):
+	iforce += force
+	ciforce +=1
+
+func respawn():
+	global_transform.origin = mapStartPosition
+	rotation = Vector3.ZERO
+	velocity = Vector3.ZERO

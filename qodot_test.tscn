@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://addons/qodot/textures/pbr/military-panel.png" type="Texture" id=16]
 [ext_resource path="res://music/XTaKeRuX - Beast but not least!.mp3" type="AudioStream" id=17]
 [ext_resource path="res://addons/qodot/textures/pbr/Concrete_Blocks_005.png" type="Texture" id=18]
+[ext_resource path="res://prefabs/Basic Game Mechanics/DeathPlane.tscn" type="PackedScene" id=19]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -428,5 +429,8 @@ light_data = ExtResource( 13 )
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
-volume_db = -8.0
+volume_db = -12.0
 autoplay = true
+
+[node name="DeathPlane" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.28259, 0 )

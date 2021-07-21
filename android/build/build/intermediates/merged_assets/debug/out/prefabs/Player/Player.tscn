@@ -58,6 +58,7 @@ __meta__ = {
 }
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Left Controller"]
+pause_mode = 1
 transform = Transform( 1, -8.74228e-08, 0, -8.74228e-08, -1, -8.74228e-08, -7.64275e-15, -8.74228e-08, 1, 0, 0, 0 )
 visible = false
 pixel_size = 0.0066
@@ -73,6 +74,7 @@ __meta__ = {
 }
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Right Controller"]
+pause_mode = 1
 visible = false
 pixel_size = 0.0066
 texture = SubResource( 2 )
@@ -88,12 +90,12 @@ current = true
 fov = 90.0
 near = 0.01
 
-[node name="prison-arms-left" parent="Player/Headset Camera" instance=ExtResource( 8 )]
-transform = Transform( -0.099786, 0, -0.00653858, 0, 0.1, 0, 0.00653858, 0, -0.099786, 0.099, -0.242936, -0.0285255 )
-script = ExtResource( 9 )
-target_group = "left controller"
-
 [node name="prison-arms-right" parent="Player/Headset Camera" instance=ExtResource( 8 )]
-transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991584, -0.2447, -0.047079 )
+transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991447, -0.2447, -0.047079 )
 script = ExtResource( 9 )
 target_group = "right controller"
+
+[node name="prison-arms-right2" parent="Player/Headset Camera" instance=ExtResource( 8 )]
+transform = Transform( -0.0994077, 8.6905e-09, 0.0108676, 8.74228e-09, 0.1, 0, -0.0108676, 9.50075e-10, -0.0994077, 0.0916608, -0.2447, -0.014035 )
+script = ExtResource( 9 )
+target_group = "left controller"
