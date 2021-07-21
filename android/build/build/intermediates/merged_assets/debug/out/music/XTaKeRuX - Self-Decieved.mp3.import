@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - Self-Decieved.mp3-b43c5b1c73a8b07647fadea8559c60bd.mp3str"
+
+[deps]
+
+source_file="res://music/XTaKeRuX - Self-Decieved.mp3"
+dest_files=[ "res://.import/XTaKeRuX - Self-Decieved.mp3-b43c5b1c73a8b07647fadea8559c60bd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
