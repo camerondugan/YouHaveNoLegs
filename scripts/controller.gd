@@ -22,7 +22,8 @@ func _ready():
 	#	if(mesh.get_surface_count()>3): get_node("Mesh").set_mesh(rc.get_mesh())
 
 var slide
-func _physics_process(_delta):
+func _physics_process(delta):
+	target_controller.rumble = manage_rumble(target_controller,delta,rumbleDur)
 	if (target_controller):
 		#rotation
 		self.global_transform.basis = target_controller.global_transform.basis
@@ -45,3 +46,17 @@ func _physics_process(_delta):
 			move-=slide
 			pbody.iforce += move
 			pbody.ciforce +=1
+
+onready var rumbleDur = 0
+func _on_contact(body):
+	if (self.get_groups().has("hitable")):
+		target_controller.rumble = 0.5
+		rumbleDur += 0.1
+		$AudioStreamPlayer3D.play()
+
+func manage_rumble(target_controller,delta,rumbleDur):
+	if (rumbleDur>0):
+		rumbleDur -= delta
+	else:
+		target_controller.rumble = 0
+	return rumbleDur
