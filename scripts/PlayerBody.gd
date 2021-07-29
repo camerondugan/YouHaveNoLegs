@@ -32,7 +32,7 @@ func _physics_process(delta):
 		var lc:Vector2=Vector2(L_controller.translation.x,L_controller.translation.z)
 		var d:float=rc.distance_to(lc)
 		var player_height:float=headset.translation.y
-		var tmp:float = player_height*0.6
+		var tmp:float = player_height*0.75
 		var floating:bool=d>abs(tmp)
 		fly(floating and !grounded,delta)
 	velocity.y -= gravity*delta
@@ -63,3 +63,6 @@ func respawn():
 	global_transform.origin = mapStartPosition
 	rotation = Vector3.ZERO
 	velocity = Vector3.ZERO
+	R_controller.global_transform.origin = mapStartPosition
+	L_controller.global_transform.origin = mapStartPosition
+

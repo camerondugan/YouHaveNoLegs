@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://DeathPlane.gd" type="Script" id=1]
+[ext_resource path="res://scripts/DeathPlane.gd" type="Script" id=1]
 [ext_resource path="res://assets/sfx/respawn.mp3" type="AudioStream" id=2]
 
 [node name="DeathPlane" type="Position3D"]

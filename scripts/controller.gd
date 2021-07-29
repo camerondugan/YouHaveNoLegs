@@ -18,7 +18,8 @@ func _ready():
 	elif(cID==2):
 		target_controller = rc
 
-var slide
+var slide : Vector3
+var dir : Vector3
 func _physics_process(delta):
 	manage_rumble(target_controller,delta)
 	if (target_controller):
@@ -26,7 +27,7 @@ func _physics_process(delta):
 		self.global_transform.basis = target_controller.global_transform.basis
 		
 		#physics
-		var dir := target_controller.global_transform.origin - global_transform.origin
+		dir = target_controller.global_transform.origin - global_transform.origin
 		
 		#snap if stuck
 		if (dir.length()>0.35):
@@ -38,7 +39,7 @@ func _physics_process(delta):
 		var col := count>0
 		if (col):
 			var collis:KinematicCollision = get_slide_collision(0)
-			var move:Vector3 = collis.normal * dir.length() * 1/2
+			var move:Vector3 = collis.normal * dir.length() * .6
 			#hand friction
 			move-=slide
 			pbody.push(move)
@@ -49,6 +50,8 @@ func _on_contact(body):
 	var og:Node = body
 	#checks self and 1 parent up
 	while (body != null and c <= 1):
+		if (body.has_method("playerHit")):
+			body.playerHit()
 		if (body.get_groups().has("hitable")):
 			target_controller.rumble = 0.5
 			rumbleDur += 0.1
