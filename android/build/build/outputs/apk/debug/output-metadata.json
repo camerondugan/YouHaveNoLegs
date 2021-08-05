@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "org.godotengine.codecanary",
+  "applicationId": "org.godotengine.youhavenolegs",
   "variantName": "debug",
   "elements": [
     {

@@ -47,7 +47,6 @@ func _physics_process(delta):
 onready var rumbleDur = 0
 func _on_contact(body):
 	var c := 0
-	var og:Node = body
 	#checks self and 1 parent up
 	while (body != null and c <= 1):
 		if (body.has_method("playerHit")):

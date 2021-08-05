@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "applicationId": "org.godotengine.codecanary",
+  "applicationId": "org.godotengine.youhavenolegs",
   "variantType": "BASE_APK",
   "elements": [
     {
@@ -19,7 +19,7 @@
       },
       "path": "AndroidManifest.xml",
       "properties": {
-        "packageId": "org.godotengine.codecanary",
+        "packageId": "org.godotengine.youhavenolegs",
         "split": "",
         "minSdkVersion": "18"
       }

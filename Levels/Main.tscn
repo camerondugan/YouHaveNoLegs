@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Player/PlayerBody.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://materials/sky.tres" type="Material" id=4]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=5]
 [ext_resource path="res://assets/trees/tree-round.tres" type="ArrayMesh" id=6]
-[ext_resource path="res://prefabs/trees/tree-conical.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/trees/tree-columnar.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://assets/trees/tree-oval.tres" type="ArrayMesh" id=9]
 [ext_resource path="res://assets/trees/tree-spreading.tres" type="ArrayMesh" id=10]
@@ -14,7 +13,7 @@
 [ext_resource path="res://materials/grass.tres" type="Material" id=12]
 [ext_resource path="res://light-baking/baked_light.tres" type="BakedLightmapData" id=13]
 [ext_resource path="res://materials/wall.tres" type="Material" id=15]
-[ext_resource path="res://assets/free rpg assets/Used Low Poly assets/key.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/trees/tree-conical.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -114,7 +113,7 @@ collision_mask = 7
 [node name="CollisionShape" type="CollisionShape" parent="Scenery/tree-columnar/StaticBody"]
 shape = SubResource( 3 )
 
-[node name="tree-conical" parent="Scenery" instance=ExtResource( 7 )]
+[node name="tree-conical" parent="Scenery" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0715, -0.529156, 14.3401 )
 use_in_baked_light = true
 material/0 = null
@@ -251,9 +250,6 @@ spot_range = 4096.0
 spot_attenuation = 0.0213444
 spot_angle = 92.6
 spot_angle_attenuation = 6.72716
-
-[node name="key" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57536, 0.136806, -0.515731 )
 
 [node name="WellSunlight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.640345, 0 )

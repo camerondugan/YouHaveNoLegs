@@ -1,44 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Player/PlayerBody.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/Sprite3D.gd" type="Script" id=3]
-[ext_resource path="res://assets/sprites/hands/Sprite-0004.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/hands/Sprite-0001.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/hands/Sprite-0002.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/hands/Sprite-0003.png" type="Texture" id=7]
 [ext_resource path="res://prefabs/Player/prison-arms.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/arms.gd" type="Script" id=9]
-
-[sub_resource type="AnimatedTexture" id=1]
-flags = 25
-frames = 6
-frame_0/texture = ExtResource( 5 )
-frame_1/texture = ExtResource( 6 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 7 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 4 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 7 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 6 )
-frame_5/delay_sec = 0.0
-
-[sub_resource type="AnimatedTexture" id=2]
-flags = 25
-frames = 6
-frame_0/texture = ExtResource( 5 )
-frame_1/texture = ExtResource( 6 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 7 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 4 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 7 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 6 )
-frame_5/delay_sec = 0.0
 
 [node name="Player+Body" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -58,14 +23,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite3D" type="Sprite3D" parent="Player/Left Controller"]
-pause_mode = 1
-transform = Transform( 1, -8.74228e-08, 0, -8.74228e-08, -1, -8.74228e-08, -7.64275e-15, -8.74228e-08, 1, 0, 0, 0 )
-visible = false
-pixel_size = 0.0066
-texture = SubResource( 1 )
-script = ExtResource( 3 )
-
 [node name="Right Controller" type="ARVRController" parent="Player" groups=[
 "right controller",
 ]]
@@ -74,21 +31,13 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite3D" type="Sprite3D" parent="Player/Right Controller"]
-pause_mode = 1
-visible = false
-pixel_size = 0.0066
-texture = SubResource( 2 )
-script = ExtResource( 3 )
-
 [node name="Headset Camera" type="ARVRCamera" parent="Player" groups=[
 "head",
 "origin",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
-doppler_tracking = 1
 current = true
-fov = 90.0
+fov = 119.0
 near = 0.01
 
 [node name="prison-arms-right" parent="Player/Headset Camera" instance=ExtResource( 8 )]

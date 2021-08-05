@@ -47,7 +47,7 @@
     <item name="title" type="id"/>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <string name="godot_project_name_string">Birb</string>
+    <string name="godot_project_name_string">You Have No Legs</string>
     <string name="kilobytes_per_second">%1$s KB/s</string>
     <string name="notification_download_complete">Download complete</string>
     <string name="notification_download_failed">Download unsuccessful</string>

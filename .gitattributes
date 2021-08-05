@@ -5,8 +5,8 @@
 *.tres eol=lf
 *.import eol=lf
 /android/build/build/outputs/apk/debug/android_debug.apk filter=lfs diff=lfs merge=lfs -text
-/addons/godot_ovrmobile/libs/armeabi-v7a/libgodot_ovrmobile.so filter=lfs diff=lfs merge=lfs -text
 /YHNL.apk filter=lfs diff=lfs merge=lfs -text
+/addons/godot_ovrmobile/libs/armeabi-v7a/libgodot_ovrmobile.so filter=lfs diff=lfs merge=lfs -text
 /YHNL-doom.apk filter=lfs diff=lfs merge=lfs -text
 /exports/Linux/You[[:space:]]Have[[:space:]]No[[:space:]]Legs.pck filter=lfs diff=lfs merge=lfs -text
 /exports/MacOs/You[[:space:]]Have[[:space:]]No[[:space:]]Legs.app/Contents/MacOS/You[[:space:]]Have[[:space:]]No[[:space:]]Legs filter=lfs diff=lfs merge=lfs -text

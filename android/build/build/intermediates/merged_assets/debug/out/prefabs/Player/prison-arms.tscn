@@ -7,9 +7,6 @@
 [node name="Position3D" type="Position3D" parent="." index="1"]
 transform = Transform( 0.366696, 0, 0.930341, 0, 1, 0, -0.930341, 0, 0.366696, 2.08068, 1.11452, 0.891541 )
 
-[node name="Arm" parent="Armature/Skeleton" index="0"]
-generate_lightmap = false
-
 [node name="SkeletonIK" type="SkeletonIK" parent="Armature/Skeleton" index="1"]
 process_priority = 1
 root_bone = "Bone"
