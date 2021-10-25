@@ -15,7 +15,7 @@ onready var vr_origin = get_tree().get_nodes_in_group("origin")[0]
 
 var igrounded := false
 var impact := false
-func _physics_process(delta):
+func _process(delta):
 	var count:= get_slide_count()
 	var grounded:=count>0
 	if (grounded):

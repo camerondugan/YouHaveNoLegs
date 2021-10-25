@@ -1,7 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://assets/shaders/pixel.shader" type="Shader" id=1]
-[ext_resource path="res://assets/free rpg assets/LowPoly_Pixel_RPG_Assets_devilsworkshop_v02/2D/view-Front/images/wallStone03_0002.png" type="Texture" id=2]
+[ext_resource path="res://models/shaders/pixel.shader" type="Shader" id=1]
 
 [resource]
 shader = ExtResource( 1 )
@@ -12,4 +11,3 @@ shader_param/sharpness = 1.0
 shader_param/scale = 2.0
 shader_param/scale_texture = 0.567
 shader_param/offset_texture = Vector2( 0.226, 0 )
-shader_param/albedo_texture = ExtResource( 2 )

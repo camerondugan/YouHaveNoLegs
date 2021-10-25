@@ -20,7 +20,7 @@ func _ready():
 
 var slide : Vector3
 var dir : Vector3
-func _physics_process(delta):
+func _process(delta):
 	manage_rumble(target_controller,delta)
 	if (target_controller):
 		#rotation
@@ -58,8 +58,8 @@ func _on_contact(body):
 		body = body.get_parent()
 		c+=1
 
-func manage_rumble(target_controller,delta):
+func manage_rumble(tc,delta):
 	if (rumbleDur>0):
 		rumbleDur -= delta
 	else:
-		target_controller.rumble = 0
+		tc.rumble = 0

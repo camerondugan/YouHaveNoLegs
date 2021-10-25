@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/XTaKeRuX - Shinigami.mp3-cc0206129ffac9dcd95538c9466222fd.mp3str"
+
+[deps]
+
+source_file="res://sound/music/XTaKeRuX - Shinigami.mp3"
+dest_files=[ "res://.import/XTaKeRuX - Shinigami.mp3-cc0206129ffac9dcd95538c9466222fd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

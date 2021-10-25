@@ -7,14 +7,13 @@
         android:normalScreens="true"
         android:largeScreens="true"
         android:xlargeScreens="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature tools:node="replace" android:name="android.hardware.vr.headtracking" android:required="true" android:version="1" />
     <instrumentation
         tools:node="replace"
         android:name=".GodotInstrumentation"
         android:icon="@mipmap/icon"
         android:label="@string/godot_project_name_string"
-        android:targetPackage="org.godotengine.$genname" />
+        android:targetPackage="com.camerondugan.yhnl" />
     <application android:label="@string/godot_project_name_string"
         android:allowBackup="false" tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:requestLegacyExternalStorage"         android:requestLegacyExternalStorage="false"

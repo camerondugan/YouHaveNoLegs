@@ -1,7 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://assets/shaders/pixel.shader" type="Shader" id=1]
-[ext_resource path="res://addons/qodot/textures/kenney-prototype-textures-db6622fbe90621eed70a0b417ae8d97281f45e6c/addons/kenney_prototype_textures/dark/texture_06.png" type="Texture" id=2]
+[ext_resource path="res://models/shaders/pixel.shader" type="Shader" id=1]
 
 [resource]
 shader = ExtResource( 1 )
@@ -12,4 +11,3 @@ shader_param/sharpness = 1.0
 shader_param/scale = 2.0
 shader_param/scale_texture = 20.0
 shader_param/offset_texture = Vector2( 0.482, 0.018 )
-shader_param/albedo_texture = ExtResource( 2 )
