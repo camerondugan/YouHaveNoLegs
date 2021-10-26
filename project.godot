@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="You Have No Legs"
 config/description="A VR game without legs. Trust me, it's better this way."
-run/main_scene="res://Levels/test_lvl.tscn"
+run/main_scene="res://Levels/cave_test.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.290196, 0.290196, 0.290196, 1 )
@@ -53,12 +53,12 @@ singletons=[ "res://addons/godot-oculus/godot_oculus.gdnlib", "res://addons/godo
 texture={
 "compress/bptc_ldr": 0,
 "compress/hdr_mode": 0,
-"compress/lossy_quality": 1.0,
+"compress/lossy_quality": 0.7,
 "compress/mode": 2,
-"compress/normal_map": 1,
+"compress/normal_map": 0,
 "detect_3d": false,
-"flags/anisotropic": true,
-"flags/filter": false,
+"flags/anisotropic": false,
+"flags/filter": true,
 "flags/mipmaps": true,
 "flags/repeat": 1,
 "flags/srgb": 2,

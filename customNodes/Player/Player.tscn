@@ -54,3 +54,5 @@ script = ExtResource( 9 )
 target_group = "left controller"
 
 [node name="Lamp" type="SpotLight" parent="Player/Headset Camera"]
+spot_angle = 40.0
+spot_angle_attenuation = 0.392292
