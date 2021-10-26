@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/marble-hitting-marble.wav-dc84e684a87adbe2198a2639e610c6df.sample"
+
+[deps]
+
+source_file="res://sound/sfx/marble-hitting-marble.wav"
+dest_files=[ "res://.import/marble-hitting-marble.wav-dc84e684a87adbe2198a2639e610c6df.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

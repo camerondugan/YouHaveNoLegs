@@ -3,7 +3,6 @@ extends Spatial
 var mobile:ARVRInterface = null
 var ovr_performance = null
 var ovr_init_config = null
-var target_fps = 72
 
 func _ready():
 	var vr := ARVRServer.find_interface("OpenVR")
@@ -12,14 +11,10 @@ func _ready():
 		get_viewport().arvr = true
 		get_viewport().hdr = false
 		get_viewport().msaa = 0
-		OS.vsync_enabled = false
-		OS.target_fps = target_fps
 	elif mobile:
 		ovr_init_config = preload("res://addons/godot_ovrmobile/OvrInitConfig.gdns").new()
 		ovr_performance = preload("res://addons/godot_ovrmobile/OvrPerformance.gdns").new()
 		ovr_performance.set_foveation_level(4)
-		OS.vsync_enabled = true
-		Engine.target_fps = target_fps
 		if mobile.initialize():
 			get_viewport().arvr = true
 			get_viewport().hdr = false
@@ -33,6 +28,6 @@ func _process(_delta):
 			ovr_performance.set_clock_levels(1, 1)
 			ovr_performance.set_extra_latency_mode(1)
 			ovr_performance.set_foveation_level(4)
-			#ovr_performance.set_enable_dynamic_foveation(true)
+			ovr_performance.set_enable_dynamic_foveation(true)
 		perform_runtime_config = true
 

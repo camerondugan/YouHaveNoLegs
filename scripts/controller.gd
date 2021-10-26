@@ -47,16 +47,19 @@ func _process(delta):
 onready var rumbleDur = 0
 func _on_contact(body):
 	var c := 0
+	var hitSomething := true
 	#checks self and 1 parent up
 	while (body != null and c <= 1):
 		if (body.has_method("playerHit")):
 			body.playerHit()
-		if (body.get_groups().has("hitable")):
-			target_controller.rumble = 0.5
-			rumbleDur += 0.1
-			audio.play()
+		if (body.get_groups().has("soundless")):
+			hitSomething = false
 		body = body.get_parent()
 		c+=1
+	if (hitSomething and rumbleDur < .1):
+		target_controller.rumble = 0.5
+		rumbleDur += 0.1
+		audio.play()
 
 func manage_rumble(tc,delta):
 	if (rumbleDur>0):
