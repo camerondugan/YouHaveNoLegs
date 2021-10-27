@@ -15,5 +15,4 @@ func _play():
 	play()
 
 func _recieveSignal(_body:Node):
-	print("Recieved")
 	_play()
