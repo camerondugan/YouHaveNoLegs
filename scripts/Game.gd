@@ -9,8 +9,6 @@ func _ready():
 	mobile = ARVRServer.find_interface("OVRMobile")
 	if vr and vr.initialize():
 		get_viewport().arvr = true
-		get_viewport().hdr = false
-		get_viewport().msaa = 0
 	elif mobile:
 		ovr_init_config = preload("res://addons/godot_ovrmobile/OvrInitConfig.gdns").new()
 		ovr_performance = preload("res://addons/godot_ovrmobile/OvrPerformance.gdns").new()
