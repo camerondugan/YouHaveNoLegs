@@ -15,6 +15,7 @@ height = 0.52515
 
 [node name="PlayerBody" type="KinematicBody" groups=[
 "body",
+"player",
 "soundless",
 ]]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.331152, 0 )

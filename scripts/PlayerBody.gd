@@ -59,6 +59,9 @@ func push(force:Vector3):
 	iforce += force
 	ciforce +=1
 
+func getHit(force:Vector3):
+	velocity = force
+
 func respawn():
 	global_transform.origin = mapStartPosition
 	rotation = Vector3.ZERO

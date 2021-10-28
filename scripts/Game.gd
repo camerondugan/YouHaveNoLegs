@@ -20,7 +20,6 @@ func _ready():
 			get_viewport().hdr = false
 			get_viewport().msaa = 0
 
-
 var perform_runtime_config = false
 func _process(_delta):
 	if not perform_runtime_config:

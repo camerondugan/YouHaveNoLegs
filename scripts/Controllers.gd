@@ -50,8 +50,8 @@ func _on_contact(body):
 	var hitSomething := true
 	#checks self and 1 parent up
 	while (body != null and c <= 1):
-		if (body.has_method("playerHit")):
-			body.playerHit()
+		if (body.has_method("onHitByPlayer")):
+			body.onPlayerHit()
 		if (body.get_groups().has("soundless")):
 			hitSomething = false
 		body = body.get_parent()
