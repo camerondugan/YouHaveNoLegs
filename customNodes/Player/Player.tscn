@@ -3,13 +3,12 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://customNodes/Player/prison-arms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://customNodes/Player/PlayerBody.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/ToggleEnabled.gd" type="Script" id=4]
+[ext_resource path="res://customNodes/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://scripts/Arms.gd" type="Script" id=9]
 
 [node name="Player+Body" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 4 )
-target_path = NodePath("Player/Headset Camera/Lamp")
 
 [node name="PlayerBody" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.380555, 0 )
@@ -40,8 +39,6 @@ __meta__ = {
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
 current = true
-fov = 119.0
-near = 0.01
 
 [node name="prison-arms-right" parent="Player/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991447, -0.2447, -0.047079 )

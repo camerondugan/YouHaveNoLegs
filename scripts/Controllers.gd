@@ -20,7 +20,7 @@ func _ready():
 
 var slide : Vector3
 var dir : Vector3
-func _process(delta):
+func _physics_process(delta):
 	manage_rumble(target_controller,delta)
 	if (target_controller):
 		#rotation
@@ -30,7 +30,7 @@ func _process(delta):
 		dir = target_controller.global_transform.origin - global_transform.origin
 		
 		#snap if stuck
-		if (dir.length()>0.35):
+		if (dir.length()>0.27):
 			global_transform.origin = target_controller.global_transform.origin
 		dir*=speed
 		#collision
