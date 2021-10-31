@@ -45,7 +45,7 @@ transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.0
 script = ExtResource( 9 )
 target_group = "right controller"
 
-[node name="prison-arms-right2" parent="VR/Headset Camera" instance=ExtResource( 2 )]
+[node name="prison-arms-left" parent="VR/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( -0.0994077, 8.6905e-09, 0.0108676, 8.74228e-09, 0.1, 0, -0.0108676, 9.50075e-10, -0.0994077, 0.0916608, -0.2447, -0.014035 )
 script = ExtResource( 9 )
 target_group = "left controller"
