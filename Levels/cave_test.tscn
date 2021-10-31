@@ -49,7 +49,7 @@ invert_faces = true
 polygon = PoolVector2Array( -0.583167, 0.516862, -0.624478, 2.34038, 0.167009, 2.20818, 0.349734, 0.610915, 1.71473, 0.436243, 1.75856, -0.276842, 0.224813, -0.270668, -0.0442567, -1.42218, -0.606186, -1.18104, -0.538317, -0.186262, -1.95595, -0.252919, -1.91937, 0.518115 )
 material = ExtResource( 4 )
 
-[node name="Player+Body" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.112735, 0, 0.993625, 0, 1, 0, -0.993625, 0, -0.112735, 1.54451e-05, 1.656, 1.01328e-06 )
 
 [node name="Light Ball" parent="." instance=ExtResource( 5 )]

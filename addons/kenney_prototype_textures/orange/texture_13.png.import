@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.s3tc.stex"
+path.etc2="res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.etc2.stex"
 path.etc="res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/kenney_prototype_textures/orange/texture_13.png"
-dest_files=[ "res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.s3tc.stex", "res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.etc.stex" ]
+dest_files=[ "res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.s3tc.stex", "res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.etc2.stex", "res://.import/texture_13.png-a11a0cfe132bc07bf4c480fd4334a284.etc.stex" ]
 
 [params]
 

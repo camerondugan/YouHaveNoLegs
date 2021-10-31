@@ -8,7 +8,7 @@ onready var core = $Visualizer
 func _on_Light_Ball_body_entered(_body):
 	pass
 
-func onPlayerHit():
+func onHitByPlayer():
 	#Spawn Debree
 	$BreakParticles.brek()
 	#Delete Myself

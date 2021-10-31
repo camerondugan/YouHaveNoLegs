@@ -1,15 +1,12 @@
 extends KinematicBody
 
-onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
-onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
-onready var headset = get_tree().get_nodes_in_group("head")[0]
-
 export var canFly := false
 export var lookAtPlayer := false
 export var moveSpeed := 3
 export var fallSpeed := 5
 export var knockBack := 7
 
+onready var headset = get_tree().get_nodes_in_group("head")[0]
 var velocity := Vector3.ZERO
 
 var lookWeight = 0.1
@@ -32,7 +29,7 @@ func _onAttackAreaEntered(body):
 		velocity = -velocity.normalized() * knockBack
 
 func die():
-	#$BreakParticles.brek()
+	$BreakParticles.brek()
 	queue_free()
 
 func setVelocity(vel):

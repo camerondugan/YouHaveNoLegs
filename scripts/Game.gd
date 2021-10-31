@@ -1,5 +1,9 @@
 extends Spatial
 
+onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
+onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
+onready var headset = get_tree().get_nodes_in_group("head")[0]
+
 var mobile:ARVRInterface = null
 var ovr_performance = null
 var ovr_init_config = null
