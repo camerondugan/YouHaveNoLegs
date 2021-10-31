@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://materials/GlowPrototype/dark.tres" type="Material" id=1]
+[ext_resource path="res://sound/sfx/explosions/explosion-05.wav" type="AudioStream" id=2]
 [ext_resource path="res://customNodes/Particles/BreakParticles.gd" type="Script" id=3]
+[ext_resource path="res://scripts/SoundSampler.gd" type="Script" id=4]
+[ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-01.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/sfx/explosions/explosion-00.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/sfx/explosions/explosion-07.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/sfx/explosions/explosion-01.wav" type="AudioStream" id=8]
 
 [sub_resource type="CubeMesh" id=1]
 material = ExtResource( 1 )
+size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="BreakParticles" type="CPUParticles"]
+[node name="Break" type="CPUParticles"]
 emitting = false
 amount = 15
 lifetime = 3.0
@@ -22,5 +29,10 @@ script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="BreakSounds" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+script = ExtResource( 4 )
+sounds = [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

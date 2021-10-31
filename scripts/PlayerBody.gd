@@ -8,13 +8,16 @@ onready var ciforce := 0
 onready var velocity := Vector3.ZERO
 onready var mapStartPosition := global_transform.origin
 
+#SLOW: use get_node here for better performance
 onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
 onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
 onready var headset = get_tree().get_nodes_in_group("head")[0]
 onready var vr_origin = get_tree().get_nodes_in_group("origin")[0]
 
+onready var player := self.get_parent()
 var igrounded := false
 var impact := false
+
 func _process(delta):
 	var count:= get_slide_count()
 	var grounded:=count>0
@@ -61,6 +64,7 @@ func push(force:Vector3):
 
 func getHit(force:Vector3):
 	velocity = force
+	player.reduceLives(1)
 
 func respawn():
 	global_transform.origin = mapStartPosition

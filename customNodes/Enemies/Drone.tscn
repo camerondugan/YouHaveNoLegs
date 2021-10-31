@@ -10,8 +10,8 @@
 [ext_resource path="res://sound/sfx/drone/353976__tec-studio__drone.wav" type="AudioStream" id=8]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.383393
-height = 0.0402056
+radius = 0.361293
+height = 0.0284915
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.351736
@@ -23,7 +23,9 @@ radius = 0.22721
 material = ExtResource( 6 )
 size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="Drone" type="KinematicBody"]
+[node name="Drone" type="KinematicBody" groups=[
+"Enemies",
+]]
 script = ExtResource( 4 )
 canFly = true
 lookAtPlayer = true
@@ -83,6 +85,7 @@ target = NodePath("..")
 
 [node name="DroneSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 8 )
+unit_db = -11.547
 autoplay = true
 doppler_tracking = 1
 

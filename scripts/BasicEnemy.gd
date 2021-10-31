@@ -11,21 +11,30 @@ var velocity := Vector3.ZERO
 
 var lookWeight = 0.1
 
+func _ready():
+	#die()
+	pass
+
 func _process(delta):
-	var player = headset.global_transform.origin
+	var player = null
+	var rotated = null
+	if headset:
+		player = headset.global_transform.origin
 	if not canFly:
 		velocity += Vector3.DOWN * fallSpeed * delta
-	velocity += global_transform.origin.direction_to(player-Vector3.UP*.2).normalized() * moveSpeed * delta
+	if player:
+		velocity += global_transform.origin.direction_to(player-Vector3.UP*.2).normalized() * moveSpeed * delta
+	if player:
+		rotated = global_transform.looking_at(player, Vector3.UP)
+		global_transform = global_transform.interpolate_with(rotated,4*delta)
 	velocity = move_and_slide(velocity)
-	var rotated = global_transform.looking_at(player, Vector3.UP)
-	global_transform = global_transform.interpolate_with(rotated,4*delta)
-	#self.look_at(global_transform.origin + velocity,Vector3.UP)
 
 func _onAttackAreaEntered(body):
-	if (body.get_parent().is_in_group('player')):
-		body = body.get_parent()
 	if (body.is_in_group('player')):
 		body.getHit(global_transform.origin.direction_to(headset.global_transform.origin).normalized() * knockBack/2)
+		velocity = -velocity.normalized() * knockBack
+	if (body.get_parent().is_in_group('player')):
+		body = body.get_parent()
 		velocity = -velocity.normalized() * knockBack
 
 func die():

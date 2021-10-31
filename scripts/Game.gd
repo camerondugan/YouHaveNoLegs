@@ -31,4 +31,3 @@ func _process(_delta):
 			ovr_performance.set_foveation_level(4)
 			ovr_performance.set_enable_dynamic_foveation(true)
 		perform_runtime_config = true
-
