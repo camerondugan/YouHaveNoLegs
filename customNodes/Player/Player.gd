@@ -6,7 +6,7 @@ var invulnerable = false
 onready var larm := get_node("VR/Headset Camera/prison-arms-left")
 onready var rarm := get_node("VR/Headset Camera/prison-arms-left")
 
-func _process(delta):
+func _process(_delta):
 	if invulnerable:
 		var tleft:int = int($Invulnerability.time_left*5)
 		larm.visible = tleft%2==0
@@ -23,7 +23,8 @@ func reduceLives(num):
 		queue_free()
 
 func _exit_tree():
-	get_tree().reload_current_scene()
+	if (!get_tree().reload_current_scene()):
+		print("Failed to restart level")
 
 func increaseLives(num):
 	lives += num

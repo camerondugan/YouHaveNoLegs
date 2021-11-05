@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="You Have No Legs"
 config/description="A VR game without legs. Trust me, it's better this way."
-run/main_scene="res://Levels/cave_test.tscn"
+run/main_scene="res://Levels/ProceduralLevelGenerator.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
