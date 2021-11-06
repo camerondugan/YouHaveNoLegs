@@ -10,8 +10,8 @@ radius = 0.848
 mid_height = 1.618
 
 [sub_resource type="CapsuleShape" id=2]
-radius = 0.121987
-height = 0.52515
+radius = 0.18
+height = 0.335518
 
 [node name="PlayerBody" type="KinematicBody" groups=[
 "body",
@@ -33,7 +33,7 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -1.77636e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.234814, 0 )
+transform = Transform( 1, 0, -1.77636e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.172681, 0 )
 shape = SubResource( 2 )
 
 [node name="R_touch_controller" parent="." groups=[

@@ -1,6 +1,7 @@
 extends Spatial
 
 var gridPosition := Vector2.ZERO
+export var adjacents := []
 
 func _ready():
 	pass # Replace with function body.

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/ProceduralLevelGenerator.gd" type="Script" id=1]
 [ext_resource path="res://customNodes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/GridPieces/c4.tscn" type="PackedScene" id=3]
 [ext_resource path="res://customNodes/Enemies/Drone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://Levels/GridPieces/c2.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 5 )
@@ -12,11 +13,15 @@ script = ExtResource( 5 )
 [node name="ProcLevelGenerator" type="Spatial" parent="."]
 script = ExtResource( 1 )
 gridLibrary = {
+"c2": ExtResource( 6 ),
 "c4": ExtResource( 3 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.505622, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.3279, 0 )
 
 [node name="Drone" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171378, 1.18943, 2.79622 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
