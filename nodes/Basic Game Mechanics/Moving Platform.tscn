@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://customNodes/Basic Game Mechanics/Moving Platform.gd" type="Script" id=1]
+[ext_resource path="res://nodes/Basic Game Mechanics/Moving Platform.gd" type="Script" id=1]
 
 [sub_resource type="CubeMesh" id=1]
 

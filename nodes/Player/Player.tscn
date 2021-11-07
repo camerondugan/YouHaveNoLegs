@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://customNodes/Player/prison-arms.tscn" type="PackedScene" id=2]
-[ext_resource path="res://customNodes/Player/PlayerBody.tscn" type="PackedScene" id=3]
-[ext_resource path="res://customNodes/Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://nodes/Player/prison-arms.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/Player/PlayerBody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://scripts/Arms.gd" type="Script" id=9]
 
 [node name="Player" type="Spatial"]
