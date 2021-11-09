@@ -6,10 +6,7 @@ export var adjacents := []
 #updates the adjacent vectors as if rotated once
 func rotateClockwise():
 	for i in range(len(adjacents)):
-		var tmpX = adjacents[i].x
-		rotate_object_local(Vector3.UP,PI/2)
-		adjacents[i].x = adjacents[i].y
-		adjacents[i].y = -tmpX
+		adjacents[i] = adjacents[i].rotated(-PI/2)
 
 func rotateClockwiseRepeat(x):
 	for _i in range(x):
