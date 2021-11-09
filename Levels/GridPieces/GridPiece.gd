@@ -6,11 +6,11 @@ export var adjacents := []
 #updates the adjacent vectors as if rotated once
 func rotateClockwise():
 	for i in range(len(adjacents)):
-		adjacents[i] = adjacents[i].rotated(-PI/2)
+		adjacents[i] = adjacents[i].rotated(deg2rad(-90))
 
 func rotateClockwiseRepeat(x):
-	for _i in range(x):
-		rotateClockwise()
+	for i in range(len(adjacents)):
+		adjacents[i] = adjacents[i].rotated(deg2rad(-90)*x)
 
 func _body_entered(body):
 	if (body.name=="PlayerBody"):

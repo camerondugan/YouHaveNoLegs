@@ -16,22 +16,24 @@ func _ready():
 		spawnFittingGridPiece(adj,playerGridPos)
 	
 func spawn(block,rotations,pos):
-	if unoccupied(pos.x,pos.y):
-		var b = gridLibrary[block].instance()
-		print(b.adjacents)
+	if unoccupied(pos):
+		var b = load(gridLibrary[block]).instance()
+		#var b = load("res://Levels/GridPieces/c4.tscn").instance()
+		#print(b.adjacents)
 		b.name = block
-		b.gridPosition = Vector2(pos.x,pos.y)
-		b.rotate_y(-PI/2*rotations)
-		b.translation = Vector3(-pos.x*squareSize,0,pos.y*squareSize)
+		b.gridPosition = pos
+		b.rotation=Vector3.UP*deg2rad(-90*rotations)
 		b.rotateClockwiseRepeat(rotations)
+		print(b.rotation)
+		b.translation = Vector3(-pos.x*squareSize,0,pos.y*squareSize)
 		add_child(b)
 		blocks.append(b)
 		return true
 	return false
 
-func unoccupied(x,y):
+func unoccupied(pos):
 	for block in blocks:
-		if (block.gridPosition.x == x && block.gridPosition.y == y):
+		if (block.gridPosition.distance_to(pos)<.8):
 			return false
 	#print("Occupied: " + str(x) + ", " + str(y))
 	return true
@@ -47,7 +49,7 @@ func reduceGridSize():
 
 func setPlayerPosition(playerPos):
 	playerGridPos = playerPos
-	#updateMap()
+	updateMap()
 
 func getBlock(x,y):
 	for block in blocks:
@@ -62,7 +64,7 @@ func getPlayerBlock():
 	return null
 
 func spawnAllAdjacents(block):
-	print("Spawning adjacents" + str(block.adjacents))
+	#print("Spawning adjacents" + str(block.adjacents))
 	if (len(block.adjacents) != 0):
 		for adj in block.adjacents:
 			spawnFittingGridPiece(adj,block.gridPosition)
@@ -70,33 +72,34 @@ func spawnAllAdjacents(block):
 		print("block: " + block.name + " had no adjacents")
 
 func validAdjacent(dir, adj2):
-	print(adj2)
+	#print(adj2)
 	for adj in adj2:
 		print("checking valid: " + str(dir) + " -> " + str(adj))
-		if (int(-adj.x) == int(dir.x) and int(-adj.y) == int(dir.y)):
+		if dir.round() == -adj.round():
 			return true
 	return false
 
 #Finds piece that allows adjacents from that direction
 func spawnFittingGridPiece(dir,gridPos):
+	if !unoccupied(gridPos+dir): return false
+	var rotations = range(4)
 	var shuffledPieces = randomGridPieces()
 	for piece in shuffledPieces:
 		print(piece + " @ " + str(gridPos+dir))
-		var instancedPiece = gridLibrary[piece].instance()
-		var rotations = range(4)
+		var instancedPiece = load(gridLibrary[piece]).instance()
 		#rotations.shuffle()
 		for rotation in rotations:
-			print(rotation)
+			#print(rotation)
 			if (validAdjacent(dir,instancedPiece.adjacents)):
 				var spawned = spawn(piece,rotation,gridPos+dir)
-				if spawned:
-					print("Grid Piece Location: " + str(gridPos.x+dir.x) + " " + str(gridPos.y+dir.y))
-					print("Spawned " + str(piece) + " with rotation: " + str(rotation))
-				instancedPiece.queue_free()
+				#if spawned:
+					#print("Grid Piece Location: " + str(gridPos.x+dir.x) + " " + str(gridPos.y+dir.y))
+					#print("Spawned " + str(piece) + " with rotation: " + str(rotation))
+				instancedPiece.free()
 				return spawned
-			instancedPiece.queue_free()
-			print(instancedPiece.adjacents)
+			#print(instancedPiece.adjacents)
 			instancedPiece.rotateClockwise()
+		instancedPiece.queue_free()
 	print("spawning c4, failed to find a fit")
 	return spawn('c4',0,gridPos+dir)
 
@@ -106,6 +109,7 @@ func randomGridPieces():
 	return shuffledPieces
 
 func updateMap():
+	print(blocks)
 	spawn("c4",0,playerGridPos)
 	var curBlock = getBlock(playerGridPos.x,playerGridPos.y)
 	spawnAllAdjacents(curBlock)

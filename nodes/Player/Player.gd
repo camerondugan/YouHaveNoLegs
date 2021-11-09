@@ -6,28 +6,12 @@ var mouse_sensitivity = 0.002
 
 onready var larm := get_node("VR/Headset Camera/prison-arms-left")
 onready var rarm := get_node("VR/Headset Camera/prison-arms-left")
-onready var camera := get_node("VR/Headset Camera")
 
 func _process(_delta):
 	if invulnerable:
 		var tleft:int = int($Invulnerability.time_left*5)
 		larm.visible = tleft%2==0
 		rarm.visible = tleft%2==0
-
-func _input(_event):
-	var input_dir = Vector3()
-	# desired move in camera direction
-	if Input.is_action_pressed("move_forward"):
-		input_dir += -camera.global_transform.basis.z
-	if Input.is_action_pressed("move_back"):
-		input_dir += camera.global_transform.basis.z
-	if Input.is_action_pressed("move_left"):
-		input_dir += -camera.global_transform.basis.x
-	if Input.is_action_pressed("move_right"):
-		input_dir += camera.global_transform.basis.x
-	input_dir = input_dir.normalized()
-	$PlayerBody.push(input_dir*3)
-	return input_dir
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
