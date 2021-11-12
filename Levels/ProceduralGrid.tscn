@@ -1,9 +1,0 @@
-[gd_scene format=2]
-
-[node name="Grid Library" type="Spatial"]
-
-[node name="4" type="CSGBox" parent="."]
-use_collision = true
-width = 25.0
-height = 0.1
-depth = 25.0

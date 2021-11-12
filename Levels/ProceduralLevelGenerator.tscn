@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/ProceduralLevelGenerator.gd" type="Script" id=1]
 [ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=5]
 
 [node name="World" type="Spatial"]
@@ -13,11 +14,13 @@ script = ExtResource( 1 )
 gridLibrary = {
 "c1": "res://Levels/GridPieces/c1.tscn",
 "c2": "res://Levels/GridPieces/c2.tscn",
-"c4": "res://Levels/GridPieces/c4.tscn"
+"c4": "res://Levels/GridPieces/c4.tscn",
+"h2": "res://Levels/GridPieces/h2.tscn"
 }
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.744324, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.75247, 0 )
+script = ExtResource( 3 )

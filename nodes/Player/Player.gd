@@ -9,7 +9,7 @@ onready var rarm := get_node("VR/Headset Camera/prison-arms-left")
 
 func _process(_delta):
 	if invulnerable:
-		var tleft:int = int($Invulnerability.time_left*5)
+		var tleft := int($Invulnerability.time_left*5)
 		larm.visible = tleft%2==0
 		rarm.visible = tleft%2==0
 
@@ -20,14 +20,15 @@ func _unhandled_input(event):
 		$VR.rotation.x = clamp($VR.rotation.x, -1.2, 1.2)
 
 func reduceLives(num):
-	lives -= num
-	invulnerable = true
-	$Invulnerability.start()
-	if (lives <= 0):
-		var enemies := get_tree().get_nodes_in_group("Enemies")
-		for enemy in enemies:
-			enemy.die()
-		queue_free()
+	if (!invulnerable):
+		lives -= num
+		invulnerable = true
+		$Invulnerability.start()
+		if (lives <= 0):
+			var enemies := get_tree().get_nodes_in_group("Enemies")
+			for enemy in enemies:
+				enemy.die()
+			queue_free()
 
 func _exit_tree():
 	if (!get_tree().reload_current_scene()):

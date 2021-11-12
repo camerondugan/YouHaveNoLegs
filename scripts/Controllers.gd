@@ -1,6 +1,6 @@
 extends KinematicBody
 
-onready var pbody = get_tree().get_nodes_in_group("body")[0]
+onready var pbody = get_tree().get_nodes_in_group("playerBody")[0]
 onready var lc:ARVRController = get_tree().get_nodes_in_group("left controller")[0]
 onready var rc:ARVRController = get_tree().get_nodes_in_group("right controller")[0]
 

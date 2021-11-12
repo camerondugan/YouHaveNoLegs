@@ -7,7 +7,5 @@
 script = ExtResource( 1 )
 cullDirection = Vector3( 0, 1, 0 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=[
-"respawnSfx",
-]]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["respawnSfx"]]
 stream = ExtResource( 2 )
