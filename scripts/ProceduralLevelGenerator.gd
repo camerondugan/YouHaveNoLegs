@@ -10,8 +10,8 @@ var playerGridPos := Vector2.ZERO
 var endPieces = ['c1']
 
 func _ready():
-	seed("You Have No Legs".hash())
-	#randomize()
+	#seed("You Have No Legs".hash())
+	randomize()
 	spawn('c1',1,playerGridPos)
 	genMapDepth(playerGridPos,10)
 	

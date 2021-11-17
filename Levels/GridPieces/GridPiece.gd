@@ -1,10 +1,12 @@
 extends Spatial
 
 const gridSquare := 5
+
 var gridPosition := Vector2.ZERO
 var hasSpawnedEnemies := false
 var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
 var drone := preload("res://nodes/Enemies/Drone.tscn")
+
 export var gridSize := Vector2.ONE
 export var adjacents := []
 
@@ -30,9 +32,12 @@ func contains(pos):
 
 func spawnEnemies():
 	if !hasSpawnedEnemies:
+		hasSpawnedEnemies = true
+
 		var spawn = spawner.instance()
 		spawn.spawnable = drone
 		spawn.global_transform = global_transform
-		spawn.translate(Vector3(1,0,1))
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		spawn.translate(Vector3(gridSquare*.3*rng.randf_range(-1,1),0,gridSquare*.3*rng.randf_range(-1,1)))
 		get_parent().add_child(spawn)
-		hasSpawnedEnemies = true
