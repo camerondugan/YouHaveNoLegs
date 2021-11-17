@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/breaking-rocks.mp3-f45cc5e003504bf740def4b9e05e4dba.mp3str"
+
+[deps]
+
+source_file="res://sound/sfx/cracking/breaking-rocks.mp3"
+dest_files=[ "res://.import/breaking-rocks.mp3-f45cc5e003504bf740def4b9e05e4dba.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

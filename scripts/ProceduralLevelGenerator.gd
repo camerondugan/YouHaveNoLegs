@@ -44,6 +44,7 @@ func reduceGridSize():
 
 func setPlayerPosition(playerPos):
 	playerGridPos = playerPos
+	getBlock(playerPos).spawnEnemies()
 	updateMap()
 
 func getBlock(pos):

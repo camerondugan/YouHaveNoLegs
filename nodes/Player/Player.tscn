@@ -30,6 +30,7 @@ __meta__ = {
 [node name="Headset Camera" type="ARVRCamera" parent="VR" groups=["head", "origin"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
 current = true
+near = 0.01
 
 [node name="prison-arms-right" parent="VR/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991447, -0.2447, -0.047079 )

@@ -32,6 +32,7 @@ one_shot = true
 
 [node name="BreakSounds" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
+unit_db = -10.0
 script = ExtResource( 6 )
 sounds = [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 7 ) ]
 

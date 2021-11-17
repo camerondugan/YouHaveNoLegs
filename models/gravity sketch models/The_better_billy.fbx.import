@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/prison-arms.glb-848da4ca89a26c889a0d30d73252180a.scn"
+path="res://.import/The_better_billy.fbx-72080fe30e77f475e2c9743a59c7b326.scn"
 
 [deps]
 
-source_file="res://models/my blender files/prison-arms.glb"
-dest_files=[ "res://.import/prison-arms.glb-848da4ca89a26c889a0d30d73252180a.scn" ]
+source_file="res://models/gravity sketch models/The_better_billy.fbx"
+dest_files=[ "res://.import/The_better_billy.fbx-72080fe30e77f475e2c9743a59c7b326.scn" ]
 
 [params]
 
@@ -20,7 +20,8 @@ nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
-meshes/compress=true
+meshes/octahedral_compression=true
+meshes/compress=4286
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

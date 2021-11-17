@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://materials/Prototype/dark.tres" type="Material" id=1]
+
+[sub_resource type="PrismMesh" id=1]
+material = ExtResource( 1 )
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[node name="ObeliskParticles" type="CPUParticles"]
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.98
+mesh = SubResource( 1 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.5, 0.5 )
+flag_align_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+flatness = 0.5
+initial_velocity = 3.0
+initial_velocity_random = 0.2

@@ -5,6 +5,7 @@ export var lookAtPlayer := false
 export var moveSpeed := 3
 export var fallSpeed := 5
 export var knockBack := 7
+export var size := Vector3.ONE
 
 onready var headset = get_tree().get_nodes_in_group("head")[0]
 var velocity := Vector3.ZERO
@@ -30,10 +31,10 @@ func _process(delta):
 	velocity = move_and_slide(velocity)
 
 func _onAttackAreaEntered(body):
-	if (body.is_in_group('player')):
+	if (body.is_in_group('playerBody')):
 		body.getHit(global_transform.origin.direction_to(headset.global_transform.origin).normalized() * knockBack/2)
 		velocity = -velocity.normalized() * knockBack
-	if (body.get_parent().is_in_group('player')):
+	if (body.get_parent().is_in_group('playerBody')):
 		body = body.get_parent()
 		velocity = -velocity.normalized() * knockBack
 
@@ -45,7 +46,7 @@ func setVelocity(vel):
 	velocity = vel
 
 func _on_Weak_Spot_Hit(body):
-	if (body.get_parent().is_in_group('player')):
+	if (body.get_parent().is_in_group('playerBody')):
 		body = body.get_parent()
-	if (body.is_in_group('player')):
+	if (body.is_in_group('playerBody')):
 		die()
