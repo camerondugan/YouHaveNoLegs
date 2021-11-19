@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/vrOrigin.gd" type="Script" id=1]
+[ext_resource path="res://nodes/Player/PlayerBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/Player/prison-arms.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/Player/PlayerBody.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/Player/Player.gd" type="Script" id=4]
-[ext_resource path="res://scripts/Arms.gd" type="Script" id=9]
+[ext_resource path="res://scripts/Arms.gd" type="Script" id=3]
+[ext_resource path="res://scripts/vrOrigin.gd" type="Script" id=4]
+[ext_resource path="res://nodes/Player/Player.gd" type="Script" id=5]
 
 [node name="Player" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="PlayerBody" parent="." instance=ExtResource( 3 )]
+[node name="PlayerBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.380555, 0 )
 
 [node name="VR" type="ARVROrigin" parent="." groups=["origin"]]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Left Controller" type="ARVRController" parent="VR" groups=["left controller"]]
 __meta__ = {
@@ -29,17 +29,18 @@ __meta__ = {
 
 [node name="Headset Camera" type="ARVRCamera" parent="VR" groups=["head", "origin"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
+doppler_tracking = 1
 current = true
 near = 0.01
 
 [node name="prison-arms-right" parent="VR/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( 0.099786, 0, -0.00653858, 0, 0.1, 0, -0.00653858, 0, -0.099786, -0.0991447, -0.2447, -0.047079 )
-script = ExtResource( 9 )
+script = ExtResource( 3 )
 target_group = "right controller"
 
 [node name="prison-arms-left" parent="VR/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( -0.0994077, 8.6905e-09, 0.0108676, 8.74228e-09, 0.1, 0, -0.0108676, 9.50075e-10, -0.0994077, 0.0916608, -0.2447, -0.014035 )
-script = ExtResource( 9 )
+script = ExtResource( 3 )
 target_group = "left controller"
 
 [node name="Lamp" type="SpotLight" parent="VR/Headset Camera"]

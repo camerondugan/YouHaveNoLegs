@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://shaders/spatial/wormhole.tres" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/MainColor = Color( 0.796078, 0.392157, 0.392157, 1 )
+shader_param/BackColor1 = Color( 0.309804, 0.156863, 0.156863, 1 )
+shader_param/BackColor2 = Color( 1, 0.101961, 0.101961, 1 )
+shader_param/Brightness = 1.816
+shader_param/tex_frg_32 = SubResource( 4 )
+shader_param/tex_frg_3 = SubResource( 2 )

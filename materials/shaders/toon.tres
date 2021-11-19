@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shaders/spatial/toon.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0, 0, 0, 1 )
+shader_param/specular = 0.5
+shader_param/specular_amount = 0.5
+shader_param/specular_smoothness = 0.05
+shader_param/rim = 0.5
+shader_param/rim_amount = 0.2
+shader_param/rim_smoothness = 0.05
+shader_param/metallic = 0.0
+shader_param/roughness = 0.1
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/normal_scale = 1.0
+shader_param/depth_scale = 0.0
+shader_param/depth_min_layers = 8
+shader_param/depth_max_layers = 32
+shader_param/flip_tangent = false
+shader_param/flip_binormal = false
+shader_param/ao_light_affect = 0.0
+shader_param/anisotropy_ratio = 0.0
+shader_param/anisotropy_direction = Vector3( 0, -1, 0 )
+shader_param/aniso_map_dir_ratio = 0.0
+shader_param/subsurface_scattering = 0.0
+shader_param/transmission = Color( 0, 0, 0, 1 )
+shader_param/refraction = 0.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )

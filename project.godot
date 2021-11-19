@@ -116,3 +116,4 @@ quality/shading/force_lambert_over_burley=true
 quality/shading/force_blinn_over_ggx=true
 quality/lightmapping/use_bicubic_sampling.mobile=true
 quality/depth/hdr=false
+environment/default_environment="res://default_env.tres"
