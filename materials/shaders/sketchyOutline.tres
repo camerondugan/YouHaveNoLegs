@@ -17,5 +17,5 @@ shader_param/scissor_value = 0.5
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/outline_size = 0.1
 shader_param/offset_fres = 0.3
-shader_param/fps = 24.0
+shader_param/fps = 2.0
 shader_param/outline_noise_tex = SubResource( 2 )
