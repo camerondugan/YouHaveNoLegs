@@ -32,7 +32,8 @@ func _physics_process(delta):
 		#snap if stuck
 		if (dir.length()>0.27):
 			global_transform.origin = target_controller.global_transform.origin
-		dir*=speed
+		dir/=(delta*1.1)
+		print(dir)
 		#collision
 		slide = move_and_slide(dir)
 		var count := get_slide_count()
@@ -40,7 +41,6 @@ func _physics_process(delta):
 		if (col):
 			var collis:KinematicCollision = get_slide_collision(0)
 			var move:Vector3 = collis.normal * dir.length() * .6
-			#hand friction
 			move-=slide
 			pbody.push(move)
 

@@ -40,6 +40,10 @@ boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://icon.png"
 
+[display]
+
+window/vsync/vsync_via_compositor=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
@@ -104,7 +108,10 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=3
+quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation.mobile=2
+threads/thread_model=2
+threads/thread_safe_bvh=true
 vram_compression/import_etc=true
 quality/directional_shadow/size=2048
 quality/shadow_atlas/size=2048
@@ -114,6 +121,8 @@ quality/reflections/high_quality_ggx=false
 quality/shading/force_vertex_shading=true
 quality/shading/force_lambert_over_burley=true
 quality/shading/force_blinn_over_ggx=true
+quality/filters/use_nearest_mipmap_filter=true
 quality/lightmapping/use_bicubic_sampling.mobile=true
+quality/filters/use_fxaa=true
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

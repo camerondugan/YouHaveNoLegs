@@ -8,7 +8,6 @@
 script = ExtResource( 3 )
 
 [node name="Player+Body" parent="." instance=ExtResource( 1 )]
-enabled = true
 
 [node name="CSGBox" type="CSGBox" parent="."]
 use_collision = true
