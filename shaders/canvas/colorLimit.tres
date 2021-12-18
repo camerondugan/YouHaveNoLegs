@@ -1,0 +1,30 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 color_1 = vec4(.0, .0, .0, 1.0);
+uniform vec4 color_2 = vec4(0.5, 0.5, 0.5, 1.0);
+
+void fragment() {
+	float min_diff = -1.0;
+	vec4 min_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+	vec2 uv = SCREEN_UV;
+
+	vec4 temp = textureLod(SCREEN_TEXTURE, uv, 0.0);
+
+	min_diff = 1000.0;
+	float curr_dist = distance(color_1, temp);
+	if (curr_dist < min_diff) {
+		min_diff = curr_dist;
+		min_color = color_1;
+	}
+	curr_dist = distance(color_2, temp);
+	if (curr_dist < min_diff) {
+		min_diff = curr_dist;
+		min_color = color_2;
+	}
+
+	COLOR.rgb = min_color.rgb;
+}"

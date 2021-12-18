@@ -1,18 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://shaders/dissolve.gd" type="Script" id=1]
 [ext_resource path="res://materials/shaders/dissolve.tres" type="Material" id=2]
-[ext_resource path="res://shaders/canvas/colorFilter.tres" type="Shader" id=3]
-
-[sub_resource type="Gradient" id=1]
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[ext_resource path="res://shaders/canvas/colorLimit.tres" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 3 )
-shader_param/flip = false
-shader_param/gradient = SubResource( 2 )
+shader_param/color_1 = Plane( 0, 0, 0, 1 )
+shader_param/color_2 = Plane( 0.5, 0.5, 0.5, 1 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -23,7 +17,6 @@ height = 0.102414
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701014, 0 )
 outer_radius = 2.55709
 material = ExtResource( 2 )
-script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.933587, 0.358352, 0, -0.358352, 0.933587, 0, 0.88129, 2.78541 )
@@ -35,6 +28,9 @@ material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68731, 0 )
