@@ -1,7 +1,7 @@
 
 shader_type canvas_item;
 
-uniform float shaderStrength = 1;
+uniform float shaderStrength = 13;
 uniform vec4 color_1 = vec4(0.447, .537, .849, 1.0);
 uniform vec4 color_2 = vec4(1, 1, 1, 1.0);
 uniform vec4 color_3 = vec4(0.6, 0.666, 0.709, 1.0);
