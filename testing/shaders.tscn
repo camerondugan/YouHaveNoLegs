@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://shaders/canvas/comicBook.tres" type="Shader" id=1]
-[ext_resource path="res://shaders/canvas/colorLimiter.gdshader" type="Shader" id=3]
+[ext_resource path="res://shaders/canvas/discordColors.gdshader" type="Shader" id=3]
 
 [sub_resource type="SpatialMaterial" id=8]
 flags_unshaded = true
