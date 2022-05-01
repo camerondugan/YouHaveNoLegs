@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/shaderStrength = 11.0
+shader_param/shaderStrength = 10.0
 shader_param/color_1 = Plane( 0.04313, 0.03515, 0.03906, 1 )
 shader_param/color_2 = Plane( 1, 1, 1, 1 )
 shader_param/color_3 = Plane( 0.6, 0.666, 0.709, 1 )
@@ -35,9 +35,9 @@ gridLibrary = {
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.00808, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 8.52872, 0 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="ColorPallete" type="Sprite" parent="."]
 material = SubResource( 1 )
 scale = Vector2( 10, 10 )
 texture = SubResource( 2 )

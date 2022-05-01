@@ -39,7 +39,8 @@ func _onAttackAreaEntered(body):
 		velocity = -velocity.normalized() * knockBack
 
 func die():
-	$BreakParticles.brek()
+	if ($BreakParticles):
+		$BreakParticles.brek()
 	queue_free()
 
 func setVelocity(vel):

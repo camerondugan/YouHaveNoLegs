@@ -1,20 +1,20 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://materials/Prototype/orange.tres" type="Material" id=1]
+[ext_resource path="res://materials/Prototype/grey.tres" type="Material" id=1]
 [ext_resource path="res://Levels/GridPieces/GridPiece.gd" type="Script" id=2]
 [ext_resource path="res://materials/Prototype/red.tres" type="Material" id=3]
 [ext_resource path="res://materials/Prototype/dark.tres" type="Material" id=4]
 [ext_resource path="res://nodes/Basic Game Mechanics/DeathPlane.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PlaneMesh" id=4]
-material = ExtResource( 3 )
+material = ExtResource( 1 )
 size = Vector2( 5, 5 )
 
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, -2.5, 0, -2.5, 2.5, 0, -2.5 )
 
 [sub_resource type="PlaneMesh" id=6]
-material = ExtResource( 3 )
+material = ExtResource( 1 )
 flip_faces = true
 size = Vector2( 5, 5 )
 
@@ -25,7 +25,7 @@ extents = Vector3( 2.3401, 2.5, 2.36264 )
 operation = 2
 use_collision = true
 script = ExtResource( 2 )
-adjacents = [ Vector2( -1, 0 ), Vector2( 1, 0 ) ]
+adjacents = [ Vector3( -1, 0, 0 ), Vector3( 1, 0, 0 ) ]
 
 [node name="floor" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0 )
@@ -33,19 +33,17 @@ use_collision = true
 width = 5.0
 height = 0.002
 depth = 5.0
-material = ExtResource( 1 )
+material = ExtResource( 4 )
 
 [node name="hole" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0 )
-material_override = ExtResource( 4 )
 invert_faces = true
 height = 3.0
 depth = 5.0
-material = ExtResource( 4 )
+material = ExtResource( 3 )
 
 [node name="hole2" type="CSGBox" parent="."]
 transform = Transform( 0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, -1.42807, 0 )
-material_override = ExtResource( 4 )
 operation = 2
 invert_faces = true
 height = 3.0
@@ -94,5 +92,6 @@ shape = SubResource( 2 )
 
 [node name="DeathPlane" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.19163, 0 )
+radius = 10
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

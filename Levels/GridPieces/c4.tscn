@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/GridPieces/GridPiece.gd" type="Script" id=1]
-[ext_resource path="res://materials/Prototype/orange.tres" type="Material" id=2]
+[ext_resource path="res://materials/Prototype/dark.tres" type="Material" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 2 )
@@ -17,7 +17,7 @@ data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, 
 mesh = SubResource( 1 )
 material/0 = null
 script = ExtResource( 1 )
-adjacents = [ Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -1, 0 ), Vector2( 0, -1 ) ]
+adjacents = [ Vector3( 1, 0, 0 ), Vector3( 0, 0, 1 ), Vector3( -1, 0, 0 ), Vector3( 0, 0, -1 ) ]
 
 [node name="Area" type="Area" parent="."]
 

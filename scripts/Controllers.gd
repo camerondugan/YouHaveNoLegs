@@ -33,7 +33,7 @@ func _physics_process(delta):
 		if (dir.length()>0.27):
 			global_transform.origin = target_controller.global_transform.origin
 		dir/=(delta*1.1)
-		print(dir)
+		#print(dir)
 		#collision
 		slide = move_and_slide(dir)
 		var count := get_slide_count()

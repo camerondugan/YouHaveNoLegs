@@ -6,7 +6,7 @@ var grid := [[]]
 var blocks := []
 var squareSize := 5
 var maxBlockDistance := 20
-var playerGridPos := Vector2.ZERO
+var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 
 func _ready():
@@ -22,7 +22,7 @@ func spawn(block,rotations,pos):
 		b.gridPosition = pos
 		b.rotation=Vector3.UP*deg2rad(-90*rotations)
 		b.rotateClockwiseRepeat(rotations)
-		b.translation = Vector3(-pos.x*squareSize,0,pos.y*squareSize)
+		b.translation = pos*squareSize
 		add_child(b)
 		blocks.append(b)
 		return true
@@ -49,7 +49,7 @@ func setPlayerPosition(playerPos):
 
 func getBlock(pos):
 	for block in blocks:
-		if (block.gridPosition.x == pos.x and block.gridPosition.y == pos.y):
+		if (block.gridPosition == pos):
 			return block
 	return null
 
@@ -74,8 +74,9 @@ func validAdjacent(dir, adj2,p1,p2):
 
 #Finds piece that allows adjacents from that direction
 func spawnFittingGridPiece(dir,gridPos,spawnEnd):
-	if !unoccupied(gridPos+dir): return false
+	if !unoccupied(gridPos+dir): return false # If occupied
 	var rotations = range(4)
+	rotations.shuffle()
 	var shuffledPieces = randomGridPieces()
 	if (spawnEnd):
 		shuffledPieces = endPieces
@@ -112,4 +113,4 @@ func updateMap():
 	spawn("c4",0,playerGridPos)
 	var curBlock = getBlock(playerGridPos)
 	spawnAllAdjacents(curBlock)
-	reduceGridSize()
+	#reduceGridSize()
