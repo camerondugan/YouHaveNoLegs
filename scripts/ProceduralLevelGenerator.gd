@@ -2,25 +2,24 @@ extends Spatial
 
 export(Dictionary) var gridLibrary
 
-var grid := [[]]
 var blocks := []
 var squareSize := 5
-var maxBlockDistance := 20
+var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 
 func _ready():
-	#seed("You Have No Legs".hash())
-	randomize()
-	spawn('c1',1,playerGridPos)
+	seed("You Have No Legs".hash())
+	#randomize()
+	spawn('c2',1,playerGridPos)
 	genMapDepth(playerGridPos,10)
 	
 func spawn(block,rotations,pos):
-	if unoccupied(pos):
+	if not occupied(pos):
+		print(block, pos)
 		var b = load(gridLibrary[block]).instance()
 		b.name = block
 		b.gridPosition = pos
-		b.rotation=Vector3.UP*deg2rad(-90*rotations)
 		b.rotateClockwiseRepeat(rotations)
 		b.translation = pos*squareSize
 		add_child(b)
@@ -28,28 +27,29 @@ func spawn(block,rotations,pos):
 		return true
 	return false
 
-func unoccupied(pos):
+func occupied(pos):
 	for block in blocks:
-		if (block.gridPosition.distance_to(pos)<.8):
-			return false
-	return true
+		if (block.isAt(pos)):
+			return true
+	return false
 
 func reduceGridSize():
 	for block in blocks:
 		if (block.gridPosition.distance_to(playerGridPos) > maxBlockDistance):
-			block.queue_free()
-			blocks.erase(block)
+			block.set_process(false)
 			return true
 	return false
 
-func setPlayerPosition(playerPos):
-	playerGridPos = playerPos
-	getBlock(playerPos).spawnEnemies()
+func setPlayerPosition(p):
+	var pblock = getBlock(p)
+	if pblock:
+		playerGridPos = p
+		pblock.spawnEnemies()
 	updateMap()
 
 func getBlock(pos):
 	for block in blocks:
-		if (block.gridPosition == pos):
+		if block.isAt(pos):
 			return block
 	return null
 
@@ -66,31 +66,33 @@ func spawnAllAdjacents(block):
 	else:
 		print("block: " + block.name + " had no adjacents")
 
-func validAdjacent(dir, adj2,p1,p2):
-	for adj in adj2:
+func validAdjacent(dir, otherPiece):
+	for adj in otherPiece.adjacents:
 		if dir.round() == -adj.round():
 			return true
 	return false
 
 #Finds piece that allows adjacents from that direction
 func spawnFittingGridPiece(dir,gridPos,spawnEnd):
-	if !unoccupied(gridPos+dir): return false # If occupied
+	if occupied(gridPos+dir): 
+		return false
 	var rotations = range(4)
 	rotations.shuffle()
 	var shuffledPieces = randomGridPieces()
 	if (spawnEnd):
 		shuffledPieces = endPieces
-	var ogPiece = getBlock(gridPos-dir)
+		shuffledPieces.shuffle()
+	var ogPiece = getBlock(gridPos)
 	for piece in shuffledPieces:
 		var instancedPiece = load(gridLibrary[piece]).instance()
 		for rotation in rotations:
-			if (validAdjacent(dir,instancedPiece.adjacents,ogPiece,instancedPiece)):
-				var spawned = spawn(piece,rotation,gridPos+dir)
+			if (validAdjacent(dir,instancedPiece)):
+				var ifSpawn = spawn(piece,rotation,gridPos+dir)
 				instancedPiece.free()
-				return spawned
+				return ifSpawn
 			instancedPiece.rotateClockwise()
 		instancedPiece.queue_free()
-	return spawn('c4',0,gridPos+dir)
+	return spawn('c4',0,gridPos+dir) #if nothing is spawned, try spawning this
 
 func genMapDepth(pos,depth):
 	var curBlock = getBlock(pos)
@@ -110,7 +112,7 @@ func randomGridPieces():
 	return shuffledPieces
 
 func updateMap():
-	spawn("c4",0,playerGridPos)
+	#spawn("c4",0,playerGridPos)
 	var curBlock = getBlock(playerGridPos)
 	spawnAllAdjacents(curBlock)
-	#reduceGridSize()
+	reduceGridSize()
