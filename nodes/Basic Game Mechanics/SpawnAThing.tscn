@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/Basic Game Mechanics/SpawningObelisk.gd" type="Script" id=1]
-[ext_resource path="res://materials/Prototype/dark.tres" type="Material" id=2]
+[ext_resource path="res://textures/Prototype/dark.tres" type="Material" id=2]
 [ext_resource path="res://scripts/SpawnAThing.gd" type="Script" id=3]
 [ext_resource path="res://nodes/Particles/ObeliskParticles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sound/sfx/slide/heavy-stone-door-opens.mp3" type="AudioStream" id=5]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://models/gravity sketch models/The_better_billy.fbx" type="PackedScene" id=1]
 [ext_resource path="res://materials/OutlinePrototype/OutlinePrototype.tres" type="Material" id=2]
-[ext_resource path="res://materials/OutlinePrototype/greenOutlinePrototype.tres" type="Material" id=3]
+[ext_resource path="res://textures/OutlinePrototype/greenOutlinePrototype.tres" type="Material" id=3]
 
 [node name="Spatial" type="Spatial"]
 

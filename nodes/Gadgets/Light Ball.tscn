@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/SoundSampler.gd" type="Script" id=1]
 [ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-07.wav" type="AudioStream" id=2]
-[ext_resource path="res://materials/GlowPrototype/orange.tres" type="Material" id=3]
+[ext_resource path="res://textures/GlowPrototype/orange.tres" type="Material" id=3]
 [ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-09.wav" type="AudioStream" id=4]
 [ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-05.wav" type="AudioStream" id=5]
 [ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-04.wav" type="AudioStream" id=6]

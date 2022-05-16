@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sound/sfx/explosions/explosion-00.wav" type="AudioStream" id=1]
 [ext_resource path="res://sound/sfx/collisions/marble/marble-hitting-marble-01.wav" type="AudioStream" id=2]
-[ext_resource path="res://materials/GlowPrototype/dark.tres" type="Material" id=3]
+[ext_resource path="res://textures/GlowPrototype/dark.tres" type="Material" id=3]
 [ext_resource path="res://sound/sfx/explosions/explosion-05.wav" type="AudioStream" id=4]
 [ext_resource path="res://nodes/Particles/BreakParticles.gd" type="Script" id=5]
 [ext_resource path="res://scripts/SoundSampler.gd" type="Script" id=6]

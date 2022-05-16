@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://materials/Prototype/dark.tres" type="Material" id=1]
+[ext_resource path="res://textures/Prototype/dark.tres" type="Material" id=1]
 [ext_resource path="res://Levels/GridPieces/GridPiece.gd" type="Script" id=2]
-[ext_resource path="res://materials/Prototype/grey.tres" type="Material" id=4]
+[ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 1 )

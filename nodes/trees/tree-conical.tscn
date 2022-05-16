@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://models/trees/tree-conical.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://materials/red_leaves.tres" type="Material" id=2]
+[ext_resource path="res://textures/red_leaves.tres" type="Material" id=2]
 [ext_resource path="res://addons/flexible_toon_shader/hatch.png" type="Texture" id=3]
 [ext_resource path="res://addons/3D Outline/Outline.material" type="Material" id=4]
 [ext_resource path="res://addons/flexible_toon_shader/hatch_toon.shader" type="Shader" id=5]

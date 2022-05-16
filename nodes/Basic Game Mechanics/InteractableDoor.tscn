@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://materials/controller.tres" type="Material" id=1]
+[ext_resource path="res://textures/controller.tres" type="Material" id=1]
 [ext_resource path="res://scripts/InteractableDoor.gd" type="Script" id=2]
-[ext_resource path="res://materials/red_leaves.tres" type="Material" id=3]
+[ext_resource path="res://textures/red_leaves.tres" type="Material" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 0.2, 4, 4 )
