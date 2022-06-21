@@ -8,28 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "OculusTracker",
-"class": "OculusHandTracker",
-"language": "GDScript",
-"path": "res://addons/godot_ovrmobile/example_scenes/oculus_hand_tracker.gd"
-}, {
-"base": "OculusTracker",
-"class": "OculusTouchController",
-"language": "GDScript",
-"path": "res://addons/godot_ovrmobile/example_scenes/oculus_touch_controller.gd"
-}, {
-"base": "ARVRController",
-"class": "OculusTracker",
-"language": "GDScript",
-"path": "res://addons/godot_ovrmobile/example_scenes/oculus_tracker.gd"
-} ]
-_global_script_class_icons={
-"OculusHandTracker": "",
-"OculusTouchController": "",
-"OculusTracker": ""
-}
-
 [application]
 
 config/name="You Have No Legs"
@@ -46,11 +24,12 @@ window/vsync/vsync_via_compositor=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot-openxr/plugin.cfg" )
 
 [gdnative]
 
-singletons=[ "res://addons/godot-oculus/godot_oculus.gdnlib", "res://addons/godot-openvr/godot_openvr.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
+singletons=[ "res://addons/godot-openxr/config/godot_openxr.gdnlib" ]
+singletons_disabled=[  ]
 
 [importer_defaults]
 
@@ -103,7 +82,7 @@ move_right={
 
 [physics]
 
-common/enable_pause_aware_picking=true
+common/physics_fps=90
 
 [rendering]
 
@@ -121,8 +100,6 @@ quality/reflections/high_quality_ggx=false
 quality/shading/force_vertex_shading=true
 quality/shading/force_lambert_over_burley=true
 quality/shading/force_blinn_over_ggx=true
-quality/filters/use_nearest_mipmap_filter=true
-quality/lightmapping/use_bicubic_sampling.mobile=true
-quality/filters/use_fxaa=true
+quality/lightmapping/use_bicubic_sampling=false
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

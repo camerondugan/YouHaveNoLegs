@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=1]
 [ext_resource path="res://Levels/GridPieces/GridPiece.gd" type="Script" id=2]
@@ -20,6 +20,14 @@ size = Vector2( 5, 5 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 2.3401, 2.5, 2.36264 )
+
+[sub_resource type="PlaneMesh" id=7]
+material = ExtResource( 4 )
+flip_faces = true
+size = Vector2( 5, 5 )
+
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, -2.5, 0, -2.5, 2.5, 0, -2.5 )
 
 [node name="hole2" type="CSGCombiner"]
 operation = 2
@@ -93,5 +101,15 @@ shape = SubResource( 2 )
 [node name="DeathPlane" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.19163, 0 )
 radius = 10
+
+[node name="Ceil" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Ceil"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceil/StaticBody"]
+shape = SubResource( 8 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

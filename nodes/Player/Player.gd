@@ -4,8 +4,8 @@ var lives := 3
 var invulnerable = false
 var mouse_sensitivity = 0.002
 
-onready var larm := get_node("VR/Headset Camera/prison-arms-left")
-onready var rarm := get_node("VR/Headset Camera/prison-arms-right")
+onready var larm := get_node("PlayerBody/VR/Headset Camera/prison-arms-left")
+onready var rarm := get_node("PlayerBody/VR/Headset Camera/prison-arms-right")
 
 func _process(_delta):
 	if invulnerable:

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/ProceduralLevelGenerator.gd" type="Script" id=1]
 [ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/canvas/doomColors.gdshader" type="Shader" id=3]
 [ext_resource path="res://Prefabs/Cake Podium.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scripts/hover.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -18,10 +20,14 @@ shader_param/color_6 = Plane( 0.72656, 0.09375, 0.10546, 1 )
 shader_param/color_7 = Plane( 0.8945, 0.21875, 0.23047, 1 )
 shader_param/color_8 = Plane( 0.45703, 0.6523, 0.64843, 1 )
 
-[sub_resource type="NoiseTexture" id=2]
-
 [node name="World" type="Spatial"]
 script = ExtResource( 5 )
+
+[node name="ColorPallete" type="Sprite" parent="."]
+visible = false
+material = SubResource( 1 )
+scale = Vector2( 99999, 999999 )
+texture = ExtResource( 6 )
 
 [node name="ProcLevelGenerator" type="Spatial" parent="."]
 script = ExtResource( 1 )
@@ -33,12 +39,9 @@ gridLibrary = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.31852, 0 )
-
-[node name="ColorPallete" type="Sprite" parent="."]
-material = SubResource( 1 )
-scale = Vector2( 10, 10 )
-texture = SubResource( 2 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.31854, 0 )
 
 [node name="cake-pillar" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354733, 1.98825 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00493, 1.98825 )
+mass = 3.0
+script = ExtResource( 7 )

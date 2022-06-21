@@ -7,10 +7,14 @@ onready var rc:ARVRController = get_tree().get_nodes_in_group("right controller"
 var target_controller:ARVRController = null
 onready var audio:= $AudioStreamPlayer3D
 export var cID := 0
-export var speed := 20
+export var jumpPower := .3
+export var runPower := .5
 
 onready var collisionShape:CollisionShape = $c
 onready var previous := translation
+
+onready var resetTimer := 0.0
+onready var controllerResetDelay := 0.4
 
 func _ready():
 	if (cID==1):
@@ -19,7 +23,7 @@ func _ready():
 		target_controller = rc
 
 var slide : Vector3
-var dir : Vector3
+
 func _physics_process(delta):
 	manage_rumble(target_controller,delta)
 	if (target_controller):
@@ -27,22 +31,26 @@ func _physics_process(delta):
 		self.global_transform.basis = target_controller.global_transform.basis
 		
 		#physics
-		dir = target_controller.global_transform.origin - global_transform.origin
+		var vecToHand = target_controller.global_transform.origin - global_transform.origin
 		
 		#snap if stuck
-		if (dir.length()>0.27):
-			global_transform.origin = target_controller.global_transform.origin
-		dir/=(delta*1.1)
+		if (vecToHand.length()>0.4):
+			resetTimer += delta
+			if (resetTimer>=controllerResetDelay):
+				resetTimer=0.0
+				#Snap to hand position
+				global_transform.origin = target_controller.global_transform.origin
+		vecToHand/=(delta*1.1)
 		#print(dir)
 		#collision
-		slide = move_and_slide(dir)
-		var count := get_slide_count()
-		var col := count>0
-		if (col):
-			var collis:KinematicCollision = get_slide_collision(0)
-			var move:Vector3 = collis.normal * dir.length() * .6
-			move-=slide
+		slide = move_and_slide(vecToHand)
+		var count := get_slide_count()-1
+		while (count>=0):
+			var collis:KinematicCollision = get_slide_collision(count)
+			var verticalMove:Vector3 = collis.normal * vecToHand.length() * jumpPower
+			var move = verticalMove-(slide*runPower)
 			pbody.push(move)
+			count-=1
 
 onready var rumbleDur = 0
 func _on_contact(body):

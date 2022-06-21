@@ -82,7 +82,7 @@ func spawnFittingGridPiece(dir,gridPos,spawnEnd):
 	if (spawnEnd):
 		shuffledPieces = endPieces
 		shuffledPieces.shuffle()
-	var ogPiece = getBlock(gridPos)
+	#var ogPiece = getBlock(gridPos)
 	for piece in shuffledPieces:
 		var instancedPiece = load(gridLibrary[piece]).instance()
 		for rotation in rotations:

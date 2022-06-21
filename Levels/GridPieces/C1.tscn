@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/GridPieces/GridPiece.gd" type="Script" id=1]
 [ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=2]
@@ -23,6 +23,10 @@ data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, 
 material = ExtResource( 2 )
 flip_faces = true
 size = Vector2( 5, 5 )
+
+[sub_resource type="PlaneMesh" id=7]
+flip_faces = true
+size = Vector2( 10, 10 )
 
 [node name="floor" type="MeshInstance"]
 mesh = SubResource( 1 )
@@ -88,5 +92,14 @@ mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Ceil" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="StaticBody2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

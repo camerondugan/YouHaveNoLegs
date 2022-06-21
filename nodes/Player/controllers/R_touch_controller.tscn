@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://textures/Prototype/purple.tres" type="Material" id=1]
 [ext_resource path="res://scripts/Controllers.gd" type="Script" id=2]
 [ext_resource path="res://sound/sfx/hit.wav" type="AudioStream" id=4]
 
@@ -7,11 +8,16 @@
 radius = 0.1
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.11
+radius = 0.12
 
 [sub_resource type="AudioStreamRandomPitch" id=3]
 audio_stream = ExtResource( 4 )
 random_pitch = 1.15
+
+[sub_resource type="SphereMesh" id=4]
+material = ExtResource( 1 )
+radius = 0.1
+height = 0.2
 
 [node name="RC" type="KinematicBody"]
 collision_layer = 2
@@ -29,5 +35,9 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = null
 
 [connection signal="body_entered" from="Area" to="." method="_on_contact"]

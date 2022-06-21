@@ -1,7 +1,8 @@
 extends KinematicBody
 
-export var gravity := 5
+export var gravity := 9.81
 export var friction := .95
+export var maxSpeed := 13.0
 
 onready var iforce := Vector3.ZERO
 onready var ciforce := 0
@@ -39,6 +40,11 @@ func _process(delta):
 		var floating:bool=d>abs(tmp)
 		fly(floating and !grounded,delta)
 	velocity.y -= gravity*delta
+	
+	#Limit Velocity
+	if velocity.length_squared() > maxSpeed*maxSpeed:
+		velocity = velocity.normalized() * maxSpeed
+	
 	velocity = move_and_slide(velocity)
 	igrounded=grounded
 
