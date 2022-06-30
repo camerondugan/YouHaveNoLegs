@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://scripts/shaders/canvas/doomColors.gdshader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/shaderStrength = 13.0
+shader_param/color1 = Plane( 0.957, 0.949, 0.9531, 1 )
+shader_param/color2 = Plane( 1, 1, 1, 1 )
+shader_param/color3 = Plane( 0.0859, 0.101562, 0.113281, 1 )
+shader_param/color4 = Plane( 0.398438, 0.02734, 0.03125, 1 )
+shader_param/color5 = Plane( 0.640625, 0.0859375, 0.10156, 1 )
+shader_param/color6 = Plane( 0.72656, 0.09375, 0.10546, 1 )
+shader_param/color7 = Plane( 0.8945, 0.21875, 0.23047, 1 )
+shader_param/color8 = Plane( 0.45703, 0.6523, 0.64843, 1 )
+
+[node name="CanvasLayer" type="BackBufferCopy"]
+scale = Vector2( 9999, 9999 )
+copy_mode = 0
+
+[node name="ScreenShader" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 548, 292 )
+scale = Vector2( 9999, 9999 )
+texture = ExtResource( 1 )

@@ -4,8 +4,8 @@ const gridSquare := 5
 
 var gridPosition := Vector3.ZERO
 var hasSpawnedEnemies := false
-var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
-var drone := preload("res://nodes/Enemies/Drone.tscn")
+onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
+onready var drone := preload("res://nodes/Enemies/Drone.tscn")
 
 export var pieceSize := Vector3.ONE
 export var adjacents := []

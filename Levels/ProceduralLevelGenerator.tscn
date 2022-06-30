@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/ProceduralLevelGenerator.gd" type="Script" id=1]
+[ext_resource path="res://scripts/level generation/ProceduralLevelGenerator.gd" type="Script" id=1]
 [ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/canvas/doomColors.gdshader" type="Shader" id=3]
 [ext_resource path="res://Prefabs/Cake Podium.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://scripts/essential/Game.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://scripts/hover.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -24,7 +23,6 @@ shader_param/color_8 = Plane( 0.45703, 0.6523, 0.64843, 1 )
 script = ExtResource( 5 )
 
 [node name="ColorPallete" type="Sprite" parent="."]
-visible = false
 material = SubResource( 1 )
 scale = Vector2( 99999, 999999 )
 texture = ExtResource( 6 )
@@ -44,4 +42,3 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.31
 [node name="cake-pillar" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00493, 1.98825 )
 mass = 3.0
-script = ExtResource( 7 )

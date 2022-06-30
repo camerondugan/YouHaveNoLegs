@@ -1,0 +1,22 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+
+
+
+[ext_resource path="res://models/blender files/texturesImage_1.png" type="Texture" id=1]
+
+
+
+[ext_resource path="res://models/blender files/texturescandelTexture.png" type="Texture" id=2]
+
+
+
+[ext_resource path="res://models/blender files/texturescakeTexture.png" type="Texture" id=3]
+
+
+
+
+[resource]
+
+
+
