@@ -13,7 +13,7 @@ var velocity := Vector3.ZERO
 var lookWeight = 0.1
 
 func _ready():
-	#die()
+	#die() # for debug reasons
 	pass
 
 func _process(delta):

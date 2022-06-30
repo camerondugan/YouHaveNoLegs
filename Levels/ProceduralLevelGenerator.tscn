@@ -3,26 +3,27 @@
 [ext_resource path="res://scripts/level generation/ProceduralLevelGenerator.gd" type="Script" id=1]
 [ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/canvas/doomColors.gdshader" type="Shader" id=3]
-[ext_resource path="res://Prefabs/Cake Podium.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/Props/Cake Podium.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/essential/Game.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/shaderStrength = 10.0
-shader_param/color_1 = Plane( 0.04313, 0.03515, 0.03906, 1 )
-shader_param/color_2 = Plane( 1, 1, 1, 1 )
-shader_param/color_3 = Plane( 0.6, 0.666, 0.709, 1 )
-shader_param/color_4 = Plane( 0.1725, 0.1843, 0.2, 1 )
-shader_param/color_5 = Plane( 0.137, 0.1529, 0.1647, 1 )
-shader_param/color_6 = Plane( 0.72656, 0.09375, 0.10546, 1 )
-shader_param/color_7 = Plane( 0.8945, 0.21875, 0.23047, 1 )
-shader_param/color_8 = Plane( 0.45703, 0.6523, 0.64843, 1 )
+shader_param/shaderStrength = 13.0
+shader_param/color_1 = Vector3( 0.957, 0.949, 0.9531 )
+shader_param/color_2 = Vector3( 1, 1, 1 )
+shader_param/color_3 = Vector3( 0.0859, 0.101562, 0.113281 )
+shader_param/color_4 = Vector3( 0.398438, 0.02734, 0.03125 )
+shader_param/color_5 = Vector3( 0.640625, 0.0859375, 0.10156 )
+shader_param/color_6 = Vector3( 0.72656, 0.09375, 0.10546 )
+shader_param/color_7 = Vector3( 0.8945, 0.21875, 0.23047 )
+shader_param/color_8 = Vector3( 0.45703, 0.6523, 0.64843 )
 
 [node name="World" type="Spatial"]
 script = ExtResource( 5 )
 
 [node name="ColorPallete" type="Sprite" parent="."]
+show_behind_parent = true
 material = SubResource( 1 )
 scale = Vector2( 99999, 999999 )
 texture = ExtResource( 6 )
@@ -39,6 +40,5 @@ gridLibrary = {
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.31854, 0 )
 
-[node name="cake-pillar" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00493, 1.98825 )
-mass = 3.0
+[node name="cake-pillar2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
