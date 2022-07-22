@@ -1,7 +1,7 @@
 extends KinematicBody
 
 export var gravity := 9.81
-export var friction := .95
+export var friction := .9
 export var maxSpeed := 13.0
 
 onready var iforce := Vector3.ZERO

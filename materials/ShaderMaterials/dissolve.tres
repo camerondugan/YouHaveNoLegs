@@ -1,20 +1,21 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
 
 [ext_resource path="res://scripts/shaders/spatial/dissolve.tres" type="Shader" id=1]
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="GDScript" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=4]
 
 [sub_resource type="NoiseTexture" id=2]
-width = 64
-height = 64
 seamless = true
-noise = SubResource( 1 )
+noise = SubResource( 4 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/albedo = Color( 0.364706, 0.364706, 0.364706, 0 )
-shader_param/emission_color = Color( 1, 1, 1, 1 )
-shader_param/emission_amount = null
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/emission_color = Color( 0, 0, 0, 1 )
+shader_param/emission_amount = 1.878
 shader_param/burn_size = 0.0
 shader_param/dissolve_amount = 0.0
 shader_param/dissolve_texture = SubResource( 2 )
+script = SubResource( 3 )
