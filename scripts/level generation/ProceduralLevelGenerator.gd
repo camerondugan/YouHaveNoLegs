@@ -8,11 +8,21 @@ var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 
+var total_player_traversal_time := 0.0
+var approx_number_of_tiles_traversed := 0
+var avg_player_grid_traversal_time := 0.0
+
+# var level_end_tile = tileId?
+
 func _ready():
-	seed("You Have No Legs".hash())
-	#randomize()
+	#seed("You Have No Legs".hash())
+	randomize()
 	spawn('c2',1,playerGridPos)
 	genMapDepth(playerGridPos,3)
+
+func _process(delta):
+	#update timer
+	total_player_traversal_time += delta
 	
 func spawn(block,rotations,pos):
 	if not occupied(pos):
@@ -45,6 +55,7 @@ func setPlayerPosition(p):
 	if pblock:
 		playerGridPos = p
 		pblock.spawnEnemies()
+		approx_number_of_tiles_traversed += 1
 	updateMap()
 
 func getBlock(pos):

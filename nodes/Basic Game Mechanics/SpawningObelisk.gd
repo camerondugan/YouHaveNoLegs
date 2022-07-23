@@ -2,14 +2,15 @@ extends MeshInstance
 
 var speed := .5
 
-
 #Handle animation of obelisk into game
 func _process(delta):
-	transform.origin.y = min(speed*delta+transform.origin.y,0)
-	if transform.origin.y == 0:
-		done()
-	else:
-		speed += speed*delta
+	if get_parent().isSeen:
+		$StoneSlidingSound.playing = true
+		transform.origin.y = min(speed*delta+transform.origin.y,0)
+		if transform.origin.y == 0:
+			done()
+		else:
+			speed += speed*delta
 
 func obeliskSounds():
 	get_parent().obeliskSounds()

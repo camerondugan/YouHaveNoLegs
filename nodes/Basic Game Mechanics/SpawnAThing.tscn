@@ -30,11 +30,12 @@ shape = SubResource( 2 )
 [node name="Particles" parent="Obelisk" instance=ExtResource( 4 )]
 amount = 10
 
-[node name="StoneSlidingSound" type="AudioStreamPlayer3D" parent="."]
+[node name="StoneSlidingSound" type="AudioStreamPlayer3D" parent="Obelisk"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
 stream = ExtResource( 5 )
-autoplay = true
 
-[node name="StoneBreakingSound" type="AudioStreamPlayer3D" parent="."]
+[node name="StoneBreakingSound" type="AudioStreamPlayer3D" parent="Obelisk"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
 stream = ExtResource( 6 )
 
 [node name="Despawn" type="Timer" parent="."]
@@ -42,4 +43,8 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -0.217769, -0.736419, -0.260151, 0.435539, 1.96893, 0.520302 )
+
 [connection signal="timeout" from="Despawn" to="." method="_on_Despawn_timeout"]
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
