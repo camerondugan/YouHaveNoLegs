@@ -15,7 +15,8 @@ onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
 onready var headset = get_tree().get_nodes_in_group("head")[0]
 onready var vr_origin = get_tree().get_nodes_in_group("origin")[0]
 
-onready var player := self.get_parent()
+onready var player := get_parent()
+onready var isInVR :bool = get_tree().get_nodes_in_group("world")[0].isInVR
 var igrounded := false
 var impact := false
 

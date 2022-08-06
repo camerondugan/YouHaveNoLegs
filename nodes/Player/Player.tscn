@@ -1,10 +1,72 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://nodes/Player/PlayerBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/Player/prison-arms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/player/Arms.gd" type="Script" id=3]
 [ext_resource path="res://scripts/player/vrOrigin.gd" type="Script" id=4]
 [ext_resource path="res://nodes/Player/Player.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scripts/shaders/canvas/ascii.tres" type="Shader" id=7]
+[ext_resource path="res://shaders/canvas/sketch.tres" type="Shader" id=8]
+[ext_resource path="res://shaders/canvas/images/parchment.jpg" type="Texture" id=9]
+[ext_resource path="res://shaders/canvas/images/pencil.jpg" type="Texture" id=10]
+[ext_resource path="res://shaders/canvas/paint.tres" type="Shader" id=11]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 8 )
+shader_param/u_bgColor = Color( 1, 1, 1, 1 )
+shader_param/u_bgColorFactor = 0.4
+shader_param/u_patternColor = Color( 0, 0, 0, 1 )
+shader_param/u_threshold1 = 0.75
+shader_param/u_threshold2 = 0.5
+shader_param/u_threshold3 = 0.25
+shader_param/u_threshold4 = 0.05
+shader_param/u_bgTiling = Vector2( 1, 1 )
+shader_param/u_patternTiling = Vector2( 1, 1 )
+shader_param/u_bgTexture = ExtResource( 9 )
+shader_param/u_patternTexture = ExtResource( 10 )
+
+[sub_resource type="OpenSimplexNoise" id=1]
+period = 179.6
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 7 )
+shader_param/ascii_size = Vector2( 8, 16 )
+shader_param/available_columns = 10
+shader_param/max_columns = 16
+shader_param/ascii_tex = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 8 )
+shader_param/u_bgColor = Color( 1, 1, 1, 1 )
+shader_param/u_bgColorFactor = 0.4
+shader_param/u_patternColor = Color( 0, 0, 0, 1 )
+shader_param/u_threshold1 = 0.72
+shader_param/u_threshold2 = 0.5
+shader_param/u_threshold3 = 0.25
+shader_param/u_threshold4 = 0.05
+shader_param/u_bgTiling = Vector2( 1, 1 )
+shader_param/u_patternTiling = Vector2( 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 8 )
+shader_param/u_bgColor = Color( 1, 1, 1, 1 )
+shader_param/u_bgColorFactor = 0.4
+shader_param/u_patternColor = Color( 0, 0, 0, 1 )
+shader_param/u_threshold1 = 0.72
+shader_param/u_threshold2 = 0.5
+shader_param/u_threshold3 = 0.25
+shader_param/u_threshold4 = 0.05
+shader_param/u_bgTiling = Vector2( 1, 1 )
+shader_param/u_patternTiling = Vector2( 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 11 )
+shader_param/radius = 5
+shader_param/offset = Vector3( 0, 0, 0 )
 
 [node name="Player" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -47,6 +109,38 @@ target_group = "left controller"
 [node name="Lamp" type="SpotLight" parent="PlayerBody/VR/Headset Camera"]
 spot_angle = 40.0
 spot_angle_attenuation = 0.392292
+
+[node name="Sketch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+visible = false
+material = SubResource( 3 )
+position = Vector2( 350, 350 )
+scale = Vector2( 30, 16 )
+texture = ExtResource( 6 )
+
+[node name="Ascii Art" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+visible = false
+material = SubResource( 4 )
+scale = Vector2( 999, 999 )
+texture = ExtResource( 6 )
+
+[node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+visible = false
+material = SubResource( 5 )
+scale = Vector2( 998001, 998001 )
+texture = ExtResource( 6 )
+
+[node name="Glitch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+unique_name_in_owner = true
+visible = false
+material = SubResource( 6 )
+scale = Vector2( 999, 999 )
+texture = ExtResource( 6 )
+
+[node name="Paint" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+material = SubResource( 7 )
+position = Vector2( 350, 350 )
+scale = Vector2( 30, 16 )
+texture = ExtResource( 6 )
 
 [node name="Invulnerability" type="Timer" parent="."]
 wait_time = 2.0

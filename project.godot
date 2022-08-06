@@ -24,7 +24,8 @@ gdscript/warnings/treat_warnings_as_errors=true
 
 [display]
 
-window/vsync/vsync_via_compositor=true
+window/size/always_on_top=true
+window/vsync/use_vsync=false
 
 [editor_plugins]
 
@@ -90,7 +91,6 @@ common/physics_fps=90
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 quality/intended_usage/framebuffer_allocation.mobile=2
 threads/thread_model=2

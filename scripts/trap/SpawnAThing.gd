@@ -37,5 +37,4 @@ func _on_Despawn_timeout():
 	queue_free()
 
 func _on_VisibilityNotifier_screen_entered():
-	print('Seen me...')
 	isSeen = true
