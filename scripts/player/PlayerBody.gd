@@ -28,6 +28,7 @@ var jump = 5
 
 var cam_accel = 40
 var mouse_sense = 0.1
+var controller_sense = 4
 var snap
 
 var angular_velocity = 30
@@ -48,7 +49,11 @@ func _input(event):
 		#get mouse input for camera rotation
 		if event is InputEventMouseMotion:
 			rotate_y(deg2rad(-event.relative.x * mouse_sense))
-			rotate_x(deg2rad(-event.relative.y * mouse_sense))
+			#rotate_x(deg2rad(-event.relative.y * mouse_sense))
+			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+		else:
+
+			#rotate_x(deg2rad(-event.relative.y * mouse_sense))
 			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
 func non_vr_process(delta):
@@ -65,6 +70,8 @@ func non_vr_process(delta):
 		campivot.global_transform = head.global_transform
 		mesh.global_transform.origin = global_transform.origin
 
+	#Controller look
+	rotate_y(delta*(controller_sense* (Input.get_action_strength("look_left") - Input.get_action_strength("look_right"))))
 	#turns body in the direction of movement
 	#if direction != Vector3.ZERO:
 		#mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-direction.x, -direction.z), angular_velocity * delta)

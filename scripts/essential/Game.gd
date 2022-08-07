@@ -9,6 +9,8 @@ func _ready():
 	var VR = ARVRServer.find_interface("OpenXR")
 	if not VR:
 		VR = ARVRServer.find_interface("OVRMobile")
+	elif not VR:
+		isInVR = false
 
 	if VR and VR.initialize():
 		get_viewport().arvr = true
