@@ -13,11 +13,11 @@ func _process(_delta):
 		larm.visible = tleft%2==0
 		rarm.visible = tleft%2==0
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		$VR.rotate_x(-event.relative.y * mouse_sensitivity)
-		rotate_y(-event.relative.x * mouse_sensitivity)
-		$VR.rotation.x = clamp($VR.rotation.x, -1.2, 1.2)
+#func _unhandled_input(event):
+#	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:#
+#		$VR.rotate_x(-event.relative.y * mouse_sensitivity)
+#		rotate_y(-event.relative.x * mouse_sensitivity)
+#		$VR.rotation.x = clamp($VR.rotation.x, -1.2, 1.2)
 
 func reduceLives(num):
 	if (!invulnerable):

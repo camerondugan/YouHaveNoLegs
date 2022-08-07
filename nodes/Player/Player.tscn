@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://nodes/Player/PlayerBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/Player/prison-arms.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://shaders/canvas/images/parchment.jpg" type="Texture" id=9]
 [ext_resource path="res://shaders/canvas/images/pencil.jpg" type="Texture" id=10]
 [ext_resource path="res://shaders/canvas/paint.tres" type="Shader" id=11]
+[ext_resource path="res://scripts/shaders/canvas/myGameColors.gdshader" type="Shader" id=12]
+[ext_resource path="res://scripts/shaders/canvas/glitch.tres" type="Shader" id=13]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 8 )
@@ -40,28 +42,24 @@ shader_param/max_columns = 16
 shader_param/ascii_tex = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 8 )
-shader_param/u_bgColor = Color( 1, 1, 1, 1 )
-shader_param/u_bgColorFactor = 0.4
-shader_param/u_patternColor = Color( 0, 0, 0, 1 )
-shader_param/u_threshold1 = 0.72
-shader_param/u_threshold2 = 0.5
-shader_param/u_threshold3 = 0.25
-shader_param/u_threshold4 = 0.05
-shader_param/u_bgTiling = Vector2( 1, 1 )
-shader_param/u_patternTiling = Vector2( 1, 1 )
+shader = ExtResource( 12 )
+shader_param/shaderStrength = 4.0
+shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
+shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
+shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
+shader_param/color_4 = Plane( 0.128, 0.144, 0.16, 1 )
+shader_param/color_5 = Plane( 0.972, 0.254, 0.266, 1 )
+shader_param/color_6 = Plane( 0.973, 0.777, 0.309, 1 )
+shader_param/color_7 = Plane( 0.262, 0.664, 0.543, 1 )
+shader_param/color_8 = Plane( 0.152, 0.488, 0.629, 1 )
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 8 )
-shader_param/u_bgColor = Color( 1, 1, 1, 1 )
-shader_param/u_bgColorFactor = 0.4
-shader_param/u_patternColor = Color( 0, 0, 0, 1 )
-shader_param/u_threshold1 = 0.72
-shader_param/u_threshold2 = 0.5
-shader_param/u_threshold3 = 0.25
-shader_param/u_threshold4 = 0.05
-shader_param/u_bgTiling = Vector2( 1, 1 )
-shader_param/u_patternTiling = Vector2( 1, 1 )
+shader = ExtResource( 13 )
+shader_param/shake_power = 0.03
+shader_param/shake_rate = 1.0
+shader_param/shake_speed = 5.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 11 )
@@ -111,6 +109,7 @@ spot_angle = 40.0
 spot_angle_attenuation = 0.392292
 
 [node name="Sketch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+unique_name_in_owner = true
 visible = false
 material = SubResource( 3 )
 position = Vector2( 350, 350 )
@@ -118,13 +117,14 @@ scale = Vector2( 30, 16 )
 texture = ExtResource( 6 )
 
 [node name="Ascii Art" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+unique_name_in_owner = true
 visible = false
 material = SubResource( 4 )
 scale = Vector2( 999, 999 )
 texture = ExtResource( 6 )
 
 [node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
-visible = false
+unique_name_in_owner = true
 material = SubResource( 5 )
 scale = Vector2( 998001, 998001 )
 texture = ExtResource( 6 )
@@ -137,6 +137,8 @@ scale = Vector2( 999, 999 )
 texture = ExtResource( 6 )
 
 [node name="Paint" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+unique_name_in_owner = true
+visible = false
 material = SubResource( 7 )
 position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
