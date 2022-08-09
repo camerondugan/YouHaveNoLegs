@@ -27,7 +27,7 @@ onready var accel = ACCEL_DEFAULT
 var jump = 5
 
 var cam_accel = 40
-var mouse_sense = 0.1
+var mouse_sense = 0.2
 var controller_sense = 4
 var snap
 

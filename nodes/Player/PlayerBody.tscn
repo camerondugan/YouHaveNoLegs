@@ -21,8 +21,9 @@ transform = Transform( 1, 0, -1.77636e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-
 shape = SubResource( 2 )
 
 [node name="R_touch_controller" parent="." groups=["soundless"] instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.260511, 0, -0.38301 )
 collision_mask = 1
 
 [node name="L_touch_controller" parent="." groups=["soundless"] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264472, 0, -0.362148 )
 collision_mask = 1

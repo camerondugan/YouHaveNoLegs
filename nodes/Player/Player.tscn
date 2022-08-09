@@ -41,6 +41,11 @@ shader_param/available_columns = 10
 shader_param/max_columns = 16
 shader_param/ascii_tex = SubResource( 2 )
 
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 11 )
+shader_param/radius = 5
+shader_param/offset = Vector3( 0, 0, 0 )
+
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
 shader_param/shaderStrength = 4.0
@@ -60,11 +65,6 @@ shader_param/shake_rate = 1.0
 shader_param/shake_speed = 5.0
 shader_param/shake_block_size = 30.5
 shader_param/shake_color_rate = 0.01
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 11 )
-shader_param/radius = 5
-shader_param/offset = Vector3( 0, 0, 0 )
 
 [node name="Player" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -123,19 +123,6 @@ material = SubResource( 4 )
 scale = Vector2( 999, 999 )
 texture = ExtResource( 6 )
 
-[node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
-unique_name_in_owner = true
-material = SubResource( 5 )
-scale = Vector2( 998001, 998001 )
-texture = ExtResource( 6 )
-
-[node name="Glitch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
-unique_name_in_owner = true
-visible = false
-material = SubResource( 6 )
-scale = Vector2( 999, 999 )
-texture = ExtResource( 6 )
-
 [node name="Paint" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 visible = false
@@ -147,5 +134,18 @@ texture = ExtResource( 6 )
 [node name="Invulnerability" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="MyGameColors" type="Sprite" parent="."]
+unique_name_in_owner = true
+material = SubResource( 5 )
+scale = Vector2( 998001, 998001 )
+texture = ExtResource( 6 )
+
+[node name="Glitch" type="Sprite" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource( 6 )
+scale = Vector2( 999, 999 )
+texture = ExtResource( 6 )
 
 [connection signal="timeout" from="Invulnerability" to="." method="_on_Invulnerability_timeout"]

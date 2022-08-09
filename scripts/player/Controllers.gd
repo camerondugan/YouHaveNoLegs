@@ -12,6 +12,7 @@ export var runPower := .5
 
 onready var collisionShape:CollisionShape = $c
 onready var previous := translation
+onready var world := get_node("/root/World")
 
 onready var resetTimer := 0.0
 onready var controllerResetDelay := 0.4
@@ -23,10 +24,9 @@ func _ready():
 		target_controller = rc
 
 var slide : Vector3
-
 func _physics_process(delta):
-	manage_rumble(target_controller,delta)
-	if (target_controller):
+	if (target_controller and world.isInVR):
+		manage_rumble(target_controller,delta)
 		#rotation
 		self.global_transform.basis = target_controller.global_transform.basis
 		
@@ -41,7 +41,6 @@ func _physics_process(delta):
 				#Snap to hand position
 				global_transform.origin = target_controller.global_transform.origin
 		vecToHand/=(delta*1.1)
-		#print(dir)
 		#collision
 		slide = move_and_slide(vecToHand)
 		var count := get_slide_count()-1
