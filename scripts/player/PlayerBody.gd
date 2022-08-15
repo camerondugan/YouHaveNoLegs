@@ -37,9 +37,9 @@ var direction = Vector3()
 var gravity_vec = Vector3()
 var movement = Vector3()
 
-onready var head = $"VR/Headset Camera"
-onready var campivot = $"VR/Headset Camera"
-onready var mesh = $"VR/Headset Camera"
+onready var head = $"."
+#onready var campivot = $"."
+onready var mesh = $"."
 
 func _ready():
 	pass
@@ -49,27 +49,25 @@ func _input(event):
 		#get mouse input for camera rotation
 		if event is InputEventMouseMotion:
 			rotate_y(deg2rad(-event.relative.x * mouse_sense))
-			#rotate_x(deg2rad(-event.relative.y * mouse_sense))
+			#rotate_x(deg2rad(-event.relative.y * mouse_sense)) #Mouse look up (currently broken)
 			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 		else:
-
-			#rotate_x(deg2rad(-event.relative.y * mouse_sense))
 			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
 func non_vr_process(delta):
 	#physics interpolation to reduce jitter on high refresh-rate monitors
-	var fps = Engine.get_frames_per_second()
-	if fps > Engine.iterations_per_second:
-		campivot.set_as_toplevel(true)
-		campivot.global_transform.origin = campivot.global_transform.origin.linear_interpolate(head.global_transform.origin, cam_accel * delta)
-		campivot.rotation.y = rotation.y
-		campivot.rotation.x = head.rotation.x
-		mesh.global_transform.origin = mesh.global_transform.origin.linear_interpolate(global_transform.origin, cam_accel * delta)
-	else:
-		campivot.set_as_toplevel(false)
-		campivot.global_transform = head.global_transform
-		mesh.global_transform.origin = global_transform.origin
-
+	#var fps = Engine.get_frames_per_second()
+	#if fps > Engine.iterations_per_second:
+		#campivot.set_as_toplevel(true)
+		#campivot.global_transform.origin = campivot.global_transform.origin.linear_interpolate(head.global_transform.origin, cam_accel * delta)
+		#campivot.rotation.y = rotation.y
+		#campivot.rotation.x = head.rotation.x
+		#mesh.global_transform.origin = mesh.global_transform.origin.linear_interpolate(global_transform.origin, cam_accel * delta)
+	#else:
+		#mesh.global_transform.origin = global_transform.origin
+		#campivot.set_as_toplevel(false)
+		#campivot.global_transform = head.global_transform
+		
 	#Controller look
 	rotate_y(delta*(controller_sense* (Input.get_action_strength("look_left") - Input.get_action_strength("look_right"))))
 	#turns body in the direction of movement
@@ -81,8 +79,8 @@ func _physics_process(delta):
 		#get keyboard input
 		direction = Vector3.ZERO
 		var h_rot = global_transform.basis.get_euler().y
-		var f_input = - Input.get_action_strength("move_backward") + Input.get_action_strength("move_forward")
-		var h_input = - Input.get_action_strength("move_right") + Input.get_action_strength("move_left")
+		var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
 	
 		#jumping and gravity
@@ -113,7 +111,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
 			#mesh no longer inherits rotation of parent, allowing it to rotate freely
-			mesh.set_as_toplevel(true)
+			#mesh.set_as_toplevel(true)
 			once = true
 	if (world.isInVR):
 		vr_process(delta)

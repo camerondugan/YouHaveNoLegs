@@ -89,8 +89,7 @@ __meta__ = {
 }
 
 [node name="Headset Camera" type="ARVRCamera" parent="PlayerBody/VR" groups=["head", "origin"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.263676, 0 )
-doppler_tracking = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783998, 0 )
 current = true
 near = 0.01
 
@@ -98,11 +97,13 @@ near = 0.01
 transform = Transform( 0.199572, 1.74471e-08, -0.0130772, -1.74846e-08, 0.2, 0, -0.0130772, -1.14324e-09, -0.199572, -0.0991447, -0.449928, -0.047079 )
 script = ExtResource( 3 )
 target_group = "right controller"
+non_vr_target_group = "Right Player Hand"
 
 [node name="prison-arms-left" parent="PlayerBody/VR/Headset Camera" instance=ExtResource( 2 )]
 transform = Transform( -0.198815, 1.7381e-08, 0.0217352, 1.74846e-08, 0.2, -1.9984e-15, -0.0217352, 1.90015e-09, -0.198815, 0.0916608, -0.449928, -0.014035 )
 script = ExtResource( 3 )
 target_group = "left controller"
+non_vr_target_group = "Left Player Hand"
 
 [node name="Lamp" type="SpotLight" parent="PlayerBody/VR/Headset Camera"]
 spot_angle = 40.0
