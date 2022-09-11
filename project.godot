@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
+
 [application]
 
 config/name="You Have No Legs"
@@ -30,13 +40,18 @@ window/size/fullscreen=true
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 
+[editor]
+
+version_control_autoload_on_startup=true
+version_control_plugin_name="GitAPI"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/godot-openxr/plugin.cfg" )
 
 [gdnative]
 
-singletons=[ "res://addons/godot-openxr/config/godot_openxr.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
+singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib", "res://addons/godot-openxr/config/godot_openxr.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

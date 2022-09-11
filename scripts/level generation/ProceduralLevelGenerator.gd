@@ -15,7 +15,7 @@ var avg_player_grid_traversal_time := 0.0
 # var level_end_tile = tileId?
 
 func _ready():
-	#seed("You Have No Legs".hash())
+	seed("You Have No Legs".hash())
 	randomize()
 	spawn('c2',1,playerGridPos)
 	genMapDepth(playerGridPos,3)
@@ -26,7 +26,7 @@ func _process(delta):
 	
 func spawn(block,rotations,pos):
 	if not occupied(pos):
-		print(block, pos)
+		print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
 		var b = load(gridLibrary[block]).instance()
 		b.name = block
 		b.gridPosition = pos
@@ -51,14 +51,14 @@ func reduceGridSize():
 	return false
 
 func setPlayerPosition(p):
-	var pblock = getBlock(p)
+	var pblock = getPiece(p)
 	if pblock:
 		playerGridPos = p
 		pblock.spawnEnemies()
 		approx_number_of_tiles_traversed += 1
 	updateMap()
 
-func getBlock(pos):
+func getPiece(pos):
 	for block in blocks:
 		if block.isAt(pos):
 			return block
@@ -77,11 +77,36 @@ func spawnAllAdjacents(block):
 	else:
 		print("block: " + block.name + " had no adjacents")
 
-func validAdjacent(dir, otherPiece):
+func validAdjacent(piece, otherPiece):
+	if !piece or !otherPiece or !otherPiece.gridPosition or !otherPiece.gridPosition:
+		return true
+	for adj in piece.adjacents:
+		if round(piece.gridPosition + adj) == round(otherPiece.gridPosition):
+			for adj2 in otherPiece.adjacents:
+				print(adj,", ",adj2)
+				if round(otherPiece.gridPosition + adj2) == round(piece.gridPosition):
+					return true
+			return false
 	for adj in otherPiece.adjacents:
-		if dir.round() == -adj.round():
-			return true
+		if round(otherPiece.gridPosition + adj) == round(piece.gridPosition):
+			for adj2 in piece.adjacents:
+				print(adj,", ",adj2)
+				if round(piece.gridPosition + adj2) == round(otherPiece.gridPosition):
+					return true
+			return false
 	return false
+
+func validPlacement(piece):
+	var valid = true	
+	if len(piece.adjacents) == 0:
+		return false
+	for adj in [Vector3.UP,Vector3.DOWN,Vector3.FORWARD,Vector3.BACK, Vector3.LEFT, Vector3.RIGHT]:
+		var otherPiece = getPiece(piece.gridPosition+adj)
+		if (otherPiece):
+			validAdjacent(piece, otherPiece)
+			valid = false
+			return valid
+	return valid
 
 #Finds piece that allows adjacents from that direction
 func spawnFittingGridPiece(dir,gridPos,spawnEnd):
@@ -93,27 +118,28 @@ func spawnFittingGridPiece(dir,gridPos,spawnEnd):
 	if (spawnEnd):
 		shuffledPieces = endPieces
 		shuffledPieces.shuffle()
-	#var ogPiece = getBlock(gridPos)
+
 	for piece in shuffledPieces:
 		var instancedPiece = load(gridLibrary[piece]).instance()
+		instancedPiece.gridPosition = gridPos+dir
 		for rotation in rotations:
-			if (validAdjacent(dir,instancedPiece)):
+			if (validPlacement(instancedPiece)):
 				var ifSpawn = spawn(piece,rotation,gridPos+dir)
 				instancedPiece.free()
 				return ifSpawn
 			instancedPiece.rotateClockwise()
 		instancedPiece.queue_free()
-	return spawn('c4',0,gridPos+dir) #if nothing is spawned, try spawning this
+	return spawn('error',0,gridPos+dir) #if nothing is spawned, try spawning this
 
 func genMapDepth(pos,depth):
-	var curBlock = getBlock(pos)
+	var curBlock = getPiece(pos)
 	if (depth == 0 or curBlock == null): 
 		return
 	var spawnEndPiece = depth==1 #boolean
-	for adj in curBlock.adjacents:
-		spawnFittingGridPiece(adj,curBlock.gridPosition,spawnEndPiece)
-	for adj in curBlock.adjacents:
-		genMapDepth(curBlock.gridPosition+adj,depth-1)
+	for dir in curBlock.adjacents:
+		spawnFittingGridPiece(dir,curBlock.gridPosition,spawnEndPiece)
+	for dir in curBlock.adjacents:
+		genMapDepth(curBlock.gridPosition+dir,depth-1)
 
 func randomGridPieces():
 	var shuffledPieces = gridLibrary.keys()
@@ -124,6 +150,6 @@ func randomGridPieces():
 
 func updateMap():
 	#spawn("c4",0,playerGridPos)
-	var curBlock = getBlock(playerGridPos)
+	var curBlock = getPiece(playerGridPos)
 	spawnAllAdjacents(curBlock)
 	reduceGridSize()

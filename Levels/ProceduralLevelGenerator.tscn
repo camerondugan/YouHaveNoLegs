@@ -13,6 +13,7 @@ gridLibrary = {
 "c1": "res://Levels/GridPieces/c1.tscn",
 "c2": "res://Levels/GridPieces/c2.tscn",
 "c4": "res://Levels/GridPieces/c4.tscn",
+"error": "res://Levels/GridPieces/error.tscn",
 "h2": "res://Levels/GridPieces/h2.tscn"
 }
 
