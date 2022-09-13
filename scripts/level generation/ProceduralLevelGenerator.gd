@@ -18,7 +18,7 @@ func _ready():
 	seed("You Have No Legs".hash())
 	randomize()
 	spawn('c2',1,playerGridPos)
-	genMapDepth(playerGridPos,3)
+	genMapDepth(playerGridPos,10)
 
 func _process(delta):
 	#update timer
@@ -77,35 +77,28 @@ func spawnAllAdjacents(block):
 	else:
 		print("block: " + block.name + " had no adjacents")
 
+# Checks if a piece connects properly with another (but not if the otherpiece connects and this one doesn't)
 func validAdjacent(piece, otherPiece):
-	if !piece or !otherPiece or !otherPiece.gridPosition or !otherPiece.gridPosition:
-		return true
+	if (!piece or !otherPiece):
+		return false
 	for adj in piece.adjacents:
-		if round(piece.gridPosition + adj) == round(otherPiece.gridPosition):
+		if piece.gridPosition + adj == otherPiece.gridPosition:
 			for adj2 in otherPiece.adjacents:
-				print(adj,", ",adj2)
-				if round(otherPiece.gridPosition + adj2) == round(piece.gridPosition):
+				if otherPiece.gridPosition + adj2 == piece.gridPosition:
+					print("found valid")
 					return true
-			return false
-	for adj in otherPiece.adjacents:
-		if round(otherPiece.gridPosition + adj) == round(piece.gridPosition):
-			for adj2 in piece.adjacents:
-				print(adj,", ",adj2)
-				if round(piece.gridPosition + adj2) == round(otherPiece.gridPosition):
-					return true
-			return false
+			#return false
 	return false
 
 func validPlacement(piece):
-	var valid = true	
+	var valid = false	
 	if len(piece.adjacents) == 0:
 		return false
 	for adj in [Vector3.UP,Vector3.DOWN,Vector3.FORWARD,Vector3.BACK, Vector3.LEFT, Vector3.RIGHT]:
 		var otherPiece = getPiece(piece.gridPosition+adj)
 		if (otherPiece):
-			validAdjacent(piece, otherPiece)
-			valid = false
-			return valid
+			if (validAdjacent(piece, otherPiece) and validAdjacent(otherPiece,piece)):
+				return !valid
 	return valid
 
 #Finds piece that allows adjacents from that direction
@@ -123,11 +116,12 @@ func spawnFittingGridPiece(dir,gridPos,spawnEnd):
 		var instancedPiece = load(gridLibrary[piece]).instance()
 		instancedPiece.gridPosition = gridPos+dir
 		for rotation in rotations:
+			instancedPiece.rotateClockwiseRepeat(rotation)
 			if (validPlacement(instancedPiece)):
 				var ifSpawn = spawn(piece,rotation,gridPos+dir)
 				instancedPiece.free()
 				return ifSpawn
-			instancedPiece.rotateClockwise()
+			instancedPiece.rotateClockwiseRepeat(-rotation)
 		instancedPiece.queue_free()
 	return spawn('error',0,gridPos+dir) #if nothing is spawned, try spawning this
 
