@@ -53,7 +53,7 @@ func isAt(pos):
 	return false
 
 func spawnEnemies():
-	if !hasSpawnedEnemies and false:
+	if !hasSpawnedEnemies:
 		hasSpawnedEnemies = true
 
 		var spawn = spawner.instance()
