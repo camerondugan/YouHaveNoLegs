@@ -48,7 +48,7 @@ shader_param/offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
-shader_param/shaderStrength = 4.0
+shader_param/shaderStrength = 2.0
 shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
 shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
 shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
@@ -132,21 +132,21 @@ position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
 texture = ExtResource( 6 )
 
-[node name="Invulnerability" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="MyGameColors" type="Sprite" parent="."]
+[node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 material = SubResource( 5 )
 scale = Vector2( 998001, 998001 )
 texture = ExtResource( 6 )
 
-[node name="Glitch" type="Sprite" parent="."]
+[node name="Glitch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 6 )
 scale = Vector2( 999, 999 )
 texture = ExtResource( 6 )
+
+[node name="Invulnerability" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="Invulnerability" to="." method="_on_Invulnerability_timeout"]

@@ -32,6 +32,9 @@ var mouse_sense_v_multi = 1.2
 var controller_sense = 4
 var snap
 
+var can_jump_buffer = 0.0;
+var cayote_time = 0.2
+
 var angular_velocity = 30
 
 var direction = Vector3()
@@ -54,11 +57,8 @@ func _input(event):
 			rot_y += -event.relative.y * mouse_sense 			
 			transform.basis = Basis() # reset rotation
 			rot_y = clamp(rot_y, deg2rad(-89), deg2rad(89))
-			rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
-			rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
-			
-		else:
-			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+			head.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
+			head.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 
 func non_vr_process(delta):
 	#Controller look
@@ -83,9 +83,15 @@ func _physics_process(delta):
 			accel = ACCEL_AIR
 			gravity_vec += Vector3.DOWN * gravity * delta
 			
-		if Input.is_action_just_pressed("jump") and is_on_floor():
+		if (!is_on_floor()):
+			can_jump_buffer += delta
+			can_jump_buffer = min(can_jump_buffer, cayote_time)
+		else:
+			can_jump_buffer = 0
+		if Input.is_action_just_pressed("jump") and (can_jump_buffer < cayote_time):
 			snap = Vector3.ZERO
 			gravity_vec = Vector3.UP * jump
+			can_jump_buffer = cayote_time
 		
 		#make it move
 		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
