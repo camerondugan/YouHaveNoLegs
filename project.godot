@@ -35,8 +35,8 @@ gdscript/warnings/treat_warnings_as_errors=true
 [display]
 
 window/size/fullscreen=true
+window/vsync/vsync_via_compositor=true
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [editor]
 
@@ -124,6 +124,16 @@ look_left={
 look_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
+ ]
+}
+look_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":-1.0,"script":null)
+ ]
+}
+look_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
  ]
 }
 

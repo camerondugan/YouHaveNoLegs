@@ -29,7 +29,7 @@ var jump = 5
 var cam_accel = 40
 var mouse_sense = 0.002
 var mouse_sense_v_multi = 1.2
-var controller_sense = 4
+var controller_sense = 0.02
 var snap
 
 var can_jump_buffer = 0.0;
@@ -60,9 +60,14 @@ func _input(event):
 			head.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 			head.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 
-func non_vr_process(delta):
+func non_vr_process(_delta):
 	#Controller look
-	rotate_y(delta*(controller_sense* (Input.get_action_strength("look_left") - Input.get_action_strength("look_right"))))
+	rot_x += (controller_sense * (Input.get_action_strength("look_left") - Input.get_action_strength("look_right")))
+	rot_y += (controller_sense * (Input.get_action_strength("look_up") - Input.get_action_strength("look_down")))
+	transform.basis = Basis() # reset rotation
+	rot_y = clamp(rot_y, deg2rad(-89), deg2rad(89))
+	head.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
+	head.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 
 func _physics_process(delta):
 	if (!world.isInVR):
