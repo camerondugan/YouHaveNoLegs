@@ -38,6 +38,5 @@ stream = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 4 )
-material/0 = null
 
 [connection signal="body_entered" from="Area" to="." method="_on_contact"]

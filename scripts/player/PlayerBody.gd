@@ -27,7 +27,8 @@ onready var accel = ACCEL_DEFAULT
 var jump = 5
 
 var cam_accel = 40
-var mouse_sense = 0.2
+var mouse_sense = 0.002
+var mouse_sense_v_multi = 1.2
 var controller_sense = 4
 var snap
 
@@ -40,39 +41,28 @@ var movement = Vector3()
 onready var head = $"."
 #onready var campivot = $"."
 onready var mesh = $"."
-
-func _ready():
-	pass
 	
+var rot_x = 0
+var rot_y = 0
 func _input(event):
 	if (!world.isInVR):
 		#get mouse input for camera rotation
 		if event is InputEventMouseMotion:
-			rotate_y(deg2rad(-event.relative.x * mouse_sense))
-			#rotate_x(deg2rad(-event.relative.y * mouse_sense)) #Mouse look up (currently broken)
-			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+			#headset.rotate_y(deg2rad(-event.relative.x * mouse_sense))
+			#headset.rotate_x(deg2rad(-event.relative.y * mouse_sense)) #Mouse look up (currently broken)
+			rot_x += -event.relative.x * mouse_sense* mouse_sense_v_multi
+			rot_y += -event.relative.y * mouse_sense 			
+			transform.basis = Basis() # reset rotation
+			rot_y = clamp(rot_y, deg2rad(-89), deg2rad(89))
+			rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
+			rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+			
 		else:
 			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
 func non_vr_process(delta):
-	#physics interpolation to reduce jitter on high refresh-rate monitors
-	#var fps = Engine.get_frames_per_second()
-	#if fps > Engine.iterations_per_second:
-		#campivot.set_as_toplevel(true)
-		#campivot.global_transform.origin = campivot.global_transform.origin.linear_interpolate(head.global_transform.origin, cam_accel * delta)
-		#campivot.rotation.y = rotation.y
-		#campivot.rotation.x = head.rotation.x
-		#mesh.global_transform.origin = mesh.global_transform.origin.linear_interpolate(global_transform.origin, cam_accel * delta)
-	#else:
-		#mesh.global_transform.origin = global_transform.origin
-		#campivot.set_as_toplevel(false)
-		#campivot.global_transform = head.global_transform
-		
 	#Controller look
 	rotate_y(delta*(controller_sense* (Input.get_action_strength("look_left") - Input.get_action_strength("look_right"))))
-	#turns body in the direction of movement
-	#if direction != Vector3.ZERO:
-		#mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-direction.x, -direction.z), angular_velocity * delta)
 
 func _physics_process(delta):
 	if (!world.isInVR):

@@ -25,8 +25,8 @@ func _ready():
 
 var slide : Vector3
 func _physics_process(delta):
+	manage_rumble(target_controller,delta)
 	if (target_controller and world.isInVR):
-		manage_rumble(target_controller,delta)
 		#rotation
 		self.global_transform.basis = target_controller.global_transform.basis
 		
