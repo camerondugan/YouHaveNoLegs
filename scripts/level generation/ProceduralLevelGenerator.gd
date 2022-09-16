@@ -18,7 +18,7 @@ func _ready():
 	seed("You Have No Legs".hash())
 	randomize()
 	spawn('c2',1,playerGridPos)
-	genMapDepth(playerGridPos,10)
+	genMapDepth(playerGridPos,4)
 
 func _process(delta):
 	#update timer

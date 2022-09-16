@@ -27,7 +27,9 @@ onready var accel = ACCEL_DEFAULT
 var jump = 5
 
 var cam_accel = 40
-var mouse_sense = 0.002
+onready var windowSize = OS.get_window_size().y
+var window_size_for_mouse_sense = 600
+onready var mouse_sense = 0.002 * windowSize / window_size_for_mouse_sense
 var mouse_sense_v_multi = 1.2
 var controller_sense = 0.02
 var snap

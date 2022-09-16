@@ -48,7 +48,7 @@ shader_param/offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
-shader_param/shaderStrength = 2.0
+shader_param/shaderStrength = 1.0
 shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
 shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
 shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
@@ -106,6 +106,7 @@ target_group = "left controller"
 non_vr_target_group = "Left Player Hand"
 
 [node name="Lamp" type="SpotLight" parent="PlayerBody/VR/Headset Camera"]
+visible = false
 spot_angle = 40.0
 spot_angle_attenuation = 0.392292
 

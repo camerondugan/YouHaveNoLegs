@@ -12,6 +12,8 @@ script = ExtResource( 1 )
 gridLibrary = {
 "c1": "res://Levels/GridPieces/c1.tscn",
 "c2": "res://Levels/GridPieces/c2.tscn",
+"c2b": "res://Levels/GridPieces/c2b.tscn",
+"c3": "res://Levels/GridPieces/c3.tscn",
 "c4": "res://Levels/GridPieces/c4.tscn",
 "error": "res://Levels/GridPieces/error.tscn",
 "h2": "res://Levels/GridPieces/h2.tscn"

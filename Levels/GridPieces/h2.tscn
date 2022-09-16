@@ -33,6 +33,7 @@ data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, 
 operation = 2
 use_collision = true
 script = ExtResource( 2 )
+canSpawnEnemies = false
 adjacents = [ Vector3( -1, 0, 0 ), Vector3( 1, 0, 0 ) ]
 
 [node name="floor" type="CSGBox" parent="."]

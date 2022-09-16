@@ -3,7 +3,7 @@ extends Spatial
 const gridSquare := 5
 
 var gridPosition := Vector3.ZERO
-var hasSpawnedEnemies := false
+export var canSpawnEnemies := true
 onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
 onready var drone := preload("res://nodes/Enemies/Drone.tscn")
 
@@ -53,8 +53,8 @@ func isAt(pos):
 	return false
 
 func spawnEnemies():
-	if !hasSpawnedEnemies:
-		hasSpawnedEnemies = true
+	if canSpawnEnemies:
+		canSpawnEnemies = false
 
 		var spawn = spawner.instance()
 		spawn.spawnable = drone
