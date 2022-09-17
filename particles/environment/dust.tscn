@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/GlowPrototype/dark.tres" type="Material" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 2.5, 2.5, 2.5 )
+spread = 180.0
+gravity = Vector3( 0, -0.01, 0 )
+initial_velocity = 0.4
+initial_velocity_random = 1.0
+angular_velocity_random = 1.0
+scale = 0.4
+scale_random = 1.0
+
+[sub_resource type="SphereMesh" id=2]
+material = ExtResource( 1 )
+radius = 0.025
+height = 0.05
+
+[node name="Node" type="Particles"]
+amount = 30
+lifetime = 50.0
+preprocess = 30.0
+randomness = 1.0
+visibility_aabb = AABB( -14.1651, -29.3668, -15.1512, 27.3344, 34.9618, 30.8816 )
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )
+
+[node name="This is the Dust" type="Label3D" parent="."]
+billboard = 2
+modulate = Color( 1, 0, 0, 1 )
+text = "Dust"

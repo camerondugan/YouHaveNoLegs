@@ -24,6 +24,8 @@ func _ready():
 		target_controller = rc
 
 var slide : Vector3
+var time = 0
+onready var startingTranslation = translation
 func _physics_process(delta):
 	manage_rumble(target_controller,delta)
 	if (target_controller and world.isInVR):
@@ -50,6 +52,19 @@ func _physics_process(delta):
 			var move = verticalMove-(slide*runPower)
 			pbody.push(move)
 			count-=1
+	else:
+		# Manage Arm Swing
+		time+=delta
+		var freq = 6
+		var dist = 30
+		var vel = pbody.velocity
+		vel.y = 0
+		if (cID == 1):
+			translation.y = startingTranslation.y + ((sin(time*freq))/dist)*(vel.length())
+		else:
+			translation.y = startingTranslation.y - ((sin(time*freq))/dist)*(vel.length())
+		if (time >= PI * 2):
+			time = 0
 
 onready var rumbleDur = 0
 func _on_contact(body):

@@ -3,27 +3,31 @@ extends Spatial
 const gridSquare := 5
 
 var gridPosition := Vector3.ZERO
-var hasSpawnedEnemies := false
-var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
-var drone := preload("res://nodes/Enemies/Drone.tscn")
+export var dusty := true
+export var canSpawnEnemies := true
+onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
+onready var drone := preload("res://nodes/Enemies/Drone.tscn")
+onready var dust := preload("res://particles/environment/dust.tscn")
 
 export var pieceSize := Vector3.ONE
 export var adjacents := []
 export var doorTypes := []
 
-# Door Position: Any = greater than (1,1), Center = (0,0), Center Left(-1,0), Center Right(1,0)
-# More examples: Normal = (0,-1), Normal Left = (-1,-1), Normal Right = (1,-1)
+func _ready():
+	var d = dust.instance()
+	d.global_transform.origin += Vector3(0,gridSquare/2.0,0)
+	add_child(d)
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():
-	self.rotation=(Vector3.UP*deg2rad(-90)).normalized()
+	self.rotation=Vector3.UP*deg2rad(-90)
 	for i in range(len(adjacents)):
 		adjacents[i] = adjacents[i].rotated(Vector3.UP,deg2rad(-90))
 		adjacents[i] = roundV3(adjacents[i])
 
 # Repeats rotations for easy coding
 func rotateClockwiseRepeat(x):
-	self.rotation=(Vector3.UP*deg2rad(-90*x)).normalized()
+	self.rotation=Vector3.UP*deg2rad(-90*x)
 	for i in range(len(adjacents)):
 		adjacents[i] = adjacents[i].rotated(Vector3.UP,deg2rad(-90)*x)
 		adjacents[i] = roundV3(adjacents[i])
@@ -53,8 +57,8 @@ func isAt(pos):
 	return false
 
 func spawnEnemies():
-	if !hasSpawnedEnemies:
-		hasSpawnedEnemies = true
+	if canSpawnEnemies:
+		canSpawnEnemies = false
 
 		var spawn = spawner.instance()
 		spawn.spawnable = drone

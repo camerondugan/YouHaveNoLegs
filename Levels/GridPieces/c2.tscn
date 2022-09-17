@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://textures/Prototype/dark.tres" type="Material" id=1]
-[ext_resource path="res://scripts/level generation/GridPiece.gd" type="Script" id=2]
+[ext_resource path="res://level generator/GridPieces/GridPiece.gd" type="Script" id=2]
 [ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=4]
 
 [sub_resource type="PlaneMesh" id=1]

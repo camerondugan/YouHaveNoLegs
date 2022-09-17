@@ -71,6 +71,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 script = ExtResource( 5 )
 
 [node name="PlayerBody" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380555, 0 )
 
 [node name="VR" type="ARVROrigin" parent="PlayerBody" groups=["origin"]]
