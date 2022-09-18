@@ -6,7 +6,7 @@ var gridPosition := Vector3.ZERO
 export var dusty := true
 export var canSpawnEnemies := true
 onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
-onready var drone := preload("res://nodes/Enemies/Drone.tscn")
+onready var drone := preload("res://nodes/Enemies/DroneEnemy.tscn")
 onready var dust := preload("res://particles/environment/dust.tscn")
 
 export var pieceSize := Vector3.ONE

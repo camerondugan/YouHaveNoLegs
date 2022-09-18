@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/essential/Game.gd" type="Script" id=3]
 [ext_resource path="res://textures/test.tres" type="Material" id=4]
 [ext_resource path="res://nodes/Gadgets/Light Ball.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/Enemies/Drone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/Enemies/DroneEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/Basic Game Mechanics/SpawnSavedNode.gd" type="Script" id=7]
 
 [node name="World" type="Spatial"]

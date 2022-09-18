@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=1]
 [ext_resource path="res://level generator/GridPieces/GridPiece.gd" type="Script" id=2]
@@ -30,14 +30,21 @@ size = Vector2( 5, 5 )
 [sub_resource type="ConcavePolygonShape" id=8]
 data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, -2.5, 0, -2.5, 2.5, 0, -2.5 )
 
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.995049, 0 ), -3.05296, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
 [sub_resource type="ParticlesMaterial" id=9]
 lifetime_randomness = 0.7
 emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 2.5 )
+emission_box_extents = Vector3( 0.6, 0.6, 2.5 )
 gravity = Vector3( 0, 9.8, 0 )
-initial_velocity = 1.0
 initial_velocity_random = 1.0
 angle = 720.0
+scale = 2.0
+scale_curve = SubResource( 12 )
 
 [sub_resource type="SphereMesh" id=10]
 material = ExtResource( 6 )

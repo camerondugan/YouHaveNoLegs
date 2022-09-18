@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var gravity := 9.81
+export var gravity := 10.5
 export var friction := .9
 export var maxSpeed := 13.0
 
@@ -104,7 +104,8 @@ func _physics_process(delta):
 		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
 		movement = velocity + gravity_vec
 		
-		var _noop = move_and_slide_with_snap(movement, snap, Vector3.UP)
+		var _noop = move_and_slide(movement,Vector3.UP)
+		#var _noop = move_and_slide_with_snap(movement, snap, Vector3.UP)
 
 var once := false
 func _process(delta):
@@ -171,7 +172,9 @@ func push(force:Vector3):
 	ciforce +=1
 
 func getHit(force:Vector3):
+	snap = Vector3.ZERO
 	velocity = force
+	direction = force.normalized()
 	player.reduceLives(1)
 
 func respawn():

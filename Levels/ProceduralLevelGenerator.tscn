@@ -16,7 +16,8 @@ gridLibrary = {
 "c3": "res://Levels/GridPieces/c3.tscn",
 "c4": "res://Levels/GridPieces/c4.tscn",
 "error": "res://Levels/GridPieces/error.tscn",
-"h2": "res://Levels/GridPieces/h2.tscn"
+"h2": "res://Levels/GridPieces/h2.tscn",
+"st4": "res://Levels/GridPieces/st4.tscn"
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
