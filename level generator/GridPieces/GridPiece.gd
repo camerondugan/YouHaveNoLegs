@@ -3,6 +3,7 @@ extends Spatial
 const gridSquare := 5
 
 var gridPosition := Vector3.ZERO
+var rotations := 0
 export var dusty := true
 export var canSpawnEnemies := true
 onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
@@ -20,6 +21,7 @@ func _ready():
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():
+	rotations += 1
 	self.rotation=Vector3.UP*deg2rad(-90)
 	for i in range(len(adjacents)):
 		adjacents[i] = adjacents[i].rotated(Vector3.UP,deg2rad(-90))
@@ -27,6 +29,7 @@ func rotateClockwise():
 
 # Repeats rotations for easy coding
 func rotateClockwiseRepeat(x):
+	rotations = (rotations + x)%4
 	self.rotation=Vector3.UP*deg2rad(-90*x)
 	for i in range(len(adjacents)):
 		adjacents[i] = adjacents[i].rotated(Vector3.UP,deg2rad(-90)*x)

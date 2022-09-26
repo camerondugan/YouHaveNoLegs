@@ -70,6 +70,9 @@ func non_vr_process(_delta):
 	rot_y = clamp(rot_y, deg2rad(-89), deg2rad(89))
 	head.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 	head.rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
+	#Menu open
+	if Input.is_action_just_pressed("menu"):
+		get_tree().quit()
 
 func _physics_process(delta):
 	if (!world.isInVR):

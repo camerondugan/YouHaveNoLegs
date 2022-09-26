@@ -7,6 +7,7 @@ var squareSize := 5
 var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
+var excludePieces = ['f1']
 
 var total_player_traversal_time := 0.0
 var approx_number_of_tiles_traversed := 0
@@ -19,6 +20,7 @@ func _ready():
 	randomize()
 	spawn('c2',1,playerGridPos)
 	genMapDepth(playerGridPos,4)
+	spawnEndOfLevel()
 
 func _process(delta):
 	#update timer
@@ -64,11 +66,20 @@ func getPiece(pos):
 			return block
 	return null
 
+func getLastPiece():
+	return blocks[-1]
+
 func getPlayerBlock():
 	for block in blocks:
 		if (block.gridPosition == playerGridPos):
 			return block
 	return null
+
+func spawnEndOfLevel():
+	var lastPiece = getLastPiece()
+	blocks.remove(len(blocks)-1) #removes old piece from the blocks list
+	spawn("f1",lastPiece.rotations,lastPiece.gridPosition) #f1 should be replaced with a random chosen potential end gate?
+	lastPiece.queue_free()
 
 func spawnAllAdjacents(block):
 	if (len(block.adjacents) != 0):
@@ -134,11 +145,14 @@ func genMapDepth(pos,depth):
 		spawnFittingGridPiece(dir,curBlock.gridPosition,spawnEndPiece)
 	for dir in curBlock.adjacents:
 		genMapDepth(curBlock.gridPosition+dir,depth-1)
+	
 
 func randomGridPieces():
 	var shuffledPieces = gridLibrary.keys()
 	shuffledPieces.shuffle()
 	for piece in endPieces:
+		shuffledPieces.erase(piece)
+	for piece in excludePieces:
 		shuffledPieces.erase(piece)
 	return shuffledPieces
 

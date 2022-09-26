@@ -30,6 +30,7 @@ process_material = SubResource( 1 )
 draw_pass_1 = SubResource( 2 )
 
 [node name="This is the Dust" type="Label3D" parent="."]
+visible = false
 billboard = 2
 modulate = Color( 1, 0, 0, 1 )
 text = "Dust"
