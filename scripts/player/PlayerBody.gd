@@ -35,8 +35,8 @@ var mouse_sense_v_multi = 1.2
 var controller_sense = 0.02
 var snap
 
-var can_jump_buffer = 0.0;
 var cayote_time = 0.2
+var can_jump_buffer = cayote_time;
 
 var angular_velocity = 30
 
@@ -47,7 +47,7 @@ var movement = Vector3()
 onready var head = $"."
 #onready var campivot = $"."
 onready var mesh = $"."
-	
+
 var rot_x = 0
 var rot_y = 0
 func _input(event):
@@ -89,16 +89,14 @@ func _physics_process(delta):
 			snap = -get_floor_normal()
 			accel = ACCEL_DEFAULT
 			gravity_vec = Vector3.ZERO
+			can_jump_buffer = 0 #Cayote time
 		else:
 			snap = Vector3.DOWN
 			accel = ACCEL_AIR
 			gravity_vec += Vector3.DOWN * gravity * delta
-			
-		if (!is_on_floor()):
-			can_jump_buffer += delta
+			can_jump_buffer += delta #Cayote time
 			can_jump_buffer = min(can_jump_buffer, cayote_time)
-		else:
-			can_jump_buffer = 0
+			
 		if Input.is_action_just_pressed("jump") and (can_jump_buffer < cayote_time):
 			snap = Vector3.ZERO
 			gravity_vec = Vector3.UP * jump
