@@ -12,12 +12,21 @@ onready var dust := preload("res://particles/environment/dust.tscn")
 
 export var pieceSize := Vector3.ONE
 export var adjacents := []
-export var doorTypes := []
+export var levelEndAreaPath:NodePath
+var levelEndArea:Area
+onready var world := get_node("/root/World")
 
 func _ready():
 	var d = dust.instance()
-	d.global_transform.origin += Vector3(0,gridSquare/2.0,0)
 	add_child(d)
+	d.global_transform.origin += Vector3(0,gridSquare/2.0,0)
+	if (levelEndAreaPath):
+		levelEndArea = get_node(levelEndAreaPath)
+
+func _process(_delta):
+	if (levelEndArea):
+		if (levelEndArea.overlaps_body(world.player.get_child(0))):
+			world.player.queue_free()
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():

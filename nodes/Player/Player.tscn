@@ -5,7 +5,6 @@
 [ext_resource path="res://scripts/player/Arms.gd" type="Script" id=3]
 [ext_resource path="res://scripts/player/vrOrigin.gd" type="Script" id=4]
 [ext_resource path="res://nodes/Player/Player.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://scripts/shaders/canvas/ascii.tres" type="Shader" id=7]
 [ext_resource path="res://shaders/canvas/sketch.tres" type="Shader" id=8]
 [ext_resource path="res://shaders/canvas/images/parchment.jpg" type="Texture" id=9]
@@ -48,7 +47,7 @@ shader_param/offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
-shader_param/shaderStrength = 1.0
+shader_param/shaderStrength = 2.0
 shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
 shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
 shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
@@ -57,6 +56,9 @@ shader_param/color_5 = Plane( 0.972, 0.254, 0.266, 1 )
 shader_param/color_6 = Plane( 0.973, 0.777, 0.309, 1 )
 shader_param/color_7 = Plane( 0.262, 0.664, 0.543, 1 )
 shader_param/color_8 = Plane( 0.152, 0.488, 0.629, 1 )
+
+[sub_resource type="CurveTexture" id=8]
+width = 34
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 13 )
@@ -117,14 +119,12 @@ visible = false
 material = SubResource( 3 )
 position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
-texture = ExtResource( 6 )
 
 [node name="Ascii Art" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 4 )
 scale = Vector2( 999, 999 )
-texture = ExtResource( 6 )
 
 [node name="Paint" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
@@ -132,20 +132,18 @@ visible = false
 material = SubResource( 7 )
 position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
-texture = ExtResource( 6 )
 
 [node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 material = SubResource( 5 )
 scale = Vector2( 998001, 998001 )
-texture = ExtResource( 6 )
+texture = SubResource( 8 )
 
 [node name="Glitch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 6 )
 scale = Vector2( 999, 999 )
-texture = ExtResource( 6 )
 
 [node name="Invulnerability" type="Timer" parent="."]
 wait_time = 2.0

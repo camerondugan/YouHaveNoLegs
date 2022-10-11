@@ -1,22 +1,26 @@
 extends MeshInstance
 
 var speed := .5
+var ignore_first_frame = true
+var startSlideSound = false
 
 #Handle animation of obelisk into game
 func _process(delta):
-	if get_parent().isSeen:
-		$StoneSlidingSound.playing = true
-		transform.origin.y = min(speed*delta+transform.origin.y,0)
-		if transform.origin.y == 0:
-			done()
-		else:
-			speed += speed*delta
-
-func obeliskSounds():
-	get_parent().obeliskSounds()
+	if (ignore_first_frame): #prevents from being seen before moved to final starting position
+		ignore_first_frame = false
+	else:
+		if get_parent().isSeen:
+			transform.origin.y = min(speed*delta+transform.origin.y,0)
+			if transform.origin.y == 0:
+				done()
+			else:
+				if not startSlideSound:
+					get_parent().playSlideSounds()
+					startSlideSound = true
+				speed += speed*delta #Accelerate
 
 func done():
-	obeliskSounds()
+	get_parent().obeliskSounds()
 	get_parent().spawn()
 	var particles = $Particles
 	particles.emitting = true

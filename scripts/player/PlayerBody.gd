@@ -17,6 +17,7 @@ onready var vr_origin = get_tree().get_nodes_in_group("origin")[0]
 
 onready var player := get_parent()
 onready var world := get_node("/root/World")
+
 var igrounded := false
 var impact := false
 

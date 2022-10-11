@@ -4,6 +4,7 @@ onready var R_controller = get_tree().get_nodes_in_group("right controller")[0]
 onready var L_controller = get_tree().get_nodes_in_group("left controller")[0]
 onready var headset = get_tree().get_nodes_in_group("head")[0]
 onready var isInVR := false
+onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
 	var VR = ARVRServer.find_interface("OpenXR")

@@ -52,7 +52,8 @@ target = NodePath("..")
 
 [node name="DroneSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 9 )
-unit_db = -20.0
+unit_db = -15.0
+unit_size = 2.0
 autoplay = true
 doppler_tracking = 1
 

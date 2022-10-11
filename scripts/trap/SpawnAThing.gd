@@ -2,7 +2,11 @@ extends Spatial
 
 export var spawnable : PackedScene = null
 export var distanceFromGround := 1.0
+export var slideSoundPath:NodePath
+export var breakingSoundPath:NodePath
 
+onready var slideSound:AudioStreamPlayer3D = get_node(slideSoundPath)
+onready var breakingSound:AudioStreamPlayer3D = get_node(breakingSoundPath)
 onready var obelisk := $Obelisk
 onready var isSeen := false
 onready var spawned = spawnable.instance()
@@ -15,11 +19,13 @@ func _ready():
 	obelisk.translate(Vector3(0,(-distanceFromGround-newscale.y)/2,0)) 
 	#target height
 	self.translate(Vector3(0,(distanceFromGround+newscale.y)/2,0)) 
+	
 
 func spawn():
 	#spawn at top of obelisk
+	spawned.global_transform = global_transform
 	spawned.translate(Vector3(0,distanceFromGround/2,0))
-	add_child(spawned)
+	get_parent().add_child(spawned)
 
 func getBoundingBox(node):
 	var size = node.size
@@ -29,9 +35,12 @@ func getBoundingBox(node):
 		print("spawned instance: " + node.name + " must have variable size")
 		return Vector3.ZERO
 
+func playSlideSounds():
+	slideSound.playing = true
+
 func obeliskSounds():
-	$Obelisk/StoneSlidingSound.playing = false
-	$Obelisk/StoneBreakingSound.playing = true
+	slideSound.playing = false
+	breakingSound.playing = true
 
 func _on_Despawn_timeout():
 	queue_free()
