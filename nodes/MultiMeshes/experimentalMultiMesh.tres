@@ -1,0 +1,6 @@
+[gd_resource type="MultiMesh" load_steps=2 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[resource]
+mesh = SubResource( 1 )

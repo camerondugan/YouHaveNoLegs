@@ -35,7 +35,6 @@ shape = SubResource( 2 )
 [node name="Button" type="MeshInstance" parent="."]
 transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.11004, 0, -2.19993 )
 mesh = SubResource( 3 )
-material/0 = null
 
 [node name="Button" type="Area" parent="Button"]
 collision_layer = 7

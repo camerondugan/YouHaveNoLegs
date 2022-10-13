@@ -20,6 +20,7 @@ gridLibrary = {
 "h2": "res://Levels/GridPieces/h2.tscn",
 "st4": "res://Levels/GridPieces/st4.tscn"
 }
+level_depth = 5
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 2 )]
 unique_name_in_owner = true

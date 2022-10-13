@@ -2,6 +2,7 @@ extends Spatial
 
 export(Dictionary) var gridLibrary
 
+export(int) var level_depth
 var blocks := []
 var squareSize := 5
 var maxBlockDistance := 10
@@ -19,7 +20,7 @@ func _ready():
 	seed("You Have No Legs".hash())
 	randomize()
 	spawn('c2',1,playerGridPos)
-	genMapDepth(playerGridPos,4)
+	genMapDepth(playerGridPos,level_depth)
 	spawnEndOfLevel()
 
 func _process(delta):
@@ -66,8 +67,8 @@ func getPiece(pos):
 			return block
 	return null
 
-func getLastPiece():
-	return blocks[-1]
+#func getLastPiece():
+	#return blocks[-1]
 
 func getPlayerBlock():
 	for block in blocks:
@@ -76,8 +77,15 @@ func getPlayerBlock():
 	return null
 
 func spawnEndOfLevel():
-	var lastPiece = getLastPiece()
-	blocks.remove(len(blocks)-1) #removes old piece from the blocks list
+	var lastPiece = null
+	var b = blocks.duplicate(true)
+	b.shuffle()
+	for block in b:
+		if (endPieces.has(block.name)): #Find a block that is an end piece
+			lastPiece = block
+			break
+	assert(lastPiece != null)
+	blocks.remove(blocks.find(lastPiece)) #removes old piece from the blocks list
 	spawn("f1",lastPiece.rotations,lastPiece.gridPosition) #f1 should be replaced with a random chosen potential end gate?
 	lastPiece.queue_free()
 

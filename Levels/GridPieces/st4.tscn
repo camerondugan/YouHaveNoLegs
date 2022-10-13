@@ -50,7 +50,7 @@ shape = SubResource( 5 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0 )
-spot_range = 8.09
+spot_range = 6.0
 
 [node name="Spin Trap" parent="." instance=ExtResource( 3 )]
 

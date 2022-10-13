@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var gravity := 10.5
+export var gravity := 15
 export var friction := .9
 export var maxSpeed := 13.0
 
@@ -25,7 +25,7 @@ var speed = 7
 const ACCEL_DEFAULT = 10
 const ACCEL_AIR = 1
 onready var accel = ACCEL_DEFAULT
-var jump = 5
+var jump = 6
 
 var cam_accel = 40
 onready var windowSize = OS.get_window_size().y

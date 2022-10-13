@@ -19,6 +19,7 @@ scale_random = 1.0
 material = ExtResource( 1 )
 radius = 0.025
 height = 0.05
+rings = 4
 
 [node name="Node" type="Particles"]
 amount = 30

@@ -10,12 +10,16 @@ material = ExtResource( 1 )
 top_radius = 0.3
 bottom_radius = 0.5
 height = 0.5
+radial_segments = 16
+rings = 0
 
 [sub_resource type="CylinderMesh" id=2]
 material = ExtResource( 2 )
 top_radius = 0.05
 bottom_radius = 0.05
 height = 2.5
+radial_segments = 8
+rings = 0
 
 [sub_resource type="ConvexPolygonShape" id=3]
 points = PoolVector3Array( 0.0455628, 1.25382, 0.0379145, -0.0538226, -1.25382, -0.0232296, -0.0538226, -1.25382, 0.0226285, -0.0538226, 1.25382, -0.0232296, 0.0455628, -1.25382, -0.0385156, 0.0226285, 1.25382, -0.0538226, 0.0226285, -1.25382, 0.053211, -0.0385261, 1.25382, 0.0455628, -0.0385261, -1.25382, -0.0461744, 0.0455628, 1.25382, -0.0385156, 0.0455628, -1.25382, 0.0379145, -0.0385261, 1.25382, -0.0461744, -0.0385261, -1.25382, 0.0455628, 0.0226285, -1.25382, -0.0538226, 0.0226285, 1.25382, 0.053211, -0.0538226, 1.25382, 0.0226285, 0.0457584, 0.0986678, -0.0200463 )
@@ -43,8 +47,13 @@ skeleton = NodePath("../Spin Trap")
 [node name="Area" type="Area" parent="SpinnerNode/Death Lazer"]
 
 [node name="CollisionShape" type="CollisionShape" parent="SpinnerNode/Death Lazer/Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="SpinnerNode/Death Lazer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235047, 2.23517e-08 )
+light_color = Color( 1, 0.0117647, 0.0117647, 1 )
+omni_range = 1.23652
+omni_attenuation = 0.353554
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
