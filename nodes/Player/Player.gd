@@ -3,8 +3,8 @@ extends Spatial
 var lives := 3
 var invulnerable = false
 
-onready var larm := get_node("PlayerBody/VR/Headset Camera/prison-arms-left")
-onready var rarm := get_node("PlayerBody/VR/Headset Camera/prison-arms-right")
+onready var larm := get_node("PlayerBody/VR/Camera/prison-arms-left")
+onready var rarm := get_node("PlayerBody/VR/Camera/prison-arms-right")
 
 func _process(_delta):
 	if invulnerable:
@@ -25,7 +25,7 @@ func reduceLives(num):
 			queue_free()
 
 func _exit_tree():
-	if (!get_tree().reload_current_scene()):
+	if (!get_tree().change_scene("res://Levels/ProceduralLevelGenerator.tscn")):
 		print("Failed to restart level")
 
 func increaseLives(num):

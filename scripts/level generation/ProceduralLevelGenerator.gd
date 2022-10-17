@@ -1,6 +1,8 @@
 extends Spatial
 
 export(Dictionary) var gridLibrary
+export(Dictionary) var blockProbabilities
+var maxBlockProbability := 0.0
 
 export(int) var level_depth
 var blocks := []
@@ -13,12 +15,17 @@ var excludePieces = ['f1']
 var total_player_traversal_time := 0.0
 var approx_number_of_tiles_traversed := 0
 var avg_player_grid_traversal_time := 0.0
+var random = RandomNumberGenerator.new()
 
 # var level_end_tile = tileId?
 
+func initvars():
+	for b in blockProbabilities.values():
+		maxBlockProbability += b
+	random.randomize()
+
 func _ready():
-	seed("You Have No Legs".hash())
-	randomize()
+	initvars()
 	spawn('c2',1,playerGridPos)
 	genMapDepth(playerGridPos,level_depth)
 	spawnEndOfLevel()
@@ -29,7 +36,7 @@ func _process(delta):
 	
 func spawn(block,rotations,pos):
 	if not occupied(pos):
-		print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
+		#print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
 		var b = load(gridLibrary[block]).instance()
 		b.name = block
 		b.gridPosition = pos
@@ -67,9 +74,6 @@ func getPiece(pos):
 			return block
 	return null
 
-#func getLastPiece():
-	#return blocks[-1]
-
 func getPlayerBlock():
 	for block in blocks:
 		if (block.gridPosition == playerGridPos):
@@ -94,7 +98,8 @@ func spawnAllAdjacents(block):
 		for adj in block.adjacents:
 			spawnFittingGridPiece(adj,block.gridPosition,false)
 	else:
-		print("block: " + block.name + " had no adjacents")
+		#print("block: " + block.name + " had no adjacents")
+		pass
 
 # Checks if a piece connects properly with another (but not if the otherpiece connects and this one doesn't)
 func validAdjacent(piece, otherPiece):
@@ -104,7 +109,7 @@ func validAdjacent(piece, otherPiece):
 		if piece.gridPosition + adj == otherPiece.gridPosition:
 			for adj2 in otherPiece.adjacents:
 				if otherPiece.gridPosition + adj2 == piece.gridPosition:
-					print("found valid")
+					#print("found valid")
 					return true
 			#return false
 	return false
@@ -162,7 +167,48 @@ func randomGridPieces():
 		shuffledPieces.erase(piece)
 	for piece in excludePieces:
 		shuffledPieces.erase(piece)
-	return shuffledPieces
+	#duplicate probabilities + dictionary
+	var tmaxBlockProbability = maxBlockProbability
+	var tblockProbabilities = blockProbabilities.duplicate(true)
+
+	#Remove Negative and Zero Probabilities from dictionary
+	var valuesToRemove = []
+	var j :int = 0
+	for v in tblockProbabilities.values():
+		if (v <= 0.0):
+			valuesToRemove.append(tblockProbabilities.keys()[j]) #append key with irrelevant value
+		j += 1
+	for k in valuesToRemove:
+		tblockProbabilities.erase(k)
+
+
+	#Move random piece to new list of pieces
+	var statisticallyShuffedPieces = []
+	while tmaxBlockProbability > 0 and len(tblockProbabilities) > 1:
+		#var l:int=len(shuffledPieces)
+		#print("looping")
+		#print(tmaxBlockProbability)
+		#print(tmaxBlockProbability)
+		var f = random.randf_range(0, tmaxBlockProbability)
+		var i := 0
+		for bp in tblockProbabilities.values():
+			#print("Random Number: ", f)
+			f -= bp
+			#print("This Piece: ", bp)
+			if (f<=0):
+				# Update dictionary + lists with chosen piece
+				tmaxBlockProbability -= bp
+				var choice = tblockProbabilities.keys()[i]
+				#print(choice)
+				statisticallyShuffedPieces.append(choice)
+				tblockProbabilities.erase(choice)
+				break
+			i += 1
+		#if (len(tblockProbabilities) != 0):
+			#assert(l>len(shuffledPieces))
+	if len(tblockProbabilities) == 1:
+		statisticallyShuffedPieces.append(tblockProbabilities.keys()[0])
+	return statisticallyShuffedPieces
 
 func updateMap():
 	#spawn("c4",0,playerGridPos)

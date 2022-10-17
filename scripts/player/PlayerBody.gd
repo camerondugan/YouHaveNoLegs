@@ -32,7 +32,8 @@ onready var windowSize = OS.get_window_size().y
 var window_size_for_mouse_sense = 600
 onready var mouse_sense = 0.002 * windowSize / window_size_for_mouse_sense
 var mouse_sense_v_multi = 1.2
-var controller_sense = 0.02
+var controller_sense = 0.03
+var controller_sense_v_multi = 0.8
 var snap
 
 var cayote_time = 0.2
@@ -66,7 +67,7 @@ func _input(event):
 func non_vr_process(_delta):
 	#Controller look
 	rot_x += (controller_sense * (Input.get_action_strength("look_left") - Input.get_action_strength("look_right")))
-	rot_y += (controller_sense * (Input.get_action_strength("look_up") - Input.get_action_strength("look_down")))
+	rot_y += (controller_sense * controller_sense_v_multi * (Input.get_action_strength("look_up") - Input.get_action_strength("look_down")))
 	transform.basis = Basis() # reset rotation
 	rot_y = clamp(rot_y, deg2rad(-89), deg2rad(89))
 	head.rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y

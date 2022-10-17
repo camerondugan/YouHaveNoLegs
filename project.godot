@@ -144,6 +144,10 @@ menu={
  ]
 }
 
+[input_devices]
+
+buffering/agile_event_flushing=true
+
 [rendering]
 
 quality/driver/fallback_to_gles2=true

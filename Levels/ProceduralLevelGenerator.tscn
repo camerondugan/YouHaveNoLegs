@@ -20,6 +20,13 @@ gridLibrary = {
 "h2": "res://Levels/GridPieces/h2.tscn",
 "st4": "res://Levels/GridPieces/st4.tscn"
 }
+blockProbabilities = {
+"c2": 3.0,
+"c3": 4.0,
+"c4": 1.0,
+"h2": 4.0,
+"st4": 2.0
+}
 level_depth = 5
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 2 )]

@@ -47,7 +47,7 @@ shader_param/offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
-shader_param/shaderStrength = 5.0
+shader_param/shaderStrength = 2.0
 shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
 shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
 shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
@@ -91,55 +91,55 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Headset Camera" type="ARVRCamera" parent="PlayerBody/VR" groups=["head", "origin"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783998, 0 )
+[node name="Camera" type="ARVRCamera" parent="PlayerBody/VR" groups=["head", "origin"]]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.777586, 0 )
 current = true
-near = 0.01
 
-[node name="prison-arms-right" parent="PlayerBody/VR/Headset Camera" instance=ExtResource( 2 )]
+[node name="prison-arms-right" parent="PlayerBody/VR/Camera" instance=ExtResource( 2 )]
 transform = Transform( 0.199572, 1.74471e-08, -0.0130772, -1.74846e-08, 0.2, 0, -0.0130772, -1.14324e-09, -0.199572, -0.0991447, -0.449928, -0.047079 )
 script = ExtResource( 3 )
 target_group = "right controller"
 non_vr_target_group = "Right Player Hand"
 
-[node name="prison-arms-left" parent="PlayerBody/VR/Headset Camera" instance=ExtResource( 2 )]
+[node name="prison-arms-left" parent="PlayerBody/VR/Camera" instance=ExtResource( 2 )]
 transform = Transform( -0.198815, 1.7381e-08, 0.0217352, 1.74846e-08, 0.2, -1.9984e-15, -0.0217352, 1.90015e-09, -0.198815, 0.0916608, -0.449928, -0.014035 )
 script = ExtResource( 3 )
 target_group = "left controller"
 non_vr_target_group = "Left Player Hand"
 
-[node name="Lamp" type="SpotLight" parent="PlayerBody/VR/Headset Camera"]
+[node name="Lamp" type="SpotLight" parent="PlayerBody/VR/Camera"]
 visible = false
 spot_angle = 40.0
 spot_angle_attenuation = 0.392292
 
-[node name="Sketch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+[node name="Sketch" type="Sprite" parent="PlayerBody/VR/Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 3 )
 position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
 
-[node name="Ascii Art" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+[node name="Ascii Art" type="Sprite" parent="PlayerBody/VR/Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 4 )
 scale = Vector2( 999, 999 )
 
-[node name="Paint" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+[node name="Paint" type="Sprite" parent="PlayerBody/VR/Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 7 )
 position = Vector2( 350, 350 )
 scale = Vector2( 30, 16 )
 
-[node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+[node name="MyGameColors" type="Sprite" parent="PlayerBody/VR/Camera"]
 unique_name_in_owner = true
 material = SubResource( 5 )
 scale = Vector2( 998001, 998001 )
 texture = SubResource( 8 )
 
-[node name="Glitch" type="Sprite" parent="PlayerBody/VR/Headset Camera"]
+[node name="Glitch" type="Sprite" parent="PlayerBody/VR/Camera"]
 unique_name_in_owner = true
 visible = false
 material = SubResource( 6 )

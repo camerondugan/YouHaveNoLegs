@@ -1,6 +1,6 @@
 extends ARVROrigin
 
-onready var headset := get_node("Headset Camera")
+onready var headset := get_node("Camera")
 onready var world := get_node("/root/World")
 onready var physics_body:KinematicBody = get_tree().get_nodes_in_group("playerBody")[0]
 

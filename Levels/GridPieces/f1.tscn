@@ -37,6 +37,7 @@ size = Vector2( 5, 5 )
 [node name="f1" type="MeshInstance"]
 mesh = SubResource( 1 )
 script = ExtResource( 2 )
+canSpawnEnemies = false
 adjacents = [ Vector3( 1, 0, 0 ) ]
 levelEndAreaPath = NodePath("Level End Goal/Goal/Area")
 
