@@ -22,7 +22,7 @@ material = ExtResource( 2 )
 size = Vector3( 0.1, 0.1, 0.1 )
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.351736
+radius = 0.613
 
 [node name="DroneEnemy" type="KinematicBody" groups=["Enemies"]]
 script = ExtResource( 1 )
@@ -80,7 +80,7 @@ rings = 12
 material = ExtResource( 4 )
 
 [node name="Weak Spot" type="Area" parent="Eye"]
-transform = Transform( 1, -1.49012e-08, 3.55271e-15, 1.49012e-08, 1, 0, 0, -8.88178e-16, 1, -2.98023e-08, -8.9407e-08, -3.49246e-10 )
+transform = Transform( 1, -4.47035e-08, 1.06581e-14, 4.47035e-08, 1, 8.88178e-16, 0, -3.55271e-15, 1, -0.153325, -0.220636, -8.61473e-09 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Eye/Weak Spot"]
 transform = Transform( 1, -1.49012e-08, 3.55271e-15, 1.49012e-08, 1, 0, 0, -8.88178e-16, 1, 0, 0, 0 )

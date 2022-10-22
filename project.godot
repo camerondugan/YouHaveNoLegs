@@ -20,12 +20,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="You Have No Legs"
-config/description="A VR game without legs. Trust me, it's better this way."
+config/name="Embrace The Dark"
+config/description="A game jam game by Cameron Dugan"
 run/main_scene="res://Levels/ProceduralLevelGenerator.tscn"
+boot_splash/show_image=false
 boot_splash/image="res://icon.png"
-boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [debug]
@@ -35,6 +35,7 @@ gdscript/warnings/treat_warnings_as_errors=true
 [display]
 
 window/size/fullscreen=true
+window/size/always_on_top=true
 window/vsync/vsync_via_compositor=true
 window/stretch/mode="viewport"
 
@@ -156,4 +157,4 @@ threads/thread_safe_bvh=true
 vram_compression/import_etc=true
 quality/shadows/filter_mode=2
 quality/filters/use_nearest_mipmap_filter=true
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://High Quality.tres"

@@ -10,6 +10,6 @@ logs
 Thumbs.db
 .DS_Store
 
-android/
-exports/
-testExports/
+/android/
+/exports/
+/testExports/

@@ -47,7 +47,7 @@ shader_param/offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
-shader_param/shaderStrength = 2.0
+shader_param/shaderStrength = 0.55
 shader_param/color_1 = Plane( 0.968, 0.972, 0.976, 1 )
 shader_param/color_2 = Plane( 0.804, 828, 0.851, 1 )
 shader_param/color_3 = Plane( 0.285, 0.313, 0.34, 1 )
@@ -56,6 +56,8 @@ shader_param/color_5 = Plane( 0.972, 0.254, 0.266, 1 )
 shader_param/color_6 = Plane( 0.973, 0.777, 0.309, 1 )
 shader_param/color_7 = Plane( 0.262, 0.664, 0.543, 1 )
 shader_param/color_8 = Plane( 0.152, 0.488, 0.629, 1 )
+shader_param/color_9 = Plane( 0.1, 0.1, 0.1, 1 )
+shader_param/color_10 = Plane( 0.05, 0.05, 0.05, 1 )
 
 [sub_resource type="CurveTexture" id=8]
 width = 34

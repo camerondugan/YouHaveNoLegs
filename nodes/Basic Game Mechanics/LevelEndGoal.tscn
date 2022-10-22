@@ -24,6 +24,7 @@ script = ExtResource( 1 )
 speed = 0.4
 
 [node name="Goal" type="MeshInstance" parent="."]
+cast_shadow = 0
 mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
@@ -31,6 +32,7 @@ script = ExtResource( 1 )
 speed = 0.3
 
 [node name="GoalEdges" type="MeshInstance" parent="Goal"]
+cast_shadow = 0
 mesh = SubResource( 12 )
 
 [node name="Area" type="Area" parent="Goal"]
@@ -41,4 +43,5 @@ shape = SubResource( 10 )
 [node name="OmniLight" type="OmniLight" parent="."]
 light_color = Color( 0.470588, 0.603922, 0.882353, 1 )
 light_energy = 3.0
+shadow_enabled = true
 omni_range = 3.0

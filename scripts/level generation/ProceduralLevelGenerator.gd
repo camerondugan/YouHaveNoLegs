@@ -11,6 +11,7 @@ var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 var excludePieces = ['f1']
+var enemySpawnRate = 0.1
 
 var total_player_traversal_time := 0.0
 var approx_number_of_tiles_traversed := 0
@@ -35,6 +36,7 @@ func _process(delta):
 	total_player_traversal_time += delta
 	
 func spawn(block,rotations,pos):
+	var firstBlock = len(blocks) == 0
 	if not occupied(pos):
 		#print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
 		var b = load(gridLibrary[block]).instance()
@@ -42,6 +44,7 @@ func spawn(block,rotations,pos):
 		b.gridPosition = pos
 		b.rotateClockwiseRepeat(rotations)
 		b.translation = pos*squareSize
+		b.canSpawnEnemies = b.canSpawnEnemies and (random.randf_range(0,1) < enemySpawnRate) and not firstBlock
 		add_child(b)
 		blocks.append(b)
 		return true
