@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://nodes/MultiMeshes/MultiMeshInstance.tscn" type="PackedScene" id=1]
+
+[node name="Noisy Blocks" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+MaxOffset = Vector3( 0, 0.1, 0 )

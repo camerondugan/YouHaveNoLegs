@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://textures/Prototype/grey.tres" type="Material" id=1]
 [ext_resource path="res://level generator/GridPieces/GridPiece.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://textures/Prototype/dark.tres" type="Material" id=4]
 [ext_resource path="res://nodes/Basic Game Mechanics/DeathPlane.tscn" type="PackedScene" id=5]
 [ext_resource path="res://textures/GlowPrototype/red.tres" type="Material" id=6]
+[ext_resource path="res://nodes/MultiMeshes/Noisy Blocks.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PlaneMesh" id=4]
 material = ExtResource( 1 )
@@ -70,7 +71,7 @@ material = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0 )
 invert_faces = true
 height = 3.0
-depth = 5.0
+depth = 4.9692
 material = ExtResource( 3 )
 
 [node name="hole2" type="CSGBox" parent="."]
@@ -78,7 +79,7 @@ transform = Transform( 0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, -1.42807, 0 )
 operation = 2
 invert_faces = true
 height = 3.0
-depth = 5.0
+depth = 4.90355
 material = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -145,5 +146,11 @@ light_color = Color( 1, 0, 0.00392157, 1 )
 shadow_enabled = true
 omni_range = 10.0
 omni_attenuation = 1e-05
+
+[node name="Noisy Blocks Wall 1" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 2.5 )
+
+[node name="Noisy Blocks Wall 2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, -2.5 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

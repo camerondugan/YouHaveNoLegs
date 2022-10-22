@@ -1,6 +1,7 @@
-[gd_resource type="MultiMesh" load_steps=2 format=2]
+[gd_resource type="CubeMesh" load_steps=2 format=2]
 
-[sub_resource type="CubeMesh" id=1]
+[ext_resource path="res://materials/Prototype/grey.tres" type="Material" id=1]
 
 [resource]
-mesh = SubResource( 1 )
+material = ExtResource( 1 )
+size = Vector3( 0.5, 0.2, 0.5 )

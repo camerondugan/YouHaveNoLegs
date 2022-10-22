@@ -32,7 +32,6 @@ size = Vector2( 10, 10 )
 mesh = SubResource( 1 )
 script = ExtResource( 1 )
 adjacents = [ Vector3( 1, 0, 0 ) ]
-doorTypes = [ "Open" ]
 
 [node name="Area" type="Area" parent="."]
 
