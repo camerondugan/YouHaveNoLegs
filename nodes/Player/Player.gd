@@ -25,7 +25,7 @@ func reduceLives(num):
 			queue_free()
 
 func _exit_tree():
-	if (!get_tree().change_scene("res://Levels/ProceduralLevelGenerator.tscn")):
+	if (!get_tree().change_scene("res://Levels/Game.tscn")):
 		print("Failed to restart level")
 
 func increaseLives(num):

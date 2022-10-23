@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/level generation/ProceduralLevelGenerator.gd" type="Script" id=1]
-[ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/essential/Game.gd" type="Script" id=5]
+[ext_resource path="res://addons/godot-openxr/icon.png" type="Texture" id=2]
 
-[node name="World" type="Spatial" groups=["world"]]
-script = ExtResource( 5 )
-
-[node name="ProcLevelGenerator" type="Spatial" parent="."]
+[node name="ProcLevelGenerator" type="Spatial"]
 script = ExtResource( 1 )
 gridLibrary = {
 "c1": "res://Levels/GridPieces/c1.tscn",
@@ -28,8 +24,15 @@ blockProbabilities = {
 "h2": 1.0,
 "st4": 5.0
 }
-level_depth = 7
+level_depth = 5
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 2 )]
-unique_name_in_owner = true
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.31854, 0 )
+[node name="Loading Screen" type="CenterContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Sprite" type="Sprite" parent="Loading Screen"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )

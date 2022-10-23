@@ -22,6 +22,9 @@ func die():
 	queue_free()
 
 func _on_Weak_Spot_Hit(body):
+	print(body.name)
+	if (body.get_parent().get_parent().is_in_group('playerBody')):
+		body = body.get_parent().get_parent()
 	if (body.get_parent().is_in_group('playerBody')):
 		body = body.get_parent()
 	if (body.is_in_group('playerBody')):

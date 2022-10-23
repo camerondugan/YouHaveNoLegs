@@ -11,7 +11,7 @@ var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 var excludePieces = ['f1']
-var enemySpawnRate = 0.1
+var enemySpawnRate = 0.2
 
 var total_player_traversal_time := 0.0
 var approx_number_of_tiles_traversed := 0
@@ -26,20 +26,32 @@ func initvars():
 	random.randomize()
 
 func _ready():
+	showLoadingScreen(true)
 	initvars()
-	spawn('c2',1,playerGridPos)
+	spawn("c2",1,playerGridPos)
+	#spawn(randomGridPieces()[0],1,playerGridPos)
 	genMapDepth(playerGridPos,level_depth)
 	spawnEndOfLevel()
+	showLoadingScreen(false)
 
 func _process(delta):
 	#update timer
 	total_player_traversal_time += delta
 	
+func showLoadingScreen(show): #Flashbang Fix
+	for c in get_children():
+		if (c.name == "Loading Screen"):
+			print("Showing Loading:", show)
+			c.visible = show
+		else:
+			c.visible = !show
+
 func spawn(block,rotations,pos):
 	var firstBlock = len(blocks) == 0
 	if not occupied(pos):
-		#print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
+		print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
 		var b = load(gridLibrary[block]).instance()
+		b.visible = false
 		b.name = block
 		b.gridPosition = pos
 		b.rotateClockwiseRepeat(rotations)
@@ -48,6 +60,8 @@ func spawn(block,rotations,pos):
 		add_child(b)
 		blocks.append(b)
 		return true
+	else:
+		print("Blocked on", pos)
 	return false
 
 func occupied(pos):

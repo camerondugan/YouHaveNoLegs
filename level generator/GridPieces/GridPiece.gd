@@ -25,8 +25,9 @@ func _ready():
 
 func _process(_delta):
 	if (levelEndArea):
-		if (levelEndArea.overlaps_body(world.player.get_child(0))):
-			world.player.queue_free()
+		if (world.has_node("Player")):
+			if (levelEndArea.overlaps_body(world.player.get_child(0))):
+				world.player.queue_free()
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():

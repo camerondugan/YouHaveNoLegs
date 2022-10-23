@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Embrace The Dark"
 config/description="A game jam game by Cameron Dugan"
-run/main_scene="res://Levels/ProceduralLevelGenerator.tscn"
+run/main_scene="res://Levels/Game.tscn"
 boot_splash/show_image=false
 boot_splash/image="res://icon.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -34,6 +34,8 @@ gdscript/warnings/treat_warnings_as_errors=true
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/size/fullscreen=true
 window/size/always_on_top=true
 window/vsync/vsync_via_compositor=true
@@ -157,4 +159,5 @@ threads/thread_safe_bvh=true
 vram_compression/import_etc=true
 quality/shadows/filter_mode=2
 quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=1
 environment/default_environment="res://High Quality.tres"

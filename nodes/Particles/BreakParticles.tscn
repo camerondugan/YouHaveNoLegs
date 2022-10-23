@@ -13,7 +13,7 @@
 material = ExtResource( 3 )
 size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="Break" type="CPUParticles"]
+[node name="BreakParticles" type="CPUParticles"]
 emitting = false
 amount = 15
 lifetime = 3.0

@@ -4,9 +4,9 @@
 [ext_resource path="res://scripts/player/PlayerBody.gd" type="Script" id=2]
 [ext_resource path="res://nodes/Player/controllers/R_touch_controller.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.18
-height = 0.335518
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.3
+height = 0.4
 
 [node name="PlayerBody" type="KinematicBody" groups=["playerBody", "soundless"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331152, 0 )
@@ -16,14 +16,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="Body" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, -1.77636e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.172681, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="R_touch_controller" parent="." groups=["Right Player Hand", "soundless"] instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.260511, -0.14864, -0.634146 )
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.264, -0.149, -0.5 )
 collision_mask = 1
 
 [node name="L_touch_controller" parent="." groups=["Left Player Hand", "soundless"] instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264472, -0.14864, -0.613284 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264, -0.149, -0.5 )
 collision_mask = 1

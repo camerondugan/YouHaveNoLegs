@@ -26,11 +26,10 @@ const ACCEL_DEFAULT = 10
 const ACCEL_AIR = 1
 onready var accel = ACCEL_DEFAULT
 var jump = 6
-
+var windowSize = 0
+var window_size_for_mouse_sense = 0
+var mouse_sense = 0
 var cam_accel = 40
-onready var windowSize = OS.get_window_size().y
-var window_size_for_mouse_sense = 600
-onready var mouse_sense = 0.002 * windowSize / window_size_for_mouse_sense
 var mouse_sense_v_multi = 1.2
 var controller_sense = 0.03
 var controller_sense_v_multi = 0.8
@@ -114,6 +113,9 @@ var once := false
 func _process(delta):
 	if (!once):
 		if (!world.isInVR):
+			windowSize = get_viewport().size.x
+			window_size_for_mouse_sense = 1024
+			mouse_sense = 0.0025 * window_size_for_mouse_sense/windowSize
 			#hides the cursor
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
