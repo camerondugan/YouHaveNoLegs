@@ -2,13 +2,14 @@
 
 [resource]
 background_mode = 1
-background_color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
-ambient_light_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+ambient_light_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+ambient_light_sky_contribution = 0.0
 fog_enabled = true
 fog_color = Color( 0, 0, 0, 1 )
 fog_sun_color = Color( 0, 0, 0, 1 )
 fog_depth_begin = 0.0
-fog_depth_end = 15.7
+fog_depth_end = 30.1
+fog_depth_curve = 0.535887
 tonemap_white = 16.0
 auto_exposure_min_luma = 0.4
 auto_exposure_max_luma = 4.0

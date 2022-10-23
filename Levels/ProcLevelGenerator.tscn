@@ -27,7 +27,6 @@ blockProbabilities = {
 level_depth = 5
 
 [node name="Loading Screen" type="CenterContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

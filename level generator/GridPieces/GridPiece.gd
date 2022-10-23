@@ -6,6 +6,7 @@ var gridPosition := Vector3.ZERO
 var rotations := 0
 export var dusty := true
 export var canSpawnEnemies := true
+export var hazard := false
 onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
 onready var drone := preload("res://nodes/Enemies/DroneEnemy.tscn")
 onready var dust := preload("res://particles/environment/dust.tscn")
@@ -27,7 +28,7 @@ func _process(_delta):
 	if (levelEndArea):
 		if (world.has_node("Player")):
 			if (levelEndArea.overlaps_body(world.player.get_child(0))):
-				world.player.queue_free()
+				world.player.reduceLives(world.player.lives)#kill player
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():

@@ -8,7 +8,9 @@
 script = ExtResource( 2 )
 
 [node name="ProcLevelGenerator" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+level_depth = 10
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 unique_name_in_owner = true
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.31854, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0 )

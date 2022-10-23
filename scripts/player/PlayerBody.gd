@@ -48,6 +48,13 @@ onready var head = $"."
 #onready var campivot = $"."
 onready var mesh = $"."
 
+onready var playerStartPos = global_transform
+func reset():
+	translation = playerStartPos.origin
+	velocity = Vector3()
+	gravity_vec = Vector3()
+	movement = Vector3()
+
 var rot_x = 0
 var rot_y = 0
 func _input(event):

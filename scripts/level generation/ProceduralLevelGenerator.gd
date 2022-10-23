@@ -24,12 +24,29 @@ func initvars():
 	for b in blockProbabilities.values():
 		maxBlockProbability += b
 	random.randomize()
+	for v in gridLibrary.values():
+		print(v)
+	for key in gridLibrary.keys():
+		print(key)
+		var newd = {key:load(gridLibrary[key]).instance()}
+		gridLibrary.merge(newd,true); #Changes key to loaded scene
+	for v in gridLibrary.values():
+		print(v)
 
+func reset():
+	blocks.clear()
+	playerGridPos = Vector3.ZERO
+	for c in get_children():
+		c.queue_free()
+	_ready()
+
+var initVars = false
 func _ready():
 	showLoadingScreen(true)
-	initvars()
-	spawn("c2",1,playerGridPos)
-	#spawn(randomGridPieces()[0],1,playerGridPos)
+	if not initVars:
+		initvars()
+		initVars = true
+	spawn(safePiece(),1,playerGridPos)
 	genMapDepth(playerGridPos,level_depth)
 	spawnEndOfLevel()
 	showLoadingScreen(false)
@@ -50,8 +67,8 @@ func spawn(block,rotations,pos):
 	var firstBlock = len(blocks) == 0
 	if not occupied(pos):
 		print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
-		var b = load(gridLibrary[block]).instance()
-		b.visible = false
+		var b = gridLibrary[block].duplicate()
+		b.visible = true
 		b.name = block
 		b.gridPosition = pos
 		b.rotateClockwiseRepeat(rotations)
@@ -115,7 +132,6 @@ func spawnAllAdjacents(block):
 		for adj in block.adjacents:
 			spawnFittingGridPiece(adj,block.gridPosition,false)
 	else:
-		#print("block: " + block.name + " had no adjacents")
 		pass
 
 # Checks if a piece connects properly with another (but not if the otherpiece connects and this one doesn't)
@@ -126,7 +142,6 @@ func validAdjacent(piece, otherPiece):
 		if piece.gridPosition + adj == otherPiece.gridPosition:
 			for adj2 in otherPiece.adjacents:
 				if otherPiece.gridPosition + adj2 == piece.gridPosition:
-					#print("found valid")
 					return true
 			#return false
 	return false
@@ -154,7 +169,7 @@ func spawnFittingGridPiece(dir,gridPos,spawnEnd):
 		shuffledPieces.shuffle()
 
 	for piece in shuffledPieces:
-		var instancedPiece = load(gridLibrary[piece]).instance()
+		var instancedPiece = gridLibrary[piece].duplicate()
 		instancedPiece.gridPosition = gridPos+dir
 		for rotation in rotations:
 			instancedPiece.rotateClockwiseRepeat(rotation)
@@ -170,12 +185,18 @@ func genMapDepth(pos,depth):
 	var curBlock = getPiece(pos)
 	if (depth == 0 or curBlock == null): 
 		return
+	print(depth)
 	var spawnEndPiece = depth==1 #boolean
 	for dir in curBlock.adjacents:
-		spawnFittingGridPiece(dir,curBlock.gridPosition,spawnEndPiece)
-	for dir in curBlock.adjacents:
-		genMapDepth(curBlock.gridPosition+dir,depth-1)
+		if (spawnFittingGridPiece(dir,curBlock.gridPosition,spawnEndPiece)):
+			genMapDepth(curBlock.gridPosition+dir,depth-1)
 	
+func safePiece():
+	var pieces = randomGridPieces()
+	for p in pieces:
+		print(p,gridLibrary[p].hazard)
+		if not gridLibrary[p].hazard:
+			return p
 
 func randomGridPieces():
 	var shuffledPieces = gridLibrary.keys()
@@ -202,21 +223,14 @@ func randomGridPieces():
 	#Move random piece to new list of pieces
 	var statisticallyShuffedPieces = []
 	while tmaxBlockProbability > 0 and len(tblockProbabilities) > 1:
-		#var l:int=len(shuffledPieces)
-		#print("looping")
-		#print(tmaxBlockProbability)
-		#print(tmaxBlockProbability)
 		var f = random.randf_range(0, tmaxBlockProbability)
 		var i := 0
 		for bp in tblockProbabilities.values():
-			#print("Random Number: ", f)
 			f -= bp
-			#print("This Piece: ", bp)
 			if (f<=0):
 				# Update dictionary + lists with chosen piece
 				tmaxBlockProbability -= bp
 				var choice = tblockProbabilities.keys()[i]
-				#print(choice)
 				statisticallyShuffedPieces.append(choice)
 				tblockProbabilities.erase(choice)
 				break

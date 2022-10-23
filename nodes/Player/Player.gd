@@ -1,8 +1,11 @@
 extends Spatial
 
 var lives := 3
+var startLives := lives
 var invulnerable = false
+var startInvulnerable = false
 
+onready var world := get_node("/root/World")
 onready var larm := get_node("PlayerBody/VR/Camera/prison-arms-left")
 onready var rarm := get_node("PlayerBody/VR/Camera/prison-arms-right")
 
@@ -12,6 +15,10 @@ func _process(_delta):
 		larm.visible = tleft%2==0
 		rarm.visible = tleft%2==0
 
+func reset():
+	invulnerable = startInvulnerable
+	lives = startLives
+
 func reduceLives(num):
 	if (!invulnerable):
 		lives -= num
@@ -19,14 +26,7 @@ func reduceLives(num):
 		$Invulnerability.start()
 		get_node("%Glitch").visible = true
 		if (lives <= 0):
-			var enemies := get_tree().get_nodes_in_group("Enemies")
-			for enemy in enemies:
-				enemy.die()
-			queue_free()
-
-func _exit_tree():
-	if (!get_tree().change_scene("res://Levels/Game.tscn")):
-		print("Failed to restart level")
+			world.restart()
 
 func increaseLives(num):
 	lives += num
