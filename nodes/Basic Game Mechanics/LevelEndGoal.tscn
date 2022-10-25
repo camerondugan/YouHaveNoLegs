@@ -43,4 +43,5 @@ shape = SubResource( 10 )
 light_color = Color( 0.470588, 0.603922, 0.882353, 1 )
 light_energy = 3.0
 shadow_enabled = true
+shadow_bias = 0.0
 omni_range = 3.0

@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/ui/FPS Label.gd" type="Script" id=1]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -17,3 +19,4 @@ grow_vertical = 2
 text = "FPS Counter"
 align = 2
 valign = 1
+script = ExtResource( 1 )

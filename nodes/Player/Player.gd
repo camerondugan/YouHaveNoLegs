@@ -28,6 +28,9 @@ func reduceLives(num):
 		if (lives <= 0):
 			world.restart()
 
+func die():
+	world.restart()
+
 func increaseLives(num):
 	lives += num
 

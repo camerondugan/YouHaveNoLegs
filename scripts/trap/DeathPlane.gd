@@ -22,7 +22,7 @@ func markedForDeath(object):
 	
 func checkForPlayerDeath():
 	if (markedForDeath(playerBody)):
-		playerBody.get_parent().reduceLives(3)
+		playerBody.get_parent().die()
 
 func checkForEnemyDeath():
 	var enemies := get_tree().get_nodes_in_group("enemy")

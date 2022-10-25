@@ -80,7 +80,6 @@ func spawnEnemies():
 
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
-		# vvv update to be readable vvv1000
-		var spawnXZ = Vector2(gridSquare*rng.randf_range(-.3,.3),gridSquare*rng.randf_range(-.3,.3))
-		spawn.translate(Vector3(spawnXZ.x,0,spawnXZ.y))
+		var offset = Vector3(gridSquare*rng.randf_range(-.3,.3),0,gridSquare*rng.randf_range(-.3,.3))
+		spawn.translate(offset)
 		get_parent().add_child(spawn)
