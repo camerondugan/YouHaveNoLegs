@@ -5,7 +5,7 @@ export(Dictionary) var blockProbabilities
 var maxBlockProbability := 0.0
 
 export(int) var level_depth
-var blocks := []
+var blocks := {}
 var squareSize := 5
 var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
@@ -75,22 +75,19 @@ func spawn(block,rotations,pos):
 		b.translation = pos*squareSize
 		b.canSpawnEnemies = b.canSpawnEnemies and (random.randf_range(0,1) < enemySpawnRate) and not firstBlock
 		add_child(b)
-		blocks.append(b)
+		blocks.merge({pos:b})
 		return true
 	else:
 		print("Blocked on", pos)
 	return false
 
 func occupied(pos):
-	for block in blocks:
-		if (block.isAt(pos)):
-			return true
-	return false
+	return blocks.has(pos)
 
 func reduceGridSize():
-	for block in blocks:
-		if (block.gridPosition.distance_to(playerGridPos) > maxBlockDistance):
-			block.set_process(false)
+	for pos in blocks.keys():
+		if (pos.distance_to(playerGridPos) > maxBlockDistance):
+			blocks[pos].set_process(false)
 			return true
 	return false
 
@@ -103,29 +100,41 @@ func setPlayerPosition(p):
 	updateMap()
 
 func getPiece(pos):
-	for block in blocks:
-		if block.isAt(pos):
-			return block
+	if blocks.has(pos):
+		return blocks[pos]
 	return null
 
 func getPlayerBlock():
-	for block in blocks:
-		if (block.gridPosition == playerGridPos):
-			return block
+	for pos in blocks.keys():
+		if (pos == playerGridPos):
+			return blocks[pos]
 	return null
 
 func spawnEndOfLevel():
 	var lastPiece = null
 	var b = blocks.duplicate(true)
-	b.shuffle()
-	for block in b:
-		if (endPieces.has(block.name)): #Find a block that is an end piece
-			lastPiece = block
-			break
+	var keys = b.keys()
+	keys.shuffle()
+	var ends = []
+	for k in keys:
+		if (endPieces.has(b[k].name)): #Find a block that is an end piece
+			ends.append(b[k])
+	lastPiece = furthestBlockFrom(ends,playerGridPos)
 	assert(lastPiece != null)
-	blocks.remove(blocks.find(lastPiece)) #removes old piece from the blocks list
+	var _e = blocks.erase(lastPiece.gridPosition)
+	#blocks.remove(blocks.find(lastPiece)) #removes old piece from the blocks list
 	spawn("f1",lastPiece.rotations,lastPiece.gridPosition) #f1 should be replaced with a random chosen potential end gate?
 	lastPiece.queue_free()
+
+func furthestBlockFrom(theseBlocks, place):
+	var furthestDist = 0
+	var furthest = null
+	for p in theseBlocks:
+		var dist = p.gridPosition.distance_to(place)
+		if (dist > furthestDist):
+			furthestDist = dist
+			furthest = p
+	return furthest
 
 func spawnAllAdjacents(block):
 	if (len(block.adjacents) != 0):
@@ -200,7 +209,7 @@ func safePiece():
 
 func randomGridPieces():
 	var shuffledPieces = gridLibrary.keys()
-	shuffledPieces.shuffle()
+	#shuffledPieces.shuffle()
 	for piece in endPieces:
 		shuffledPieces.erase(piece)
 	for piece in excludePieces:

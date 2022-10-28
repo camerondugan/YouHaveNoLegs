@@ -22,6 +22,11 @@ func _ready():
 		isInVR = true
 
 func restart():
+	if (player.lives > 0):
+		get_node("%ProcLevelGenerator").level_depth += 1
+	else:
+		get_node("%ProcLevelGenerator").level_depth -= 1
+
 	player.reset()
 	playerBody.reset()
 	get_node("%ProcLevelGenerator").reset()

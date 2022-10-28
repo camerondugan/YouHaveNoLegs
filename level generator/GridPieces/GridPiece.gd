@@ -28,7 +28,7 @@ func _process(_delta):
 	if (levelEndArea):
 		if (world.has_node("Player")):
 			if (levelEndArea.overlaps_body(world.player.get_child(0))):
-				world.player.reduceLives(world.player.lives)#kill player
+				world.player.die()#kill player
 
 # updates the adjacent vectors as if rotated once
 func rotateClockwise():
