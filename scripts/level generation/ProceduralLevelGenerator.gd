@@ -112,13 +112,10 @@ func getPlayerBlock():
 
 func spawnEndOfLevel():
 	var lastPiece = null
-	var b = blocks.duplicate(true)
-	var keys = b.keys()
-	keys.shuffle()
 	var ends = []
-	for k in keys:
-		if (endPieces.has(b[k].name)): #Find a block that is an end piece
-			ends.append(b[k])
+	for b in blocks.values():
+		if (endPieces.has(b.name.get_slice("@",1))): #Find a block that is an end piece
+			ends.append(b)
 	lastPiece = furthestBlockFrom(ends,playerGridPos)
 	assert(lastPiece != null)
 	var _e = blocks.erase(lastPiece.gridPosition)
@@ -131,6 +128,7 @@ func furthestBlockFrom(theseBlocks, place):
 	var furthest = null
 	for p in theseBlocks:
 		var dist = p.gridPosition.distance_to(place)
+		print(dist)
 		if (dist > furthestDist):
 			furthestDist = dist
 			furthest = p

@@ -18,7 +18,7 @@ dest_files=[ "res://.import/blue_prototype.png-b54cec0741db97bd39e24e4125dc3291.
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.7
+compress/lossy_quality=0.1
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

@@ -98,6 +98,7 @@ __meta__ = {
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.777586, 0 )
 current = true
+fov = 85.0
 
 [node name="prison-arms-right" parent="PlayerBody/VR/Camera" instance=ExtResource( 2 )]
 transform = Transform( 0.199572, 1.74471e-08, -0.0130772, -1.74846e-08, 0.2, 0, -0.0130772, -1.14324e-09, -0.199572, -0.0991447, -0.449928, -0.047079 )

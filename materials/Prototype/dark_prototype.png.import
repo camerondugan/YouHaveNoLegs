@@ -18,7 +18,7 @@ dest_files=[ "res://.import/dark_prototype.png-78a53ca7ced46c648263506ce0409ea0.
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.7
+compress/lossy_quality=0.1
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
