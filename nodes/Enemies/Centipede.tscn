@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://scripts/enemies/Centipede.gd" type="Script" id=1]
 [ext_resource path="res://scripts/enemies/BasicEnemy.gd" type="Script" id=2]
-[ext_resource path="res://textures/GlowPrototype/orange.tres" type="Material" id=3]
-[ext_resource path="res://nodes/Enemies/Centipede/Body.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/GlowPrototype/green.tres" type="Material" id=5]
 
 [sub_resource type="SphereMesh" id=2]
-material = ExtResource( 3 )
+material = ExtResource( 5 )
 radius = 0.5
 height = 1.0
 radial_segments = 8
@@ -15,6 +15,9 @@ rings = 4
 radius = 0.5
 
 [node name="Centipede" type="Spatial"]
+script = ExtResource( 1 )
+length = 16
+bodyResourcePath = "res://nodes/Enemies/Centipede/CentipedeBody.tscn"
 
 [node name="Head" type="KinematicBody" parent="."]
 script = ExtResource( 2 )
@@ -22,53 +25,11 @@ canFly = true
 moveSpeed = 10
 fallSpeed = 1
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head"]
+
 [node name="headMesh" type="MeshInstance" parent="Head"]
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="Head"]
 shape = SubResource( 3 )
-
-[node name="Body" parent="." instance=ExtResource( 4 )]
-
-[node name="Body2" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body")
-
-[node name="Body3" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body2")
-
-[node name="Body4" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body3")
-
-[node name="Body5" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body4")
-
-[node name="Body6" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body5")
-
-[node name="Body7" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body6")
-
-[node name="Body8" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body7")
-
-[node name="Body9" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body8")
-
-[node name="Body10" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body9")
-
-[node name="Body11" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body10")
-
-[node name="Body12" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body11")
-
-[node name="Body13" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body12")
-
-[node name="Body14" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body13")
-
-[node name="Body15" parent="." instance=ExtResource( 4 )]
-leadingNode = NodePath("../Body14")
