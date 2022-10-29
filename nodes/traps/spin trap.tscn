@@ -27,7 +27,7 @@ rings = 0
 points = PoolVector3Array( 0.0455628, 1.25382, 0.0379145, -0.0538226, -1.25382, -0.0232296, -0.0538226, -1.25382, 0.0226285, -0.0538226, 1.25382, -0.0232296, 0.0455628, -1.25382, -0.0385156, 0.0226285, 1.25382, -0.0538226, 0.0226285, -1.25382, 0.053211, -0.0385261, 1.25382, 0.0455628, -0.0385261, -1.25382, -0.0461744, 0.0455628, 1.25382, -0.0385156, 0.0455628, -1.25382, 0.0379145, -0.0385261, 1.25382, -0.0461744, -0.0385261, -1.25382, 0.0455628, 0.0226285, -1.25382, -0.0538226, 0.0226285, 1.25382, 0.053211, -0.0538226, 1.25382, 0.0226285, 0.0457584, 0.0986678, -0.0200463 )
 
 [sub_resource type="CylinderShape" id=7]
-height = 0.133034
+height = 0.688261
 radius = 0.259241
 
 [sub_resource type="SphereMesh" id=6]
@@ -71,7 +71,7 @@ omni_attenuation = 0.353554
 [node name="WeakSpot" type="Area" parent="SpinnerNode"]
 
 [node name="CollisionShape" type="CollisionShape" parent="SpinnerNode/WeakSpot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286032, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0328329, 0 )
 shape = SubResource( 7 )
 
 [node name="Weak Spot Indicator" type="MeshInstance" parent="SpinnerNode"]

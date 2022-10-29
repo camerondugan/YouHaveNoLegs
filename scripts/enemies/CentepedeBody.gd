@@ -1,7 +1,7 @@
 extends Node
 
 export(NodePath) var leadingNode
-export(NodePath) var initialSleep
+export(NodePath) var effectBox
 var goToQueue = []
 var currentTarget
 var previousTarget
@@ -12,6 +12,7 @@ func _ready():
 	print(typeof(leadingNode))
 	if (typeof(leadingNode)==TYPE_NODE_PATH):
 		leadingNode = get_node(leadingNode)
+	effectBox = get_node(effectBox)
 	var reps = int(0.2 / updateTime)
 	for _i in range(reps):
 		goToQueue.push_back(self.global_transform)
@@ -27,6 +28,8 @@ func _process(delta):
 			currentTarget = goToQueue.pop_front()
 			interpolateTime = 0.0
 		else:
+			if (has_node("BreakParticles")):
+				$BreakParticles.brek()
 			queue_free()
 	if (currentTarget and previousTarget):
 		self.global_transform = previousTarget.interpolate_with(currentTarget,interpolateTime/updateTime)

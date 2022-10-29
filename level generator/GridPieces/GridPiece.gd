@@ -9,11 +9,14 @@ export var canSpawnEnemies := true
 export var hazard := false
 onready var spawner := preload("res://nodes/Basic Game Mechanics/SpawnAThing.tscn")
 onready var drone := preload("res://nodes/Enemies/DroneEnemy.tscn")
+onready var centipede := preload("res://nodes/Enemies/Centipede.tscn")
 onready var dust := preload("res://particles/environment/dust.tscn")
 
 export var pieceSize := Vector3.ONE
 export var adjacents := []
 export var levelEndAreaPath:NodePath
+export var droneSpawnRate := .8
+export var centipedeSpawnRate := .2
 var levelEndArea:Area
 onready var world := get_node("/root/World")
 
@@ -47,14 +50,7 @@ func rotateClockwiseRepeat(x):
 		adjacents[i] = roundV3(adjacents[i])
 		
 func roundV3(vec):
-	vec.x = removeNegZero(vec.x)
-	vec.y = removeNegZero(vec.y)
-	vec.z = removeNegZero(vec.z)
 	return Vector3(round(vec.x),round(vec.y),round(vec.z))
-
-func removeNegZero(i):
-	if i == -0: i=0 
-	return i
 
 func _body_entered(body):
 	if (body.name=="PlayerBody"):
@@ -75,11 +71,15 @@ func spawnEnemies():
 		canSpawnEnemies = false
 
 		var spawn = spawner.instance()
-		spawn.spawnable = drone
-		spawn.global_transform = global_transform
-
+		var spawnStatsCap :float= droneSpawnRate + centipedeSpawnRate
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
+		if (rng.randf_range(0,1)<droneSpawnRate/spawnStatsCap):
+			spawn.spawnable = drone
+		else:
+			spawn.spawnable = centipede 
+		spawn.global_transform = global_transform
+
 		var offset = Vector3(gridSquare*rng.randf_range(-.3,.3),0,gridSquare*rng.randf_range(-.3,.3))
 		spawn.translate(offset)
 		get_parent().add_child(spawn)

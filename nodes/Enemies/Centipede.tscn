@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/enemies/Centipede.gd" type="Script" id=1]
 [ext_resource path="res://scripts/enemies/BasicEnemy.gd" type="Script" id=2]
-[ext_resource path="res://textures/GlowPrototype/green.tres" type="Material" id=5]
+[ext_resource path="res://textures/GlowPrototype/white.tres" type="Material" id=3]
+[ext_resource path="res://nodes/Particles/BreakParticles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sound/sfx/monster/monster-moan.wav" type="AudioStream" id=5]
 
 [sub_resource type="SphereMesh" id=2]
-material = ExtResource( 5 )
+material = ExtResource( 3 )
 radius = 0.5
 height = 1.0
 radial_segments = 8
@@ -14,18 +16,26 @@ rings = 4
 [sub_resource type="SphereShape" id=3]
 radius = 0.5
 
+[sub_resource type="SphereShape" id=4]
+radius = 0.55
+
 [node name="Centipede" type="Spatial"]
 script = ExtResource( 1 )
-length = 16
+length = 8
 bodyResourcePath = "res://nodes/Enemies/Centipede/CentipedeBody.tscn"
+bodyEndResourcePath = "res://nodes/Enemies/Centipede/CentipedeBodyEnd.tscn"
 
 [node name="Head" type="KinematicBody" parent="."]
 script = ExtResource( 2 )
 canFly = true
 moveSpeed = 10
 fallSpeed = 1
+knockBack = 15
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head"]
+stream = ExtResource( 5 )
+unit_size = 100.0
+autoplay = true
 
 [node name="headMesh" type="MeshInstance" parent="Head"]
 mesh = SubResource( 2 )
@@ -33,3 +43,10 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="Head"]
 shape = SubResource( 3 )
+
+[node name="BreakParticles" parent="Head" instance=ExtResource( 4 )]
+
+[node name="Area" type="Area" parent="Head"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Head/Area"]
+shape = SubResource( 4 )

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/GlowPrototype/red.tres" type="Material" id=1]
 [ext_resource path="res://scripts/enemies/CentepedeBody.gd" type="Script" id=2]
+[ext_resource path="res://nodes/Particles/BreakParticles.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SphereMesh" id=4]
 material = ExtResource( 1 )
@@ -20,6 +21,7 @@ radius = 0.51
 mesh = SubResource( 4 )
 script = ExtResource( 2 )
 leadingNode = NodePath("../Head")
+effectBox = NodePath("Area")
 
 [node name="RigidBody" type="StaticBody" parent="."]
 collision_layer = 4
@@ -32,3 +34,5 @@ shape = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
+
+[node name="BreakParticles" parent="." instance=ExtResource( 3 )]

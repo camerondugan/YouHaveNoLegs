@@ -5,13 +5,13 @@ export(Dictionary) var blockProbabilities
 var maxBlockProbability := 0.0
 
 export(int) var level_depth
+export var enemySpawnRate = 0.2
 var blocks := {}
 var squareSize := 5
 var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
 var endPieces = ['c1']
 var excludePieces = ['f1']
-var enemySpawnRate = 0.2
 
 var total_player_traversal_time := 0.0
 var approx_number_of_tiles_traversed := 0

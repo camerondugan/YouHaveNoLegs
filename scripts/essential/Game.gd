@@ -32,4 +32,4 @@ func restart():
 	get_node("%ProcLevelGenerator").reset()
 	var enemies := get_tree().get_nodes_in_group("Enemies")
 	for enemy in enemies:
-		enemy.die()
+		enemy.queue_free() #Die
