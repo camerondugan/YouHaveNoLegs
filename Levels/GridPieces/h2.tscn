@@ -53,13 +53,14 @@ radius = 0.05
 height = 0.1
 
 [node name="hole2" type="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 operation = 2
 use_collision = true
 script = ExtResource( 2 )
 canSpawnEnemies = false
 hazard = true
 pieceSize = Vector3( 1, 2, 1 )
-adjacents = [ Vector3( -1, 0, 0 ), Vector3( 1, 0, 0 ) ]
+adjacents = [ Vector3( -1, 1, 0 ), Vector3( 1, 1, 0 ) ]
 
 [node name="floor" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0 )

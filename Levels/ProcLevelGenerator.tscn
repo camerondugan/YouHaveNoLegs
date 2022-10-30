@@ -11,9 +11,13 @@ gridLibrary = {
 "c2b": "res://Levels/GridPieces/c2b.tscn",
 "c3": "res://Levels/GridPieces/c3.tscn",
 "c4": "res://Levels/GridPieces/c4.tscn",
+"cap-1": "res://Levels/GridPieces/cap-1.tscn",
+"cap1": "res://Levels/GridPieces/cap1.tscn",
 "error": "res://Levels/GridPieces/error.tscn",
 "f1": "res://Levels/GridPieces/f1.tscn",
+"h1": "res://Levels/GridPieces/h1.tscn",
 "h2": "res://Levels/GridPieces/h2.tscn",
+"s2": "res://Levels/GridPieces/s2.tscn",
 "st4": "res://Levels/GridPieces/st4.tscn"
 }
 blockProbabilities = {
@@ -21,7 +25,9 @@ blockProbabilities = {
 "c2b": 1.0,
 "c3": 4.0,
 "c4": 5.0,
+"h1": 2.0,
 "h2": 1.0,
+"s2": 3.0,
 "st4": 5.0
 }
 level_depth = 5

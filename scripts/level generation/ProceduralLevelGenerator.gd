@@ -10,7 +10,7 @@ var blocks := {}
 var squareSize := 5
 var maxBlockDistance := 10
 var playerGridPos := Vector3.ZERO
-var endPieces = ['c1']
+var endPieces = ['c1','cap1','cap-1']
 var excludePieces = ['f1']
 
 var total_player_traversal_time := 0.0
@@ -114,7 +114,7 @@ func spawnEndOfLevel():
 	var lastPiece = null
 	var ends = []
 	for b in blocks.values():
-		if (endPieces.has(b.name.get_slice("@",1))): #Find a block that is an end piece
+		if ('c1' == (b.name.get_slice("@",1))): #Find a block that is an end piece
 			ends.append(b)
 	lastPiece = furthestBlockFrom(ends,playerGridPos)
 	assert(lastPiece != null)

@@ -113,8 +113,8 @@ func _physics_process(delta):
 		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
 		movement = velocity + gravity_vec
 		
-		var _noop = move_and_slide(movement,Vector3.UP)
-		#var _noop = move_and_slide_with_snap(movement, snap, Vector3.UP)
+		#var _noop = move_and_slide(movement,Vector3.UP)
+		var _noop = move_and_slide_with_snap(movement, snap, Vector3.UP)
 
 var once := false
 func _process(delta):
