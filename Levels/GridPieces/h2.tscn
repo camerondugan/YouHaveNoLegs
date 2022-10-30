@@ -60,7 +60,8 @@ script = ExtResource( 2 )
 canSpawnEnemies = false
 hazard = true
 pieceSize = Vector3( 1, 2, 1 )
-adjacents = [ Vector3( -1, 1, 0 ), Vector3( 1, 1, 0 ) ]
+pieceOffset = Vector3( 0, -1, 0 )
+adjacents = [ Vector3( -1, 0, 0 ), Vector3( 1, 0, 0 ) ]
 
 [node name="floor" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0 )

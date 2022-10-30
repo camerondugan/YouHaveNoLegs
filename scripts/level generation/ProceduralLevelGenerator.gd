@@ -2,6 +2,7 @@ extends Spatial
 
 export(Dictionary) var gridLibrary
 export(Dictionary) var blockProbabilities
+onready var roomManager = get_node("../RoomManager")
 var maxBlockProbability := 0.0
 
 export(int) var level_depth
@@ -21,17 +22,13 @@ var random = RandomNumberGenerator.new()
 # var level_end_tile = tileId?
 
 func initvars():
+	assert(roomManager != null)
 	for b in blockProbabilities.values():
 		maxBlockProbability += b
 	random.randomize()
-	for v in gridLibrary.values():
-		print(v)
 	for key in gridLibrary.keys():
-		print(key)
 		var newd = {key:load(gridLibrary[key]).instance()}
 		gridLibrary.merge(newd,true); #Changes key to loaded scene
-	for v in gridLibrary.values():
-		print(v)
 
 func reset():
 	blocks.clear()
@@ -49,6 +46,7 @@ func _ready():
 	spawn(safePiece(),1,playerGridPos)
 	genMapDepth(playerGridPos,level_depth)
 	spawnEndOfLevel()
+	roomManager.rooms_convert()
 	showLoadingScreen(false)
 
 func _process(delta):
@@ -58,7 +56,6 @@ func _process(delta):
 func showLoadingScreen(show): #Flashbang Fix
 	for c in get_children():
 		if (c.name == "Loading Screen"):
-			print("Showing Loading:", show)
 			c.visible = show
 		else:
 			c.visible = !show
@@ -66,13 +63,13 @@ func showLoadingScreen(show): #Flashbang Fix
 func spawn(block,rotations,pos):
 	var firstBlock = len(blocks) == 0
 	if not occupied(pos):
-		print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
+		#print(block, " grid: ", pos.x, ",", pos.z, " r: ", rotations)
 		var b = gridLibrary[block].duplicate()
 		b.visible = true
 		b.name = block
 		b.gridPosition = pos
 		b.rotateClockwiseRepeat(rotations)
-		b.translation = pos*squareSize
+		b.translation = (pos+b.pieceOffset)*squareSize
 		b.canSpawnEnemies = b.canSpawnEnemies and (random.randf_range(0,1) < enemySpawnRate) and not firstBlock
 		add_child(b)
 		blocks.merge({pos:b})
@@ -82,7 +79,10 @@ func spawn(block,rotations,pos):
 	return false
 
 func occupied(pos):
-	return blocks.has(pos)
+	for b in blocks.values():
+		if (b.isAt(pos)):
+			return true
+	return false
 
 func reduceGridSize():
 	for pos in blocks.keys():
@@ -113,14 +113,19 @@ func getPlayerBlock():
 func spawnEndOfLevel():
 	var lastPiece = null
 	var ends = []
+	var endNames = {}
 	for b in blocks.values():
 		if ('c1' == (b.name.get_slice("@",1))): #Find a block that is an end piece
 			ends.append(b)
+			endNames.merge({b:b.name.get_slice("@",1)})
 	lastPiece = furthestBlockFrom(ends,playerGridPos)
 	assert(lastPiece != null)
 	var _e = blocks.erase(lastPiece.gridPosition)
 	#blocks.remove(blocks.find(lastPiece)) #removes old piece from the blocks list
-	spawn("f1",lastPiece.rotations,lastPiece.gridPosition) #f1 should be replaced with a random chosen potential end gate?
+	var endPiece = "f1"
+	if (endNames[lastPiece] == "cap1"):
+		endPiece = "fcap1"
+	spawn(endPiece,lastPiece.rotations,lastPiece.gridPosition) #f1 should be replaced with a random chosen potential end gate?
 	lastPiece.queue_free()
 
 func furthestBlockFrom(theseBlocks, place):
@@ -128,7 +133,7 @@ func furthestBlockFrom(theseBlocks, place):
 	var furthest = null
 	for p in theseBlocks:
 		var dist = p.gridPosition.distance_to(place)
-		print(dist)
+		#print(dist)
 		if (dist > furthestDist):
 			furthestDist = dist
 			furthest = p
@@ -145,10 +150,13 @@ func spawnAllAdjacents(block):
 func validAdjacent(piece, otherPiece):
 	if (!piece or !otherPiece):
 		return false
+	#var p = (piece.name == "h2" or otherPiece.name == "h2")
 	for adj in piece.adjacents:
-		if piece.gridPosition + adj == otherPiece.gridPosition:
+		#if p: print("DEBUG: h2",piece.name,piece.gridPosition+piece.pieceOffset)
+		if piece.gridPosition + piece.pieceOffset + adj == otherPiece.gridPosition + otherPiece.pieceOffset:
 			for adj2 in otherPiece.adjacents:
-				if otherPiece.gridPosition + adj2 == piece.gridPosition:
+				#if p: print("DEBUG: h2",piece.name,otherPiece.name,piece.gridPosition+piece.pieceOffset,otherPiece.gridPosition+otherPiece.pieceOffset)
+				if otherPiece.gridPosition + otherPiece.pieceOffset + adj2 == piece.gridPosition + piece.pieceOffset:
 					return true
 			#return false
 	return false
@@ -160,6 +168,8 @@ func validPlacement(piece):
 	for adj in [Vector3.UP,Vector3.DOWN,Vector3.FORWARD,Vector3.BACK, Vector3.LEFT, Vector3.RIGHT]:
 		var otherPiece = getPiece(piece.gridPosition+adj)
 		if (otherPiece):
+			#var p = (piece.name == "h2" or otherPiece.name == "h2")
+			#if p: print("DEBUG: h2",piece.name,otherPiece.name,piece.gridPosition+piece.pieceOffset,otherPiece.gridPosition+otherPiece.pieceOffset)
 			if (validAdjacent(piece, otherPiece) and validAdjacent(otherPiece,piece)):
 				return !valid
 	return valid
@@ -182,7 +192,7 @@ func spawnFittingGridPiece(dir,gridPos,spawnEnd):
 			instancedPiece.rotateClockwiseRepeat(rotation)
 			if (validPlacement(instancedPiece)):
 				var ifSpawn = spawn(piece,rotation,gridPos+dir)
-				instancedPiece.free()
+				instancedPiece.queue_free()
 				return ifSpawn
 			instancedPiece.rotateClockwiseRepeat(-rotation)
 		instancedPiece.queue_free()
@@ -192,7 +202,7 @@ func genMapDepth(pos,depth):
 	var curBlock = getPiece(pos)
 	if (depth == 0 or curBlock == null): 
 		return
-	print(depth)
+	#print(depth)
 	var spawnEndPiece = depth==1 #boolean
 	for dir in curBlock.adjacents:
 		if (spawnFittingGridPiece(dir,curBlock.gridPosition,spawnEndPiece)):
@@ -201,7 +211,7 @@ func genMapDepth(pos,depth):
 func safePiece():
 	var pieces = randomGridPieces()
 	for p in pieces:
-		print(p,gridLibrary[p].hazard)
+		#print(p,gridLibrary[p].hazard)
 		if not gridLibrary[p].hazard:
 			return p
 

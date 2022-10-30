@@ -35,7 +35,7 @@ size = Vector2( 5, 5 )
 
 [sub_resource type="CameraTexture" id=8]
 
-[node name="f1" type="Spatial"]
+[node name="f1" type="Room"]
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
@@ -147,6 +147,10 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.5, 2
 
 [node name="Noisy Blocks Ceiling" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="Portal5" type="Portal" parent="."]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]
 

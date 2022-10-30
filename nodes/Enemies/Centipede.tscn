@@ -1,15 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/enemies/Centipede.gd" type="Script" id=1]
 [ext_resource path="res://scripts/enemies/BasicEnemy.gd" type="Script" id=2]
-[ext_resource path="res://textures/GlowPrototype/white.tres" type="Material" id=3]
+[ext_resource path="res://textures/GlowPrototype/orange.tres" type="Material" id=3]
 [ext_resource path="res://nodes/Particles/BreakParticles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sound/sfx/monster/monster-moan.wav" type="AudioStream" id=5]
+[ext_resource path="res://textures/GlossyPrototype/dark.tres" type="Material" id=6]
 
 [sub_resource type="SphereMesh" id=2]
 material = ExtResource( 3 )
 radius = 0.5
 height = 1.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="SphereMesh" id=5]
+material = ExtResource( 6 )
+radius = 0.1
+height = 0.2
 radial_segments = 8
 rings = 4
 
@@ -38,8 +46,29 @@ unit_size = 100.0
 autoplay = true
 
 [node name="headMesh" type="MeshInstance" parent="Head"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
+
+[node name="rightEye" type="MeshInstance" parent="Head/headMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282836, 0.295092, -0.222807 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../../../..")
+
+[node name="leftEye" type="MeshInstance" parent="Head/headMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283, 0.295, 0.223 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../../../..")
+
+[node name="OmniLight" type="OmniLight" parent="Head/headMesh"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+light_color = Color( 0.929412, 0.709804, 0.054902, 1 )
+shadow_enabled = true
+
+[node name="SpotLight" type="SpotLight" parent="Head/headMesh"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+light_color = Color( 0.878431, 0.647059, 0.0196078, 1 )
+shadow_enabled = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Head"]
 shape = SubResource( 3 )

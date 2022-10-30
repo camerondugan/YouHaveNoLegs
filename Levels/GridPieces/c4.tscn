@@ -22,7 +22,7 @@ size = Vector2( 5, 5 )
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, -2.5, 0, -2.5, 2.5, 0, -2.5 )
 
-[node name="c4" type="Spatial"]
+[node name="c4" type="Room"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
@@ -67,5 +67,21 @@ spot_angle = 40.0
 
 [node name="Noisy Blocks Ceiling" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="Portal" type="Portal" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 2.5, -2.5 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal2" type="Portal" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 2.5 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal3" type="Portal" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal4" type="Portal" parent="."]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

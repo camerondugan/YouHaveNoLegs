@@ -28,8 +28,9 @@ size = Vector2( 5, 5 )
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, -2.5, 0, -2.5, 2.5, 0, -2.5 )
 
-[node name="h1" type="Spatial"]
+[node name="h1" type="Room"]
 script = ExtResource( 2 )
+canSpawnEnemies = false
 adjacents = [ Vector3( 1, 0, 0 ), Vector3( 0, -1, 0 ) ]
 
 [node name="Area" type="Area" parent="."]
@@ -116,5 +117,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5,
 
 [node name="Noisy Blocks Wall 3" parent="." instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.5, 2.5, 0 )
+
+[node name="Portal5" type="Portal" parent="."]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

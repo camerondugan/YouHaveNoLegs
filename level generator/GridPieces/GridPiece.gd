@@ -13,6 +13,7 @@ onready var centipede := preload("res://nodes/Enemies/Centipede.tscn")
 onready var dust := preload("res://particles/environment/dust.tscn")
 
 export var pieceSize := Vector3.ONE
+export var pieceOffset := Vector3.ZERO
 export var adjacents := []
 export var levelEndAreaPath:NodePath
 export var droneSpawnRate := .8
@@ -62,7 +63,7 @@ func isAt(pos):
 	for h in range(self.gridPosition.y,self.gridPosition.y+pieceSize.y):
 		for w in range(self.gridPosition.x,self.gridPosition.x+pieceSize.x):
 			for d in range(self.gridPosition.z,self.gridPosition.z+pieceSize.z):
-				if (pos == Vector3(w,h,d)):
+				if (pos == Vector3(w,h,d)+pieceOffset):
 					return true
 	return false
 

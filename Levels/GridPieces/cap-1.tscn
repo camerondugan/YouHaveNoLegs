@@ -32,7 +32,7 @@ material = ExtResource( 1 )
 flip_faces = true
 size = Vector2( 5, 5 )
 
-[node name="cap-1" type="Spatial"]
+[node name="cap-1" type="Room"]
 transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.5, 2.5, 0 )
 script = ExtResource( 2 )
 canSpawnEnemies = false

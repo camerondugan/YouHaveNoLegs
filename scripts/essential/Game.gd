@@ -10,6 +10,8 @@ onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var playerBody = get_tree().get_nodes_in_group("playerBody")[0]
 onready var playerStartPos = playerBody.global_transform
 
+var level = 1;
+
 func _ready():
 	var VR = ARVRServer.find_interface("OpenXR")
 	if not VR:
@@ -23,9 +25,10 @@ func _ready():
 
 func restart():
 	if (player.lives > 0):
-		get_node("%ProcLevelGenerator").level_depth += 1
-	else:
-		get_node("%ProcLevelGenerator").level_depth -= 1
+		if (level % 3 == 0):
+			get_node("%ProcLevelGenerator").level_depth += 1
+		get_node("%ProcLevelGenerator").enemySpawnRate = log(level)/2.7183
+		level += 1
 
 	player.reset()
 	playerBody.reset()

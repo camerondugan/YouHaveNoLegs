@@ -23,7 +23,7 @@ data = PoolVector3Array( 2.5, 0, 2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, -2.5, 0, 2.5, 
 material = ExtResource( 2 )
 size = Vector2( 5, 5 )
 
-[node name="st4" type="Spatial"]
+[node name="st4" type="Room"]
 script = ExtResource( 1 )
 canSpawnEnemies = false
 hazard = true
@@ -55,6 +55,7 @@ shape = SubResource( 5 )
 
 [node name="SpotLight2" type="SpotLight" parent="Spin Trap"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.9, 0 )
+shadow_bias = 0.05
 spot_range = 5.5
 spot_angle = 25.0
 
@@ -66,5 +67,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 [node name="floor" type="MeshInstance" parent="."]
 visible = false
 mesh = SubResource( 1 )
+
+[node name="Portal" type="Portal" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 2.5, -2.5 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal2" type="Portal" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 2.5 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal3" type="Portal" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
+
+[node name="Portal4" type="Portal" parent="."]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.5, 2.5, 0 )
+points = PoolVector2Array( -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5 )
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

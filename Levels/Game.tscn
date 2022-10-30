@@ -8,10 +8,13 @@
 [node name="World" type="Spatial" groups=["world"]]
 script = ExtResource( 2 )
 
+[node name="RoomManager" type="RoomManager" parent="."]
+roomlist = NodePath("../ProcLevelGenerator")
+
 [node name="ProcLevelGenerator" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 level_depth = 2
-enemySpawnRate = 1.0
+enemySpawnRate = 0.0
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 unique_name_in_owner = true
