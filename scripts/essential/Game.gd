@@ -19,6 +19,7 @@ func _ready():
 
 	if VR and VR.initialize():
 		get_viewport().arvr = true
+		playerBody.maxSpeed *= 2
 
 		#Manage Game Mode State
 		isInVR = true

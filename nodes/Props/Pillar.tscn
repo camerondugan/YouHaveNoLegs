@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/GlossyPrototype/actualwhite.tres" type="Material" id=1]
+
+[sub_resource type="CylinderMesh" id=1]
+material = ExtResource( 1 )
+top_radius = 0.2
+bottom_radius = 0.3
+radial_segments = 16
+rings = 2
+
+[node name="Pillar" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )

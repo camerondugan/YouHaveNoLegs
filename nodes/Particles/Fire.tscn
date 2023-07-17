@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/Particle Material/color changing.tres" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+material = ExtResource( 1 )
+
+[sub_resource type="Curve" id=2]
+max_value = 3.0
+_data = [ Vector2( 0.0309734, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.592045 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+min_value = -2.0
+_data = [ Vector2( 0.00442478, -0.845454 ), 0.0, -0.576106, 0, 0, Vector2( 1, -0.967045 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Fire" type="Spatial"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( 1, 0.000104012, 6.0327e-05, -0.000104052, 1, 0.000687696, -6.0257e-05, -0.000687702, 1, 0, 0, 0 )
+amount = 25
+preprocess = 3.03
+lifetime_randomness = 0.31
+draw_order = 1
+mesh = SubResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 120.5
+gravity = Vector3( 0, 8, 0 )
+initial_velocity = 2.14
+initial_velocity_random = 1.0
+linear_accel = 9.0
+damping = 0.93
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.909804, 0.0352941, 0.0352941, 1 )
+hue_variation_curve = SubResource( 3 )

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://nodes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/essential/Game.gd" type="Script" id=2]
 [ext_resource path="res://Levels/ProcLevelGenerator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/essential/LagDetector.gd" type="Script" id=4]
+[ext_resource path="res://nodes/Props/Pillar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/Particles/Fire.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Spatial" groups=["world"]]
 script = ExtResource( 2 )
@@ -26,5 +28,17 @@ script = ExtResource( 4 )
 [node name="Timer" type="Timer" parent="LagDetector"]
 wait_time = 3.0
 autostart = true
+
+[node name="Pillar" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24854, 0.166841, 1.95265 )
+
+[node name="Fire" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.1682, 1.06279, 2.00704 )
+
+[node name="Pillar2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51623, 0.130297, 1.83226 )
+
+[node name="Fire2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.59657, 1.02624, 1.88665 )
 
 [connection signal="timeout" from="LagDetector/Timer" to="LagDetector" method="detect"]

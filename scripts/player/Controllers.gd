@@ -7,8 +7,8 @@ onready var rc:ARVRController = get_tree().get_nodes_in_group("right controller"
 var target_controller:ARVRController = null
 onready var audio:= $AudioStreamPlayer3D
 export var cID := 0
-export var jumpPower := .3
-export var runPower := .5
+export var jumpPower := .35
+export var runPower := .8
 
 onready var collisionShape:CollisionShape = $c
 onready var previous := translation
